@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="fibonacci 斐波那契数列"><meta name="keywords" content="frontend,hexo,nodejs"><link rel="alternate" href="/default" title="nextblog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://nextblog.cn/2018/06/10/fibonacci/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
+</script>
+
+    <title>fibonacci 斐波那契数列 - nextblog</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">nextblog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">nextblog</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">fibonacci 斐波那契数列
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-06-10
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码如下"><span class="toc-text">测试代码如下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制台输出结果"><span class="toc-text">控制台输出结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树图片（只是结构一样）"><span class="toc-text">二叉树图片（只是结构一样）</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>最近复习一些算法和数据结构，看完二叉树后再看递归。发现斐波那契数列跟二叉树是一回事（二叉树就是用递归实现的）。而且也进一步了解了函数的执行过程（其实调试就知道）。</p>
+<h3 id="测试代码如下"><a href="#测试代码如下" class="headerlink" title="测试代码如下"></a>测试代码如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let i = 0</span><br><span class="line">function fibonacci(num,name)&#123;</span><br><span class="line">	console.log(i,name,num);</span><br><span class="line">	i++;</span><br><span class="line">	if(num === 1 || num ===2 )&#123;</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;</span><br><span class="line">	return fibonacci(num-1,&apos;left&apos;) + fibonacci(num-2,&apos;right&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let sum = fibonacci(6,&apos;root&apos;);</span><br><span class="line">console.log(sum,&apos;sum&apos;);</span><br></pre></td></tr></table></figure>
+<h3 id="控制台输出结果"><a href="#控制台输出结果" class="headerlink" title="控制台输出结果"></a>控制台输出结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">0 &quot;root&quot; 6</span><br><span class="line">1 &quot;left&quot; 5</span><br><span class="line">2 &quot;left&quot; 4</span><br><span class="line">3 &quot;left&quot; 3</span><br><span class="line">4 &quot;left&quot; 2</span><br><span class="line">5 &quot;right&quot; 1</span><br><span class="line">6 &quot;right&quot; 2</span><br><span class="line">7 &quot;right&quot; 3</span><br><span class="line">8 &quot;left&quot; 2</span><br><span class="line">9 &quot;right&quot; 1</span><br><span class="line">10 &quot;right&quot; 4</span><br><span class="line">11 &quot;left&quot; 3</span><br><span class="line">12 &quot;left&quot; 2</span><br><span class="line">13 &quot;right&quot; 1</span><br><span class="line">14 &quot;right&quot; 2</span><br><span class="line">8 &quot;sum&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="二叉树图片（只是结构一样）"><a href="#二叉树图片（只是结构一样）" class="headerlink" title="二叉树图片（只是结构一样）"></a>二叉树图片（只是结构一样）</h3><img src="/2018/06/10/fibonacci/fibonacci.jpg">
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://nextblog.cn">AJI</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://nextblog.cn/2018/06/10/fibonacci/">http://nextblog.cn/2018/06/10/fibonacci/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/算法/">算法</a>
+            <a href="/tags/复习/">复习</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2019/02/02/mysql-privilege/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">mysql 赋给用户权限及查看表的结构</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2018/06/03/continue-write-blog/">
+        <span class="next-text nav-default">继续写博客</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/ahonn" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2019<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">AJI</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?623aa4685b8aa8a526d7503faa478984";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+
+  </body>
+</html>
