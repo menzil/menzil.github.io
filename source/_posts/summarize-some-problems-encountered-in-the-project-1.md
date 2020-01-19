@@ -1,6 +1,7 @@
 ---
+layout: publish
 title: 总结有些在项目中遇到的问题（1）
-date: 2020-01-19 11:57:18
+date: 2020-01-19 12:27:34
 tags:
 - javascript
 - electron
@@ -8,7 +9,8 @@ tags:
 - react-hooks
 ---
 
-最近在用react-hook、electron技术站做个电脑端应用，本篇记录一下项目中遇到的一些大小问题借解决办法
+
+最近在用react-hook、electron技术站做个电脑端应用，本篇记录一下项目中遇到的一些大小问题借解决办法。
 
 
 ### 1. create-react-app 无 eject 配置代理请求

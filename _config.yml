@@ -1,8 +1,8 @@
 # @Author: AJI
 # @Date:   2018-06-03T08:36:47+08:00
 # @Email:  menzil@live.cn
-# @Last modified by:   AJI
-# @Last modified time: 2018-06-10T09:35:58+08:00
+# @Last modified by:   gulber
+# @Last modified time: 2020-01-19
 
 
 
@@ -15,7 +15,7 @@ title: nextblog
 subtitle:
 description: On the way!
 keywords: frontend,hexo,nodejs
-author: AJI
+author: nur
 language: zh-CN
 timezone:
 
