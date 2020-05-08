@@ -86,7 +86,7 @@
 
 
 <script>
-  window.config = {"title":"nextblog","subtitle":null,"description":"On the way!","author":"nur","language":"zh-CN","timezone":null,"url":"http://nextblog.cn","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":true,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repository":"git@github.com:menzil/menzil.github.io.git","branch":"master"},"ignore":[],"keywords":"frontend,hexo,nodejs","index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"menzil@live.cn","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/menzil","weibo":null,"zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
+  window.config = {"title":"nextblog","subtitle":null,"description":"On the way!","author":"nur","language":"zh-CN","timezone":null,"url":"http://nextblog.cn","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":true,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repository":"git@github.com:menzil/menzil.github.io.git","branch":"master"},"ignore":[],"keywords":"frontend,hexo,nodejs","index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"server":{"port":4000,"log":false,"compress":false,"header":true},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"menzil@live.cn","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/menzil","weibo":null,"zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
 </script>
 
     <title> nextblog </title>
@@ -183,6 +183,47 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/05/graphiQL-add-authorization-token/">graphiQL-add-authorization-token</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-05
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"Authorization"</span>: <span class="string">"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWU2YWY4OGMzOGE2NTgxODg2OTVlYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU4ODY4NjQ0MSwiZXhwIjoxNTkxMjc4NDQxfQ.twMrLBWhV8z27gqn9P1nVlztPbY1AXlpEa70e_za630"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
     
       
   <article class="post">
@@ -601,63 +642,16 @@
   </article>
 
     
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/06/03/continue-write-blog/">继续写博客</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-06-03
-        </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/日记/">日记</a>
-            
-          </div>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h3 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h3><p>我都不记得这是第几个博客，上大学后有了自己的电脑，可以为所欲为了。虽然以前也很好奇电脑，但是那时候还没有碰过编程。买过两本书，一本是c语言的，另一本是JavaScript（很厚的一本书）。那时候还不知道怎么入门，偶尔看看书，但是没敲过代码。大学选的是计算机科学与技术专业，这下当然得敲代码了。还有跟朋友一起开始折腾网页了。大一就买了个域名，用WordPress建站，开始写博客了。</p>
-<h3 id="WordPress"><a href="#WordPress" class="headerlink" title="WordPress"></a>WordPress</h3><p>WordPress是不得不提的一个重要话题，想起来都很激动人。为了把主题弄成自己想要的状态，先学习了HTML和Css改动原有的主题。后来发现这还远远不够，看主题代码学会了怎么写主题了。那时候博客上主要记录大学生活和有关WordPress的一些技术文章（都是一些小伎俩）。<br>那时候写博客的人也比较多，社区也很活跃。学好了怎样写主题后就自己写几个主题分享，都很受欢迎。后来就客户找上门来了。完成了一些个人博客主题，完成了几个小企业网站，就有了小小收入，很开心！</p>
-<h3 id="Typecho"><a href="#Typecho" class="headerlink" title="Typecho"></a>Typecho</h3><p><a href="http://typecho.org/" target="_blank" rel="noopener">Typecho</a>另一个博客驱动程序，仅仅 7 张数据表，加上不足 400KB 的代码，就实现了完整的插件与模板机制。这个比起庞大的WordPress很轻量，自己能看懂程序源码，也可以动手写一些插件。但是觉得很好用，一下子就把语言包翻译成<a href="https://github.com/typecho/languages/blob/master/ug_CN.po" target="_blank" rel="noopener">维吾尔文</a>了。<br>有了收入，就买了DigitalOcean的服务器，开始折腾Linux了。就因为用服务器好几次出问题，重新装系统，丢失了几篇文章。慢慢学会怎样搭建环境，备份数据库和文件等。</p>
-<p>现在还记得我总结过2016年，以前的博客文章在<a href="http://menzil.netlify.com/" target="_blank" rel="noopener">netlify</a>上留了一份（因为GitHub上clone的项目太多，最近批量删除，原带文件没了）。<br>记下来的东西都是珍贵的，这样我还知道当时在干啥。2017年好像没写博客了，现在都不知道时间去哪儿了。</p>
-<h3 id="对博客的看法"><a href="#对博客的看法" class="headerlink" title="对博客的看法"></a>对博客的看法</h3><p>工作后学习了很多新知识，刚开始还有一些记录，但慢慢觉得那些内容网上有很多，而且都很详细，我就产生为什么还要写博客的疑问。就这样不写博客了。有时候看到一些技术大牛的博客产生一些火花，但心动不如行动，没法开始。<br>原来博客是我自己的东西，那些记录下来的东西不是给别人看，而是给自己的。在项目中遇到的问题和解决办法记录下来，自己的一下新老想法记录下来。那都是都是我们走过的痕迹呀！如果不留点痕迹，时间过了就过了。</p>
-<h3 id="新博客起航"><a href="#新博客起航" class="headerlink" title="新博客起航"></a>新博客起航</h3><p>既然改正好态度，那就踏踏实实的写下去。不要太多关注驱动程序和界面，友好、能用就差不多。因为很多外国技术大牛的博客就光是文字加几行代码，把核心内容记录下来。所以我也用了hexo，放在GitHub上。文章都是markdown格式保存，没有数据库，省的麻烦。</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
   </section>
 
   
   <nav class="pagination">
     
+    
+      <a class="next" href="/page/2/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
