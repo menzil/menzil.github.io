@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 思考</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/si-kao/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-09-01T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/si-kao/atom.xml</id>
+    <entry xml:lang="en">
+        <title>2026 年了，律所还需要官网吗？</title>
+        <published>2026-09-01T00:00:00+00:00</published>
+        <updated>2026-09-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/law-firm-website-in-2026/"/>
+        <id>https://menzil.github.io/posts/law-firm-website-in-2026/</id>
+        
+        <summary type="html">&lt;p&gt;2026 年，短视频和 AI 已经铺天盖地。想了解一个问题，可以刷视频，也可以直接问 AI。想找一家律所，各个平台上也能搜到不少内容。这个时候再谈官网，好像有点落伍了：现在还有谁会专门打开一个官网？&lt;/p&gt;
+&lt;p&gt;这个问题我也想过。&lt;/p&gt;
+&lt;p&gt;官网本来就不是让人每天来刷的。至少对我来说，它更像一个确认信息的地方。平时也许想不起来，等到真的要了解一家公司、一个机构，或者准备做某个决定时，我还是会去找它的官网。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>自由时间</title>
+        <published>2025-11-12T00:00:00+00:00</published>
+        <updated>2025-11-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/free-time/"/>
+        <id>https://menzil.github.io/posts/free-time/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/free-time/">&lt;p&gt;今天在B站看到了关于Rust的好多视频教程，包括算法和高级用法，架构等。因为上班时间，先收藏起来了。如果想实现财务自由，那就有必要掌握时间。因为最近玩游戏时间有点长了，影响我的自由探索。&lt;/p&gt;
+&lt;p&gt;已经10天了，每天坚持多邻国，学习英文。发现自己跟朋友一起做事儿或者有人敦促，效率比较好，一旦没了目标或者自己，有些沉迷于游戏了。&lt;/p&gt;
+&lt;p&gt;所以好好想一下如果有足够的时间或者财富，我要干啥：&lt;/p&gt;
+&lt;h3 id=&quot;fu-mu&quot;&gt;父母&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fu-mu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;最近听到一句话“人的成功速度要快于父母的老龄化速度”，父母把我养大，这都32岁了，还没给父母做点什么？买个衣服，带他们取旅游，又或者给他们洗牙，陪伴或者帮忙等。&lt;/p&gt;
+&lt;h3 id=&quot;lao-po-hai-zi&quot;&gt;老婆孩子&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#lao-po-hai-zi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;老婆孩子也是，总跟我吃苦。虽然生活还可以，但也没有一起旅游，或者吃大餐。结婚四年多，才看过一次电影。&lt;/p&gt;
+&lt;h3 id=&quot;jie-jie&quot;&gt;姐姐&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#jie-jie&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;我应该帮忙孩子们的学习，他们成绩总是不如意事。只要啃下功夫，我有信心能教导他们。&lt;/p&gt;
+&lt;h3 id=&quot;ji-shu&quot;&gt;技术&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ji-shu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;h3 id=&quot;chuang-ye&quot;&gt;创业&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chuang-ye&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;...&lt;/p&gt;
+</content>
+        
+    </entry>
+</feed>

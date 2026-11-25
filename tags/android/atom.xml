@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - Android</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/android/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-08-07T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/android/atom.xml</id>
+    <entry xml:lang="en">
+        <title>阿里云 App 备案小提示：苹果、安卓、鸿蒙一次备案完成</title>
+        <published>2026-08-07T00:00:00+00:00</published>
+        <updated>2026-08-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/aliyun-app-filing-multiple-platforms/"/>
+        <id>https://menzil.github.io/posts/aliyun-app-filing-multiple-platforms/</id>
+        
+        <summary type="html">&lt;p&gt;最近给 App 做阿里云备案，发现一个很容易忽略的小细节：&lt;strong&gt;如果同一个 App 同时有苹果、安卓和鸿蒙版本，不要只备案眼前准备上架的那一个平台。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在同一份 App 备案申请里，直接把 &lt;code&gt;iOS&lt;/code&gt;、&lt;code&gt;Android&lt;/code&gt;、&lt;code&gt;鸿蒙&lt;/code&gt;三个运行平台全部添加进去。只要三个平台使用相同的 App 名称，就只需要备案一次，审核通过后共用一个 App 备案号。&lt;/p&gt;
+&lt;p&gt;这样做可以省掉后面新增平台时再次发起变更备案、重新提交资料和等待审核的时间。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Flutter 设备未识别：USB 调试这个坑</title>
+        <published>2026-04-07T00:00:00+00:00</published>
+        <updated>2026-04-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/flutter-usb-debugging/"/>
+        <id>https://menzil.github.io/posts/flutter-usb-debugging/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/flutter-usb-debugging/">&lt;h2 id=&quot;wen-ti&quot;&gt;问题&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#wen-ti&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;今天跑 &lt;code&gt;flutter devices&lt;/code&gt; 想在真机上调试，结果只看到 macOS、Chrome 和 iPhone，Android 手机完全不见踪影。&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; flutter devices&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Found&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; connected devices:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;  macOS&lt;/span&gt;&lt;span&gt; (desktop)                 • macos                 • darwin-arm64&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;  Mac&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; Designed for iPad&lt;/span&gt;&lt;span&gt; (desktop) • mac-designed-&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;for&lt;/span&gt;&lt;span&gt;-ipad • darwin&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;  Chrome&lt;/span&gt;&lt;span&gt; (web)                    • chrome                • web-javascript&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;手机明明插着，开发者模式也开了，就是认不出来。&lt;/p&gt;
+&lt;h2 id=&quot;pai-cha-guo-cheng&quot;&gt;排查过程&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#pai-cha-guo-cheng&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;以为是 Android SDK 或者驱动的问题，跑了 &lt;code&gt;flutter doctor&lt;/code&gt;，结果：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;[✓] Android toolchain - develop for Android devices (Android SDK version 36.1.0)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Android SDK 没问题。&lt;code&gt;adb devices&lt;/code&gt; 也是空的。说明问题不在 Flutter 层面，而是 macOS 根本没识别到手机。&lt;/p&gt;
+&lt;h2 id=&quot;yuan-yin&quot;&gt;原因&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#yuan-yin&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;最后想起来——&lt;strong&gt;USB 调试没开&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;光开&quot;开发者模式&quot;不够，USB 调试是独立的选项，必须单独打开。&lt;/p&gt;
+&lt;h2 id=&quot;zheng-que-bu-zou&quot;&gt;正确步骤&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#zheng-que-bu-zou&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;正确顺序是这样的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;打开 USB 调试&lt;/strong&gt;
+设置 → 开发者选项 → &lt;strong&gt;USB 调试&lt;/strong&gt; → 打开&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;插入数据线&lt;/strong&gt;
+用支持数据传输的线（有些线只能充电）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;在手机上授权&lt;/strong&gt;
+连接电脑后，手机会弹出对话框，勾选&quot;始终允许来自此计算机&quot;，点允许&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;（可选）切换 USB 模式&lt;/strong&gt;
+从通知栏下拉 → USB 选项 → 选择&quot;传输文件（MTP）&quot;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;搞定之后再跑 &lt;code&gt;flutter devices&lt;/code&gt;，Android 设备就出现了：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;$&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; flutter devices&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Found&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 4&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; connected devices:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;  macOS&lt;/span&gt;&lt;span&gt; (desktop)                 • macos                 • darwin-arm64&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;  ...&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;  Pixel&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; 6a&lt;/span&gt;&lt;span&gt; (mobile)              • android-arm64         • Android 14&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;xiao-jie&quot;&gt;小结&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#xiao-jie&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;这是一个低级错误，但确实值得记录。开发者模式和 USB 调试是两回事，平时用得少真的会忘。下次遇到类似问题，先检查这三点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;USB 调试开了没&lt;/li&gt;
+&lt;li&gt;数据线支不支持数据传输&lt;/li&gt;
+&lt;li&gt;授权弹窗点了没&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;题图：Flutter 调试界面&lt;/p&gt;
+</content>
+        
+    </entry>
+</feed>

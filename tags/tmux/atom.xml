@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - tmux</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/tmux/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-03-06T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/tmux/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Tmux 使用指南</title>
+        <published>2026-03-06T00:00:00+00:00</published>
+        <updated>2026-03-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/tmux-guide/"/>
+        <id>https://menzil.github.io/posts/tmux-guide/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/tmux-guide/">&lt;h2 id=&quot;shen-me-shi-tmux&quot;&gt;什么是 Tmux&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#shen-me-shi-tmux&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tmux (Terminal Multiplexer) 是一个终端复用器，允许你在一个终端窗口中运行多个会话，并且可以在后台保持运行。即使关闭 SSH 连接或终端窗口，tmux 会话也会继续运行。&lt;/p&gt;
+&lt;h2 id=&quot;ji-ben-cao-zuo&quot;&gt;基本操作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ji-ben-cao-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;hui-hua-guan-li&quot;&gt;会话管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#hui-hua-guan-li&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建新会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建命名会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s myproject&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 列出所有会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; ls&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 连接到最近的会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 连接到指定会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach -t myproject&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 杀死指定会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; kill-session -t myproject&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 杀死所有会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; kill-server&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;fen-chi-he-zhong-lian&quot;&gt;分离和重连&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fen-chi-he-zhong-lian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在 tmux 会话中按快捷键分离&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; d&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 或使用命令&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; detach&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;chang-yong-kuai-jie-jian&quot;&gt;常用快捷键&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chang-yong-kuai-jie-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;所有 tmux 快捷键都以 &lt;code&gt;Ctrl+b&lt;/code&gt; 作为前缀（按下后松开，再按功能键）。&lt;/p&gt;
+&lt;h3 id=&quot;qian-zhui-jian&quot;&gt;前缀键&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#qian-zhui-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;主前缀键&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;次前缀键&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;GNU-Screen 兼容&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;hui-hua-guan-li-1&quot;&gt;会话管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#hui-hua-guan-li-1&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;分离会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix d&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix d&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;列出会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix s&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix s&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;重命名会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix $&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix $&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;新建会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix :new&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+c&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更快捷&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;查找会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix s&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+f&lt;/code&gt;&lt;/td&gt;&lt;td&gt;命令提示查找&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;切换上一会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix L&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Shift+Tab&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;chuang-kou-guan-li&quot;&gt;窗口管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chuang-kou-guan-li&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;创建窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix c&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix c&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;重命名窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ,&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ,&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;列出窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix w&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix w&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;关闭窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;amp;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;amp;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;切换窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix 0-9&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix 0-9&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;下一个窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix n&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;上一个窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix p&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+h&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;最后活动窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Tab&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更快捷&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;mian-ban-cao-zuo&quot;&gt;面板操作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#mian-ban-cao-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;垂直分割&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix %&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix _&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;水平分割&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &quot;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix -&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;关闭面板&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix x&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix x&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;切换面板&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix o&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix o&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;最大化面板&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix z&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix +&lt;/code&gt;&lt;/td&gt;&lt;td&gt;自定义脚本&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向左移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ←&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix h&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向下移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ↓&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix j&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向上移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ↑&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix k&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向右移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix →&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向左调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+←&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix H&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向下调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+↓&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix J&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向上调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+↑&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix K&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向右调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+→&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix L&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;交换面板(下)&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix {&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;gt;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;交换面板(上)&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix }&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;lt;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;fu-zhi-mo-shi&quot;&gt;复制模式&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fu-zhi-mo-shi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;进入复制模式&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix [&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Enter&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更快捷&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;开始选择&lt;/td&gt;&lt;td&gt;&lt;code&gt;Space&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;v&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;矩形选择&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+v&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;复制选择&lt;/td&gt;&lt;td&gt;&lt;code&gt;Enter&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;取消&lt;/td&gt;&lt;td&gt;&lt;code&gt;q&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;Escape&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;行首&lt;/td&gt;&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;H&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;行尾&lt;/td&gt;&lt;td&gt;&lt;code&gt;$&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;L&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;粘贴&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix p&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;huan-chong-qu-guan-li&quot;&gt;缓冲区管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#huan-chong-qu-guan-li&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;列出缓冲区&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix #&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;粘贴缓冲区&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix p&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;选择缓冲区&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix =&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix P&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;qi-ta-cao-zuo&quot;&gt;其他操作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#qi-ta-cao-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;显示快捷键&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ?&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ?&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;显示时钟&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix t&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix t&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;重载配置&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix :source-file&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix r&lt;/code&gt;&lt;/td&gt;&lt;td&gt;快速重载&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;编辑配置&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix e&lt;/code&gt;&lt;/td&gt;&lt;td&gt;打开编辑器&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;清屏+历史&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;增强清屏&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;鼠标切换&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix m&lt;/code&gt;&lt;/td&gt;&lt;td&gt;切换鼠标模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;URL 查看&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix U&lt;/code&gt;&lt;/td&gt;&lt;td&gt;urlview 集成&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;文件选择器&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;fpp 集成&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;配置说明&lt;/strong&gt;：优化配置基于 &lt;a rel=&quot;external&quot; href=&quot;https://github.com/gpakosz/.tmux&quot;&gt;gpakosz/.tmux&lt;/a&gt;，采用 Vim 风格导航，提供更直观的快捷键和增强功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;chang-yong-chang-jing&quot;&gt;常用场景&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chang-yong-chang-jing&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;1-yun-xing-chang-qi-fu-wu&quot;&gt;1. 运行长期服务&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-yun-xing-chang-qi-fu-wu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建会话并启动开发服务器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s dev&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;npm&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; run dev&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 按 Ctrl+b d 分离会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 关闭终端窗口，服务继续运行&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 稍后重连&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach -t dev&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-ssh-yuan-cheng-gong-zuo&quot;&gt;2. SSH 远程工作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#2-ssh-yuan-cheng-gong-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# SSH 连接到服务器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;ssh&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; user@server&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建或连接到 tmux 会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; ||&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s work&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 即使 SSH 断开，工作也不会丢失&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-duo-ren-wu-bing-xing&quot;&gt;3. 多任务并行&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#3-duo-ren-wu-bing-xing&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s multi&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建多个窗口&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; c&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 窗口1: 编辑器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; c&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 窗口2: 服务器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; c&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 窗口3: 日志监控&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在窗口间快速切换&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 切换到窗口0&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 切换到窗口1&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;pei-zhi-wen-jian&quot;&gt;配置文件&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#pei-zhi-wen-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;创建 &lt;code&gt;~/.tmux.conf&lt;/code&gt; 自定义配置：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 修改前缀键为 Ctrl+a（可选）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# set -g prefix C-a&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# unbind C-b&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# bind C-a send-prefix&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 启用鼠标支持&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g mouse on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 设置窗口和面板索引从 1 开始&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g base-index&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;setw&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g pane-base-index&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 增加历史记录行数&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g history-limit&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 10000&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 快速重载配置&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;bind&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; r source-file ~/.tmux.conf&lt;/span&gt;&lt;span style=&quot;color: #F5C2E7;&quot;&gt; \;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; display &amp;quot;Config reloaded!&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 更直观的分割快捷键&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;bind&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; split-window&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -h&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;bind&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; - split-window -v&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重载配置：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; source-file ~/.tmux.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;jin-jie-ji-qiao&quot;&gt;进阶技巧&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#jin-jie-ji-qiao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;fu-zhi-mo-shi-1&quot;&gt;复制模式&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fu-zhi-mo-shi-1&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 进入复制模式&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span&gt; [&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 使用 vi 风格导航&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;h,&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; j, k, l&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 移动光标&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Space&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;       # 开始选择&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Enter&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;       # 复制选中内容&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;q&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;           # 退出复制模式&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 粘贴&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; ]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;tong-bu-mian-ban-shu-ru&quot;&gt;同步面板输入&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#tong-bu-mian-ban-shu-ru&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在命令模式中启用&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; :&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;setw&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; synchronize-panes on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 关闭&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;setw&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; synchronize-panes off&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;bao-cun-hui-hua-bu-ju&quot;&gt;保存会话布局&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#bao-cun-hui-hua-bu-ju&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;使用 tmux-resurrect 插件可以保存和恢复会话：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 安装 TPM (Tmux Plugin Manager)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在 ~/.tmux.conf 中添加&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g @plugin &amp;#39;tmux-plugins/tpm&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g @plugin &amp;#39;tmux-plugins/tmux-resurrect&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 重载配置并安装插件&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# Ctrl+b I (大写 I)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#zong-jie&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tmux 的核心优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;会话持久化：关闭终端不影响运行&lt;/li&gt;
+&lt;li&gt;多窗口管理：一个终端运行多个任务&lt;/li&gt;
+&lt;li&gt;面板分割：同时查看多个输出&lt;/li&gt;
+&lt;li&gt;远程工作：SSH 断开后可恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;记住最重要的三个命令：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;tmux new -s name&lt;/code&gt; - 创建会话&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+b d&lt;/code&gt; - 分离会话&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tmux attach -t name&lt;/code&gt; - 重连会话&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        
+    </entry>
+</feed>

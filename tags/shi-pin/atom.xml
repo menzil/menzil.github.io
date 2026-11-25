@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 视频</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/shi-pin/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-10-09T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/shi-pin/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Dufs Media：给 dufs 加一个图片和视频浏览界面</title>
+        <published>2026-10-09T00:00:00+00:00</published>
+        <updated>2026-10-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/dufs-media/"/>
+        <id>https://menzil.github.io/posts/dufs-media/</id>
+        
+        <summary type="html">&lt;p&gt;最近需要把一批图片和视频放在局域网里浏览。dufs 很适合做文件服务，上传、下载、权限和 HTTP Range 都已经有了，但默认界面更偏文件列表，找视频时还是得先看文件名。&lt;/p&gt;
+&lt;p&gt;我不想 fork dufs，也不想为了缩略图和播放器再写一套后端，于是做了 &lt;a rel=&quot;external&quot; href=&quot;https://github.com/menzil/dufs-media-assets&quot;&gt;Dufs Media&lt;/a&gt;。它是一个独立的静态前端，通过 dufs 官方的 &lt;code&gt;--assets&lt;/code&gt; 参数接入。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.orhan.cn/images/dufs-media-library.jpeg&quot; alt=&quot;Dufs Media 首页，按图片和视频分组显示缩略图、日期和文件信息&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - MCP</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/mcp/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-10-15T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/mcp/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Online MCP 是什么，以及我在律所官网上的一次实践</title>
+        <published>2026-10-15T00:00:00+00:00</published>
+        <updated>2026-10-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/online-mcp-introduction-and-practice/"/>
+        <id>https://menzil.github.io/posts/online-mcp-introduction-and-practice/</id>
+        
+        <summary type="html">&lt;p&gt;前段时间提交 vivo App 时，我注意到 vivo 开放平台提供了 Online MCP。页面上的接入方式很简单，在支持 MCP 的 AI 客户端里完成配置就可以用，不需要先下载代码、安装程序或准备运行环境。&lt;/p&gt;
+&lt;p&gt;常见的本地 MCP 要在电脑上运行一个服务。使用前需要安装对应程序，有些还要处理依赖、启动命令和环境变量。换一台电脑或换一个系统，通常还要重新配置。Online MCP 把服务放到了线上，客户端通过一个地址连接，使用者只保留连接和认证配置。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>我给 AI 做了个看板：helix-kanban</title>
+        <published>2026-09-23T00:00:00+00:00</published>
+        <updated>2026-09-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/helix-kanban/"/>
+        <id>https://menzil.github.io/posts/helix-kanban/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/helix-kanban&quot;&gt;helix-kanban&lt;/a&gt; 是我用 Rust 写的终端看板，命令名是 &lt;code&gt;hxk&lt;/code&gt;。想法很简单：AI 负责执行任务，我来安排任务；接入 MCP 后，AI 也可以直接读取待办、创建任务和更新状态。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.orhan.cn/images/helix-kanban-board.png&quot; alt=&quot;helix-kanban 任务看板，按 Todo、Doing、Done 和 Assets 分列&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>把知识库做成可接入业务的底座：Knowledge Worker 当前进度与目标</title>
+        <published>2026-09-17T00:00:00+00:00</published>
+        <updated>2026-09-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/knowledge-worker-progress-and-goals/"/>
+        <id>https://menzil.github.io/posts/knowledge-worker-progress-and-goals/</id>
+        
+        <summary type="html">&lt;p&gt;最近在做一套叫 Knowledge Worker 的知识库系统。目前它正在律师行业内部试运行，可以完成文档上传、索引、检索和带引用的问答，但离可以直接交给不同团队长期使用，还有不少细节要继续验证。&lt;/p&gt;
+&lt;p&gt;我没有把它限定成某个行业的问答产品。现在更关心的是另一件事：能不能把知识处理做成一块独立能力，通过 API 或 MCP 接进已有业务，同时保留清楚的数据边界、来源和运维手段。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>让 Herdr、Codex 和 helix-kanban 接上：把会话、执行和待办放在一条链路里</title>
+        <published>2026-08-27T00:00:00+00:00</published>
+        <updated>2026-08-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/herdr-codex-helix-kanban-workflow/"/>
+        <id>https://menzil.github.io/posts/herdr-codex-helix-kanban-workflow/</id>
+        
+        <summary type="html">&lt;p&gt;我现在处理长期开发任务时，会把终端分成三层：Herdr 负责把工作空间和会话留住，Codex 负责读代码、改文件和跑检查，helix-kanban 负责记录还有什么没做、哪些正在做、哪些已经完成。&lt;/p&gt;
+&lt;p&gt;这几个工具单独用都能工作，组合起来之后，解决的是另一件事：任务不会因为一次对话结束就消失，Codex 也不用每次都从一段很长的上下文里猜下一步该做什么。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

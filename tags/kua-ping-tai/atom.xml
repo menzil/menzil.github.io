@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 跨平台</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/kua-ping-tai/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-05-12T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/kua-ping-tai/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Bolt FFI：让 Rust 成为跨平台业务逻辑的核心</title>
+        <published>2026-05-12T00:00:00+00:00</published>
+        <updated>2026-05-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/boltffi-intro/"/>
+        <id>https://menzil.github.io/posts/boltffi-intro/</id>
+        
+        <summary type="html">&lt;p&gt;最近关注到 &lt;a rel=&quot;external&quot; href=&quot;https://www.boltffi.dev/&quot;&gt;Bolt FFI&lt;/a&gt;，这是一个能把 Rust 库自动导出为多语言绑定的工具。它的定位很清晰：把业务逻辑集中在 Rust 中，一次编写，多端复用。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rust 跨平台 UI 框架新动向：WaterUI、Blinc 与 Ply</title>
+        <published>2026-05-12T00:00:00+00:00</published>
+        <updated>2026-05-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/rust-ui-frameworks-2025/"/>
+        <id>https://menzil.github.io/posts/rust-ui-frameworks-2025/</id>
+        
+        <summary type="html">&lt;p&gt;Rust 的 GUI 生态一直是个热闹的话题。从早期的 egui、iced，到 Dioxus、Slint，各家在自绘、原生渲染、Web 技术栈之间走不同的路线。最近注意到三个较新的框架——&lt;a rel=&quot;external&quot; href=&quot;https://waterui.dev/&quot;&gt;WaterUI&lt;/a&gt;、&lt;a rel=&quot;external&quot; href=&quot;https://project-blinc.github.io/Blinc/introduction.html&quot;&gt;Blinc&lt;/a&gt; 和 &lt;a rel=&quot;external&quot; href=&quot;https://plyx.iz.rs/&quot;&gt;Ply&lt;/a&gt;——它们都在尝试用 Rust 写一套代码，跑在移动端、桌面端甚至 Web 上。本文简单梳理它们的特点和差异。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

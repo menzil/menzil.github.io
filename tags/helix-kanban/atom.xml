@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - helix-kanban</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/helix-kanban/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-08-27T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/helix-kanban/atom.xml</id>
+    <entry xml:lang="en">
+        <title>让 Herdr、Codex 和 helix-kanban 接上：把会话、执行和待办放在一条链路里</title>
+        <published>2026-08-27T00:00:00+00:00</published>
+        <updated>2026-08-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/herdr-codex-helix-kanban-workflow/"/>
+        <id>https://menzil.github.io/posts/herdr-codex-helix-kanban-workflow/</id>
+        
+        <summary type="html">&lt;p&gt;我现在处理长期开发任务时，会把终端分成三层：Herdr 负责把工作空间和会话留住，Codex 负责读代码、改文件和跑检查，helix-kanban 负责记录还有什么没做、哪些正在做、哪些已经完成。&lt;/p&gt;
+&lt;p&gt;这几个工具单独用都能工作，组合起来之后，解决的是另一件事：任务不会因为一次对话结束就消失，Codex 也不用每次都从一段很长的上下文里猜下一步该做什么。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

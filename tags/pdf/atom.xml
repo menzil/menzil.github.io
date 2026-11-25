@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - PDF</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/pdf/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-11-18T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/pdf/atom.xml</id>
+    <entry xml:lang="en">
+        <title>PDFmi：用 Rust 做一个离线 PDF 解密桌面工具</title>
+        <published>2026-11-18T00:00:00+00:00</published>
+        <updated>2026-11-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/pdfmi-offline-pdf-decryption/"/>
+        <id>https://menzil.github.io/posts/pdfmi-offline-pdf-decryption/</id>
+        
+        <summary type="html">&lt;p&gt;我用 Rust 做了一个小工具，叫 PDFmi。用途很具体：已经知道 PDF 的密码，想保存一份以后可以直接打开的副本，就把文件拖进去，输入密码，再点“解密并保存”。文件和密码都留在本机，处理过程完全离线。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pdfmi-desktop.png&quot; alt=&quot;PDFmi 的 macOS 界面，包含 PDF 文件选择、密码显隐、三种保存位置和本机离线处理提示&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

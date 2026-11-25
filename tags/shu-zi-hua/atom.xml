@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 数字化</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/shu-zi-hua/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-08-27T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/shu-zi-hua/atom.xml</id>
+    <entry xml:lang="en">
+        <title>数字化怎么帮到企业：从 1178 个摊位和一枚印章说起</title>
+        <published>2026-08-27T00:00:00+00:00</published>
+        <updated>2026-08-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/enterprise-digitalization-in-practice/"/>
+        <id>https://menzil.github.io/posts/enterprise-digitalization-in-practice/</id>
+        
+        <summary type="html">&lt;p&gt;企业一提到“数字化”，很容易先想到买一套系统、建一个后台、做一个小程序。系统上线以后，表格还是有人维护，消息还是靠群里转，月底对账还是要把几份文件放在一起比。软件增加了，事情没有少。&lt;/p&gt;
+&lt;p&gt;判断数字化有没有用，先看一件事：它有没有把某个反复发生、容易出错、需要多人接手的工作做得更短、更准、更容易追查。下面几个项目里的软件，处理的是现场人员每天会遇到的具体问题，页面只是承载这些动作的入口。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

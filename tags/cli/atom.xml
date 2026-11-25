@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - CLI</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/cli/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-09-23T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/cli/atom.xml</id>
+    <entry xml:lang="en">
+        <title>我给 AI 做了个看板：helix-kanban</title>
+        <published>2026-09-23T00:00:00+00:00</published>
+        <updated>2026-09-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/helix-kanban/"/>
+        <id>https://menzil.github.io/posts/helix-kanban/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/helix-kanban&quot;&gt;helix-kanban&lt;/a&gt; 是我用 Rust 写的终端看板，命令名是 &lt;code&gt;hxk&lt;/code&gt;。想法很简单：AI 负责执行任务，我来安排任务；接入 MCP 后，AI 也可以直接读取待办、创建任务和更新状态。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.orhan.cn/images/helix-kanban-board.png&quot; alt=&quot;helix-kanban 任务看板，按 Todo、Doing、Done 和 Assets 分列&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>humar：把 AI 翻译沉淀为可复习词库的 Rust CLI</title>
+        <published>2026-07-30T00:00:00+00:00</published>
+        <updated>2026-07-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/humar-cli-translation-memory/"/>
+        <id>https://menzil.github.io/posts/humar-cli-translation-memory/</id>
+        
+        <summary type="html">&lt;p&gt;日常写 UI 文案、需求说明、Issue 或技术文档时，真正麻烦的往往不是查到一个单词，而是确认一句话在当前场景里应该怎么说。例如“箭头方向需要切换”可能是图标方向要反转，也可能是展开和收起时箭头要随状态改变。直译不一定错，但很容易不自然。&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/humar&quot;&gt;humar&lt;/a&gt; 是一个用 Rust 写的命令行翻译记忆工具。它面向中英短语工作流：调用兼容 Responses API 的模型生成场景化翻译卡片，把成功结果保存到本地词库，之后可以检索、回看和复习，而不是每次都从零开始问模型。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

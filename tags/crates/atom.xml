@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - crates</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/crates/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-09-23T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/crates/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Rust Best Crates</title>
+        <published>2025-09-23T00:00:00+00:00</published>
+        <updated>2025-09-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/best-crates/"/>
+        <id>https://menzil.github.io/posts/best-crates/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/best-crates/">&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/pgrx&quot;&gt;Build Postgres Extensions with Rust!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/mry&quot;&gt;Mry A simple but powerful mocking library for structs, traits, and function.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/rumqttc&quot;&gt;rumqttc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/postgrest&quot;&gt;postgrest&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        
+    </entry>
+</feed>

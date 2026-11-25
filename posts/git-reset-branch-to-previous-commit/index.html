@@ -1,0 +1,69 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><title>Git 分支重置到之前的提交 · orhan.cn 肉扎吉·亚森的博客</title><meta content="解决 Cargo workspace 成员缺失导致的编译错误，通过 Git 重置分支到正确的提交" name=description><meta content="index, follow" name=robots><link href=https://menzil.github.io/posts/git-reset-branch-to-previous-commit/ rel=canonical><meta content="Git 分支重置到之前的提交 · orhan.cn 肉扎吉·亚森的博客" property=og:title><meta content="解决 Cargo workspace 成员缺失导致的编译错误，通过 Git 重置分支到正确的提交" property=og:description><meta content=article property=og:type><meta content=https://menzil.github.io/posts/git-reset-branch-to-previous-commit/ property=og:url><meta content="orhan.cn 肉扎吉·亚森的博客" property=og:site_name><meta content=zh_CN property=og:locale><meta content=肉扎吉·亚森 property=article:author><meta content=2026-03-06 property=article:published_time><meta content=git property=article:tag><meta content=rust property=article:tag><meta content=cargo property=article:tag><meta content=summary name=twitter:card><meta content="Git 分支重置到之前的提交 · orhan.cn 肉扎吉·亚森的博客" name=twitter:title><meta content="解决 Cargo workspace 成员缺失导致的编译错误，通过 Git 重置分支到正确的提交" name=twitter:description><link title="orhan.cn 肉扎吉·亚森的博客" href=https://menzil.github.io/atom.xml rel=alternate type=application/atom+xml><script type=application/ld+json>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://menzil.github.io/#website",
+      "url": "https://menzil.github.io/",
+      "name": "orhan.cn 肉扎吉·亚森的博客",
+      "description": "解决 Cargo workspace 成员缺失导致的编译错误，通过 Git 重置分支到正确的提交",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://menzil.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://menzil.github.io/#person",
+      "name": "肉扎吉·亚森",
+      "url": "https://menzil.github.io/about/",
+      "description": "全栈开发者肉扎吉·亚森。把中小企业里靠表格和群聊硬撑的流程，收成能上线、能追查的业务系统；本站记录开发、工具与真实项目复盘。",
+      "sameAs": ["https://github.com/menzil", "https://crates.io/users/menzil"]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://menzil.github.io/posts/git-reset-branch-to-previous-commit/#article",
+      "headline": "Git 分支重置到之前的提交",
+      "description": "解决 Cargo workspace 成员缺失导致的编译错误，通过 Git 重置分支到正确的提交",
+      "datePublished": "2026-03-06",
+      
+      "inLanguage": "zh-CN",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://menzil.github.io/posts/git-reset-branch-to-previous-commit/"
+      },
+      "author": { "@id": "https://menzil.github.io/#person" },
+      "publisher": { "@id": "https://menzil.github.io/#person" },
+      "isPartOf": { "@id": "https://menzil.github.io/#website" },
+      "keywords": ["git", "rust", "cargo"]
+    }
+  ]
+}
+</script><link href=https://fonts.googleapis.com rel=preconnect><link crossorigin href=https://fonts.gstatic.com rel=preconnect><script>if (localStorage.getItem("zulqer-theme") === "light") document.documentElement.dataset.theme = "light";</script><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel=stylesheet><link href=https://menzil.github.io/zulqer/css/theme.css rel=stylesheet><link href=https://menzil.github.io/favicon.ico rel=icon type=image/x-icon><script data-entity=my-blog src=https://a.orhan.cn/script.js type=module></script><body class=post-page data-close-image-label=关闭图片 data-copied-label=已复制 data-copy-label=复制代码 data-dark-theme-label=切换到夜间主题 data-light-theme-label=切换到白天主题 data-next-image-label=下一张图片 data-previous-image-label=上一张图片><header class=site-header data-site-header><div class="shell nav-shell"><a aria-label="orhan.cn 肉扎吉·亚森的博客" class=brand href=https://menzil.github.io/> <span aria-hidden=true class=brand-mark>Z</span> <span class=brand-name>orhan.cn 肉扎吉·亚森的博客</span> </a><div class=nav-actions><nav aria-label=主导航 class=site-nav id=site-nav><a class=is-active href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav><a aria-label=搜索 class=nav-search href=https://menzil.github.io/search/ title=搜索> <svg viewbox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=6.5></circle><path d="m16 16 4.2 4.2"></path></svg> </a><button aria-label=切换到白天主题 class=theme-toggle data-theme-toggle title=切换到白天主题 type=button><svg class="theme-icon theme-icon-sun" viewbox="0 0 24 24" aria-hidden=true><circle cx=12 cy=12 r=4></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg> <svg class="theme-icon theme-icon-moon" viewbox="0 0 24 24" aria-hidden=true><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><button aria-controls=site-nav aria-expanded=false aria-label=打开菜单 class=menu-toggle type=button><span></span><span></span><span></span></button></div></div></header><main><div class=reading-progress-track><div class=reading-progress data-reading-progress></div></div><article class=post data-article><div class=post-spacer></div><div class=post-shell><header class=post-header><a class=post-back href=https://menzil.github.io/>← 返回</a><div class=post-info><a class="chip chip-gold" href=https://menzil.github.io/tags/git/>git</a><time datetime=2026-03-06>2026-03-06</time><span aria-hidden=true>·</span><span>2 分钟</span></div><h1>Git 分支重置到之前的提交</h1><p class=post-subtitle>解决 Cargo workspace 成员缺失导致的编译错误，通过 Git 重置分支到正确的提交</header><div class=post-divider></div><div class=post-content><h2 id=wen-ti-miao-shu>问题描述<a aria-hidden=true class=anchor hidden href=#wen-ti-miao-shu>#</a></h2><p>在运行 <code>cargo watch -x 'run -p gateway'</code> 时遇到错误：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=plain><span class=giallo-l><span>error: failed to load manifest for workspace member</span></span>
+<span class=giallo-l><span>referenced by workspace at `/path/to/Cargo.toml`</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span>Caused by:</span></span>
+<span class=giallo-l><span>  failed to load manifest for dependency `module-store`</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span>Caused by:</span></span>
+<span class=giallo-l><span>  failed to read `/path/to/modules/store/Cargo.toml`</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span>Caused by:</span></span>
+<span class=giallo-l><span>  No such file or directory (os error 2)</span></span></code></pre><p>原因是 <code>Cargo.toml</code> 中的 workspace members 列表包含了 <code>modules/store</code> 和 <code>modules/merchant</code>，但这些目录实际上不存在。这是由于之前的错误提交导致的。<h2 id=jie-jue-fang-an>解决方案<a aria-hidden=true class=anchor hidden href=#jie-jue-fang-an>#</a></h2><h3 id=1-que-ren-zheng-que-de-ti-jiao>1. 确认正确的提交<a aria-hidden=true class=anchor hidden href=#1-que-ren-zheng-que-de-ti-jiao>#</a></h3><p>首先查看提交历史，找到最后一个正常工作的提交：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> log --oneline</span></span></code></pre><p>确认目标提交是 <code>14b6cf9</code> (use orm fixed n+1)。<h3 id=2-zhong-zhi-fen-zhi>2. 重置分支<a aria-hidden=true class=anchor hidden href=#2-zhong-zhi-fen-zhi>#</a></h3><p>如果当前在 detached HEAD 状态，可以使用以下方法：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 方法一：强制将 main 分支指向当前 HEAD，然后切换到 main</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> branch -f main HEAD</span><span style=color:#9399b2> &&</span><span style=color:#89b4fa;font-style:italic> git</span><span style=color:#a6e3a1> checkout main</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 方法二：切换回 main 分支，然后重置到目标提交</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> checkout main</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> reset --hard 14b6cf9</span></span></code></pre><p>如果已经在 main 分支上：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 直接重置</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> reset --hard 14b6cf9</span></span></code></pre><h3 id=3-tui-song-dao-yuan-cheng-ke-xuan>3. 推送到远程（可选）<a aria-hidden=true class=anchor hidden href=#3-tui-song-dao-yuan-cheng-ke-xuan>#</a></h3><p>如果需要更新远程仓库，使用 force push：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> push origin main --force</span></span></code></pre><p><strong>⚠️ 注意</strong>：<code>--force</code> 会覆盖远程历史记录，如果团队中有其他人在使用该分支，请先沟通确认。<h3 id=4-yan-zheng>4. 验证<a aria-hidden=true class=anchor hidden href=#4-yan-zheng>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 查看当前分支和状态</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> branch --show-current</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> status</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 查看最近的提交</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> log --oneline -5</span></span></code></pre><h2 id=xiang-guan-zhi-shi>相关知识<a aria-hidden=true class=anchor hidden href=#xiang-guan-zhi-shi>#</a></h2><h3 id=git-reset-hard-de-zuo-yong>git reset --hard 的作用<a aria-hidden=true class=anchor hidden href=#git-reset-hard-de-zuo-yong>#</a></h3><ul><li>移动 HEAD 指针到指定提交<li>重置暂存区（staging area）<li>重置工作目录（working directory）<li><strong>会丢失所有未提交的更改</strong></ul><h3 id=detached-head-zhuang-tai>Detached HEAD 状态<a aria-hidden=true class=anchor hidden href=#detached-head-zhuang-tai>#</a></h3><p>当你直接 checkout 到某个提交（而不是分支）时，会进入 detached HEAD 状态。此时的修改不属于任何分支，需要创建新分支或切换回已有分支。<h3 id=geng-an-quan-de-ti-dai-fang-an>更安全的替代方案<a aria-hidden=true class=anchor hidden href=#geng-an-quan-de-ti-dai-fang-an>#</a></h3><p>如果不想使用 <code>--hard</code>，可以考虑：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 创建备份分支</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> branch backup-branch</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 使用 revert 撤销提交（保留历史）</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> revert</span><span style=color:#94e2d5> &lt;</span><span style=color:#a6e3a1>commit-has</span><span>h</span><span style=color:#94e2d5>></span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 或使用 reset --soft（保留更改在暂存区）</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> reset --soft</span><span style=color:#94e2d5> &lt;</span><span style=color:#a6e3a1>commit-has</span><span>h</span><span style=color:#94e2d5>></span></span></code></pre><h2 id=zong-jie>总结<a aria-hidden=true class=anchor hidden href=#zong-jie>#</a></h2><p>遇到 Cargo workspace 成员缺失的问题时，首先检查 <code>Cargo.toml</code> 中的 members 列表是否与实际目录结构匹配。如果是由错误提交导致的，可以使用 <code>git reset --hard</code> 快速回退到正确的状态。</div><footer class=post-footer><div class=post-tags><a href=https://menzil.github.io/tags/git/>git</a><a href=https://menzil.github.io/tags/rust/>rust</a><a href=https://menzil.github.io/tags/cargo/>cargo</a></div><nav aria-label=文章导航 class=post-nav><a href=https://menzil.github.io/posts/apple-developer-company-account/><span>上一篇</span><strong>公司注册苹果开发者账号流程及资料清单</strong></a><a class=post-nav-next href=https://menzil.github.io/posts/tmux-guide/><span>下一篇</span><strong>Tmux 使用指南</strong></a></nav></footer></div></article></main><footer class=site-footer><div class="shell footer-inner"><span>© 2026 肉扎吉·亚森 · <a class=theme-link href=https://github.com/menzil/zulqer>Zulqer</a></span><nav aria-label=页脚导航 class=footer-links><a href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav></div></footer><script src=https://menzil.github.io/elasticlunr.min.js></script><script defer src=https://menzil.github.io/zulqer/js/theme.js></script><script>(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="h_uFlaQ5PNS1iSk0xi1bd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();</script>

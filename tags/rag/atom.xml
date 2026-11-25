@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - RAG</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/rag/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-09-17T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/rag/atom.xml</id>
+    <entry xml:lang="en">
+        <title>把知识库做成可接入业务的底座：Knowledge Worker 当前进度与目标</title>
+        <published>2026-09-17T00:00:00+00:00</published>
+        <updated>2026-09-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/knowledge-worker-progress-and-goals/"/>
+        <id>https://menzil.github.io/posts/knowledge-worker-progress-and-goals/</id>
+        
+        <summary type="html">&lt;p&gt;最近在做一套叫 Knowledge Worker 的知识库系统。目前它正在律师行业内部试运行，可以完成文档上传、索引、检索和带引用的问答，但离可以直接交给不同团队长期使用，还有不少细节要继续验证。&lt;/p&gt;
+&lt;p&gt;我没有把它限定成某个行业的问答产品。现在更关心的是另一件事：能不能把知识处理做成一块独立能力，通过 API 或 MCP 接进已有业务，同时保留清楚的数据边界、来源和运维手段。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

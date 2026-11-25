@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 官网</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/guan-wang/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-10-15T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/guan-wang/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Online MCP 是什么，以及我在律所官网上的一次实践</title>
+        <published>2026-10-15T00:00:00+00:00</published>
+        <updated>2026-10-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/online-mcp-introduction-and-practice/"/>
+        <id>https://menzil.github.io/posts/online-mcp-introduction-and-practice/</id>
+        
+        <summary type="html">&lt;p&gt;前段时间提交 vivo App 时，我注意到 vivo 开放平台提供了 Online MCP。页面上的接入方式很简单，在支持 MCP 的 AI 客户端里完成配置就可以用，不需要先下载代码、安装程序或准备运行环境。&lt;/p&gt;
+&lt;p&gt;常见的本地 MCP 要在电脑上运行一个服务。使用前需要安装对应程序，有些还要处理依赖、启动命令和环境变量。换一台电脑或换一个系统，通常还要重新配置。Online MCP 把服务放到了线上，客户端通过一个地址连接，使用者只保留连接和认证配置。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>2026 年了，律所还需要官网吗？</title>
+        <published>2026-09-01T00:00:00+00:00</published>
+        <updated>2026-09-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/law-firm-website-in-2026/"/>
+        <id>https://menzil.github.io/posts/law-firm-website-in-2026/</id>
+        
+        <summary type="html">&lt;p&gt;2026 年，短视频和 AI 已经铺天盖地。想了解一个问题，可以刷视频，也可以直接问 AI。想找一家律所，各个平台上也能搜到不少内容。这个时候再谈官网，好像有点落伍了：现在还有谁会专门打开一个官网？&lt;/p&gt;
+&lt;p&gt;这个问题我也想过。&lt;/p&gt;
+&lt;p&gt;官网本来就不是让人每天来刷的。至少对我来说，它更像一个确认信息的地方。平时也许想不起来，等到真的要了解一家公司、一个机构，或者准备做某个决定时，我还是会去找它的官网。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>英吉沙小刀项目复盘：先把故事、溯源和内容体系搭起来</title>
+        <published>2026-08-20T00:00:00+00:00</published>
+        <updated>2026-08-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/yjsxd-project-review/"/>
+        <id>https://menzil.github.io/posts/yjsxd-project-review/</id>
+        
+        <summary type="html">&lt;p&gt;这个项目做的是英吉沙小刀。官网是 &lt;a rel=&quot;external&quot; href=&quot;https://yjsxd.com.cn/&quot;&gt;https://yjsxd.com.cn/&lt;/a&gt;，整体目标不是单纯做一个展示页，而是把“看得见、查得到、讲得清”这三件事先跑通。&lt;/p&gt;
+&lt;p&gt;现在的状态也要先说清楚：官网已经在做对外展示，小程序还没有正式上线。所以这篇复盘不讲虚的结果，只讲我们实际搭了什么、为什么这么搭，以及中间最费劲的地方在哪。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://yjsxd.com.cn/_next/image?url=https%3A%2F%2Fyingjishaxiaodao.oss-cn-hangzhou.aliyuncs.com%2Fuploads%2F2026%2F06%2F11%2F1781187780503-r2u9oyu2-11.png&amp;amp;w=3840&amp;amp;q=75&quot; alt=&quot;英吉沙小刀官网页面&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

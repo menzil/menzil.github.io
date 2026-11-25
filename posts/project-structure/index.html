@@ -1,0 +1,55 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><title>项目架构 · orhan.cn 肉扎吉·亚森的博客</title><meta content=项目架构之前的一些约定 name=description><meta content="index, follow" name=robots><link href=https://menzil.github.io/posts/project-structure/ rel=canonical><meta content="项目架构 · orhan.cn 肉扎吉·亚森的博客" property=og:title><meta content=项目架构之前的一些约定 property=og:description><meta content=article property=og:type><meta content=https://menzil.github.io/posts/project-structure/ property=og:url><meta content="orhan.cn 肉扎吉·亚森的博客" property=og:site_name><meta content=zh_CN property=og:locale><meta content=肉扎吉·亚森 property=article:author><meta content=2025-08-25 property=article:published_time><meta content=课程 property=article:tag><meta content=Rust property=article:tag><meta content=summary name=twitter:card><meta content="项目架构 · orhan.cn 肉扎吉·亚森的博客" name=twitter:title><meta content=项目架构之前的一些约定 name=twitter:description><link title="orhan.cn 肉扎吉·亚森的博客" href=https://menzil.github.io/atom.xml rel=alternate type=application/atom+xml><script type=application/ld+json>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://menzil.github.io/#website",
+      "url": "https://menzil.github.io/",
+      "name": "orhan.cn 肉扎吉·亚森的博客",
+      "description": "项目架构之前的一些约定",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://menzil.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://menzil.github.io/#person",
+      "name": "肉扎吉·亚森",
+      "url": "https://menzil.github.io/about/",
+      "description": "全栈开发者肉扎吉·亚森。把中小企业里靠表格和群聊硬撑的流程，收成能上线、能追查的业务系统；本站记录开发、工具与真实项目复盘。",
+      "sameAs": ["https://github.com/menzil", "https://crates.io/users/menzil"]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://menzil.github.io/posts/project-structure/#article",
+      "headline": "项目架构",
+      "description": "项目架构之前的一些约定",
+      "datePublished": "2025-08-25",
+      
+      "inLanguage": "zh-CN",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://menzil.github.io/posts/project-structure/"
+      },
+      "author": { "@id": "https://menzil.github.io/#person" },
+      "publisher": { "@id": "https://menzil.github.io/#person" },
+      "isPartOf": { "@id": "https://menzil.github.io/#website" },
+      "keywords": ["课程", "Rust"]
+    }
+  ]
+}
+</script><link href=https://fonts.googleapis.com rel=preconnect><link crossorigin href=https://fonts.gstatic.com rel=preconnect><script>if (localStorage.getItem("zulqer-theme") === "light") document.documentElement.dataset.theme = "light";</script><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel=stylesheet><link href=https://menzil.github.io/zulqer/css/theme.css rel=stylesheet><link href=https://menzil.github.io/favicon.ico rel=icon type=image/x-icon><script data-entity=my-blog src=https://a.orhan.cn/script.js type=module></script><body class=post-page data-close-image-label=关闭图片 data-copied-label=已复制 data-copy-label=复制代码 data-dark-theme-label=切换到夜间主题 data-light-theme-label=切换到白天主题 data-next-image-label=下一张图片 data-previous-image-label=上一张图片><header class=site-header data-site-header><div class="shell nav-shell"><a aria-label="orhan.cn 肉扎吉·亚森的博客" class=brand href=https://menzil.github.io/> <span aria-hidden=true class=brand-mark>Z</span> <span class=brand-name>orhan.cn 肉扎吉·亚森的博客</span> </a><div class=nav-actions><nav aria-label=主导航 class=site-nav id=site-nav><a class=is-active href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav><a aria-label=搜索 class=nav-search href=https://menzil.github.io/search/ title=搜索> <svg viewbox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=6.5></circle><path d="m16 16 4.2 4.2"></path></svg> </a><button aria-label=切换到白天主题 class=theme-toggle data-theme-toggle title=切换到白天主题 type=button><svg class="theme-icon theme-icon-sun" viewbox="0 0 24 24" aria-hidden=true><circle cx=12 cy=12 r=4></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg> <svg class="theme-icon theme-icon-moon" viewbox="0 0 24 24" aria-hidden=true><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><button aria-controls=site-nav aria-expanded=false aria-label=打开菜单 class=menu-toggle type=button><span></span><span></span><span></span></button></div></div></header><main><div class=reading-progress-track><div class=reading-progress data-reading-progress></div></div><article class=post data-article><div class=post-spacer></div><div class=post-shell><header class=post-header><a class=post-back href=https://menzil.github.io/>← 返回</a><div class=post-info><a class="chip chip-gold" href=https://menzil.github.io/tags/ke-cheng/>课程</a><time datetime=2025-08-25>2025-08-25</time><span aria-hidden=true>·</span><span>2 分钟</span></div><h1>项目架构</h1><p class=post-subtitle>项目架构之前的一些约定</header><div class=post-divider></div><div class=post-content><ol><li>代码规范（命名规范, 代码风格，命名风格规定好。驼峰，snake等）<li>框架规范 （使用那些技术，那些框架，crate 或者node module）<li>先实现基础框架，然后叠加扩展</ol><h3 id=ji-chu-kuang-jia-da-jian>基础框架搭建：<a aria-hidden=true class=anchor hidden href=#ji-chu-kuang-jia-da-jian>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=plain><span class=giallo-l><span>我们首先把基础框架搭好，然后横向扩展，健壮稳步前进，再大的项目也先拆分好小的模块，然后一步步实现就行</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span>公共模块实现：</span></span>
+<span class=giallo-l><span>    1. 分类</span></span>
+<span class=giallo-l><span>    2. 标签</span></span>
+<span class=giallo-l><span>    3. 文章</span></span>
+<span class=giallo-l><span>    4. 消息通知（短信，小程序，公众号，邮件，app内等）</span></span>
+<span class=giallo-l><span>    5. 付款：微信支付，公众号，app支付，支付宝支付。退款，分账，提现</span></span>
+<span class=giallo-l><span>    6. 物流查询</span></span>
+<span class=giallo-l><span>    7. 订单管理</span></span>
+<span class=giallo-l><span>    8. 海报生成</span></span>
+<span class=giallo-l><span>    9. 推广方案</span></span>
+<span class=giallo-l><span>    10. 客服</span></span>
+<span class=giallo-l><span>    11. 用户行为</span></span>
+<span class=giallo-l><span>    12. 统计</span></span></code></pre><h3 id=api-xiang-mu>api 项目：<a aria-hidden=true class=anchor hidden href=#api-xiang-mu>#</a></h3><ol><li>资源访问类型：管理员，公开，自己，带token公开查看<li>返回类型，请求类型统一化<li>先计划，再实现<li>即使提交代码到git仓库，完整留痕<li>每加一个模块即使写API文档+代码测试<li></ol></div><footer class=post-footer><div class=post-tags><a href=https://menzil.github.io/tags/ke-cheng/>课程</a><a href=https://menzil.github.io/tags/rust/>Rust</a></div><nav aria-label=文章导航 class=post-nav><a href=https://menzil.github.io/posts/postgres-feer-auth-and-api/><span>上一篇</span><strong>Postgres数据库的peer认证方式下API进行数据库操作</strong></a><a class=post-nav-next href=https://menzil.github.io/posts/velopack/><span>下一篇</span><strong>Velopack: 桌面应用打包分发框架</strong></a></nav></footer></div></article></main><footer class=site-footer><div class="shell footer-inner"><span>© 2026 肉扎吉·亚森 · <a class=theme-link href=https://github.com/menzil/zulqer>Zulqer</a></span><nav aria-label=页脚导航 class=footer-links><a href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav></div></footer><script src=https://menzil.github.io/elasticlunr.min.js></script><script defer src=https://menzil.github.io/zulqer/js/theme.js></script><script>(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="h_uFlaQ5PNS1iSk0xi1bd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();</script>

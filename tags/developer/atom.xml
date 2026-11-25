@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - developer</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/developer/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-04-03T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/developer/atom.xml</id>
+    <entry xml:lang="en">
+        <title>公司注册苹果开发者账号流程及资料清单</title>
+        <published>2026-04-03T00:00:00+00:00</published>
+        <updated>2026-04-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/apple-developer-company-account/"/>
+        <id>https://menzil.github.io/posts/apple-developer-company-account/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/apple-developer-company-account/">&lt;p&gt;公司注册苹果开发者账号（Apple Developer Program）与个人账号在功能和费用上完全一致，均为 &lt;strong&gt;$99/年&lt;/strong&gt;，但需要额外验证公司真实性和 D-U-N-S 号码。记录一下完整流程供有需要的人参考。&lt;/p&gt;
+&lt;h2 id=&quot;yi-qian-zhi-zhun-bei&quot;&gt;一、前置准备&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#yi-qian-zhi-zhun-bei&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;1-1-que-ren-zhang-hao-lei-xing&quot;&gt;1.1 确认账号类型&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-1-que-ren-zhang-hao-lei-xing&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;类型&lt;/th&gt;&lt;th&gt;适用对象&lt;/th&gt;&lt;th&gt;年费&lt;/th&gt;&lt;th&gt;是否需要 D-U-N-S&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;个人（Individual）&lt;/td&gt;&lt;td&gt;个人开发者&lt;/td&gt;&lt;td&gt;$99&lt;/td&gt;&lt;td&gt;否&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;公司（Organization）&lt;/td&gt;&lt;td&gt;企业/组织&lt;/td&gt;&lt;td&gt;$99&lt;/td&gt;&lt;td&gt;&lt;strong&gt;是&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;企业（Enterprise）&lt;/td&gt;&lt;td&gt;内部大规模部署，不上架 App Store&lt;/td&gt;&lt;td&gt;$299&lt;/td&gt;&lt;td&gt;是&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;上架 App Store 走公司类型即可，无需企业账号。&lt;/p&gt;
+&lt;h3 id=&quot;1-2-zhun-bei-d-u-n-s-hao-ma&quot;&gt;1.2 准备 D-U-N-S 号码&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-2-zhun-bei-d-u-n-s-hao-ma&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;D-U-N-S 是邓白氏公司（Dun &amp;amp; Bradstreet）发行的唯一企业标识符，苹果用它来验证公司真实存在。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;先查，再申请。&lt;/strong&gt; 邓白氏数据库覆盖了全球大量企业，很多公司其实&lt;strong&gt;早已有 D-U-N-S 号码&lt;/strong&gt;，只是没有主动申请过。以下情况可能已有号码：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;曾在银行申请过企业贷款或信用卡&lt;/li&gt;
+&lt;li&gt;办理过企业信用报告或评级业务&lt;/li&gt;
+&lt;li&gt;与有业务往来的大型企业做过供应商登记&lt;/li&gt;
+&lt;li&gt;公司成立时间较长（如10年以上）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此第一步先去邓白氏官网查询：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;苹果官方查询入口：https://developer.apple.com/enroll/duns-lookup&lt;/li&gt;
+&lt;li&gt;邓白氏官网查询入口：https://developer.dnb.com/get-your-duns-number/&lt;/li&gt;
+&lt;li&gt;输入公司名称或 D-U-N-S 号码直接搜索&lt;/li&gt;
+&lt;li&gt;搜到了直接用，搜不到再申请&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;申请方式（搜不到时）：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;官网申请入口：https://developer.dnb.com/get-your-duns-number/&lt;/li&gt;
+&lt;li&gt;正常情况下免费，审核周期 &lt;strong&gt;1-2 个工作日&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;加急可联系邓白氏客服（国内可打 400-921-0385）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;填写注意事项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;公司名称必须与营业执照上的&lt;strong&gt;完全一致&lt;/strong&gt;（中英文、大小写、空格都要对齐）&lt;/li&gt;
+&lt;li&gt;总部地址、员工人数等需如实填写&lt;/li&gt;
+&lt;li&gt;申请后记录下 D-U-N-S 号码，一般格式为 &lt;code&gt;XX-XXX-XXXX&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果是新申请 D-U-N-S 号码，邓白氏数据同步到苹果需要 &lt;strong&gt;1-2 天&lt;/strong&gt;，建议等 2-3 天再进行苹果注册，否则可能遇到&quot;D-U-N-S 号码找不到&quot;的报错。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-3-zhun-bei-gong-si-zi-liao&quot;&gt;1.3 准备公司资料&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-3-zhun-bei-gong-si-zi-liao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;中国境内公司需要准备：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;营业执照&lt;/strong&gt;（加盖公章的扫描件或照片）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;法人身份证&lt;/strong&gt;正反面&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;在职证明&lt;/strong&gt;（苹果注册时需证明申请人是公司员工。可用这个工具 &lt;a href=&quot;/apple-employment-cert.html&quot; style=&quot;color:#2563eb;text-decoration:none;&quot;&gt;在职证明生成器&lt;/a&gt; 快速生成 A4 格式的中英文在职证明）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;D-U-N-S 号码确认函&lt;/strong&gt;（邓白氏发放，可截图或 PDF）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;公司英文名称&lt;/strong&gt;（用于 App Store 显示，没有的话需要自己音译或意译）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;公司网站&lt;/strong&gt;（需可访问，至少有简单的关于我们页面）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Apple ID&lt;/strong&gt;（用于登录开发者账号，建议使用公司域名的邮箱，如 &lt;code&gt;developer@yourcompany.com&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信用卡&lt;/strong&gt;（用于支付 $99 年费，支持 VISA / Mastercard）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;er-zhu-ce-liu-cheng&quot;&gt;二、注册流程&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#er-zhu-ce-liu-cheng&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;step-1-fang-wen-zhu-ce-ye-mian&quot;&gt;Step 1：访问注册页面&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#step-1-fang-wen-zhu-ce-ye-mian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;打开 https://developer.apple.com/enroll/ ，选择 &quot;Organization&quot;。&lt;/p&gt;
+&lt;h3 id=&quot;step-2-shu-ru-d-u-n-s-hao-ma&quot;&gt;Step 2：输入 D-U-N-S 号码&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#step-2-shu-ru-d-u-n-s-hao-ma&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;苹果会验证 D-U-N-S 号码。如果提示找不到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;等待 1-2 天后再试&lt;/li&gt;
+&lt;li&gt;或联系邓白氏更新数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;step-3-tian-xie-gong-si-xin-xi&quot;&gt;Step 3：填写公司信息&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#step-3-tian-xie-gong-si-xin-xi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Legal Entity Name&lt;/strong&gt;：公司全称（英文），必须与 D-U-N-S 登记一致&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;D-U-N-S Number&lt;/strong&gt;：填入已申请的号码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Website&lt;/strong&gt;：公司官网&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Headquarters Address&lt;/strong&gt;：公司总部地址（英文）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Work Email&lt;/strong&gt;：公司域名邮箱（避免使用 gmail、qq 等公共邮箱）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Phone&lt;/strong&gt;：公司电话&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;step-4-ti-jiao-zi-liao-gong-shen-he&quot;&gt;Step 4：提交资料供审核&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#step-4-ti-jiao-zi-liao-gong-shen-he&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;苹果会验证：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;公司是否真实存在（通过 D-U-N-S）&lt;/li&gt;
+&lt;li&gt;申请人是否有权代表公司（需提供营业执照、法人身份证）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;step-5-qian-shu-xie-yi-bing-fu-kuan&quot;&gt;Step 5：签署协议并付款&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#step-5-qian-shu-xie-yi-bing-fu-kuan&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;审核通过后：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;阅读并签署《Apple Developer Program License Agreement》&lt;/li&gt;
+&lt;li&gt;使用信用卡支付 &lt;strong&gt;$99 美元/年&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;step-6-deng-dai-ji-huo&quot;&gt;Step 6：等待激活&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#step-6-deng-dai-ji-huo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;付款成功后，账号会在 &lt;strong&gt;1-2 个工作日&lt;/strong&gt;内激活。届时你会收到确认邮件。&lt;/p&gt;
+&lt;h2 id=&quot;san-wan-zheng-zi-liao-qing-dan&quot;&gt;三、完整资料清单&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#san-wan-zheng-zi-liao-qing-dan&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ D-U-N-S 号码&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 营业执照（加盖公章）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 法人身份证（正反面）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 在职证明（公司员工证明，可借助 &amp;lt;a href=&amp;quot;/apple-employment-cert.html&amp;quot; style=&amp;quot;color:#2563eb;text-decoration:none;&amp;quot;&amp;gt;在职证明生成器&amp;lt;/a&amp;gt;）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 公司域名邮箱（推荐）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 公司英文名称（提前想好）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 公司官网（可访问）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 信用卡（支持外币支付）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ Apple ID（建议新建或使用公司邮箱）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 公章（如果需要纸质盖章流程）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;□ 邓白氏确认函（截图即可）&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;si-zhu-yi-shi-xiang&quot;&gt;四、注意事项&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#si-zhu-yi-shi-xiang&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;4-1-zhang-hao-gui-shu-quan&quot;&gt;4.1 账号归属权&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-1-zhang-hao-gui-shu-quan&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;公司账号的归属权在&lt;strong&gt;公司主体&lt;/strong&gt;而非个人。即使添加了多个成员，离职后移除即可，不影响账号。这是公司注册最重要的意义之一。&lt;/p&gt;
+&lt;h3 id=&quot;4-2-yi-ge-ren-ye-ke-yi-zhu-ce-gong-si-zhang-hao&quot;&gt;4.2 一个人也可以注册公司账号&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-2-yi-ge-ren-ye-ke-yi-zhu-ce-gong-si-zhang-hao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;不要求公司有多名员工，个体工商户也可以申请。&lt;/p&gt;
+&lt;h3 id=&quot;4-3-xin-yong-qia-wen-ti&quot;&gt;4.3 信用卡问题&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-3-xin-yong-qia-wen-ti&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;苹果从境外扣款，建议使用&lt;strong&gt;单币种外币卡&lt;/strong&gt;（如中行 VISA 美金卡）。双币种卡有时会遇到支付失败。如果失败，可尝试：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;换一张卡&lt;/li&gt;
+&lt;li&gt;联系银行开放境外网上支付&lt;/li&gt;
+&lt;li&gt;通过电话支付&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-4-shen-he-shi-jian&quot;&gt;4.4 审核时间&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-4-shen-he-shi-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;正常情况下 1-2 个工作日。如果资料有问题，苹果会发邮件要求补充。注意查收垃圾邮件箱。&lt;/p&gt;
+&lt;h3 id=&quot;4-5-nian-fei-xu-fei&quot;&gt;4.5 年费续费&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-5-nian-fei-xu-fei&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;到期前一个月苹果会发邮件提醒。&lt;strong&gt;建议开启自动续费&lt;/strong&gt;，开发者证书和描述文件与账号绑定，断签后会影响线上 App 的更新和安装。&lt;/p&gt;
+&lt;h2 id=&quot;wu-zhu-ce-wan-cheng-hou-yao-zuo-de-shi&quot;&gt;五、注册完成后要做的事&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#wu-zhu-ce-wan-cheng-hou-yao-zuo-de-shi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;a rel=&quot;external&quot; href=&quot;https://developer.apple.com/&quot;&gt;Apple Developer Console&lt;/a&gt; 中添加团队成员，设置角色权限&lt;/li&gt;
+&lt;li&gt;在 &lt;a rel=&quot;external&quot; href=&quot;https://appstoreconnect.apple.com/&quot;&gt;App Store Connect&lt;/a&gt; 中创建 App 记录&lt;/li&gt;
+&lt;li&gt;创建 App Store Connect 团队的 Apple ID（如果多人需要协同）&lt;/li&gt;
+&lt;li&gt;配置 App Store 开发者账号的税务和银行信息（用于接收 App 收入）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;总体来说，公司注册苹果开发者账号比个人账号多出 D-U-N-S 验证这一步，其他流程都很直接。核心要点就是：&lt;strong&gt;提前申请 D-U-N-S、公司名称保持一致、准备好外币信用卡&lt;/strong&gt;。&lt;/p&gt;
+</content>
+        
+    </entry>
+</feed>

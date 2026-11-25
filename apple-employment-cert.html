@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>在职证明</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .certificate {
+        border: 1px solid #000;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      h2,
+      h3 {
+        text-align: left;
+        margin: 20px 0 10px;
+      }
+      p {
+        margin: 8px 0;
+      }
+      .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      .form-table th,
+      .form-table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+      .form-table th {
+        background-color: #f5f5f5;
+      }
+      input {
+        width: 100%;
+        padding: 6px;
+        box-sizing: border-box;
+      }
+      .export-btn {
+        display: inline-block;
+        padding: 10px 24px;
+        background-color: #2563eb;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .export-btn:hover {
+        background-color: #1d4ed8;
+      }
+
+      /* 打印样式 - A4 */
+      @media print {
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        h1,
+        .form-table,
+        .export-btn {
+          display: none !important;
+        }
+        .certificate {
+          border: none;
+          margin: 0;
+          padding: 0;
+          width: 210mm;
+          min-height: 297mm;
+          page-break-after: always;
+        }
+        @page {
+          size: A4;
+          margin: 15mm 20mm;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>在职证明（可编辑变量版）</h1>
+    <table class="form-table">
+      <thead>
+        <tr>
+          <th>变量名称</th>
+          <th>填写/修改内容</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>员工姓名（中文）</td>
+          <td>
+            <input
+              type="text"
+              id="employeeNameCn"
+              value="古丽·阿不来提"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与身份证一致</td>
+        </tr>
+        <tr>
+          <td>员工姓名（英文）</td>
+          <td>
+            <input
+              type="text"
+              id="employeeNameEn"
+              value="Guli Abulaiti"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，首字母大写</td>
+        </tr>
+        <tr>
+          <td>身份证号</td>
+          <td>
+            <input
+              type="text"
+              id="idNumber"
+              value="654101199207201828"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，纯数字</td>
+        </tr>
+        <tr>
+          <td>联系电话</td>
+          <td>
+            <input
+              type="text"
+              id="phoneNumber"
+              value="13999390136"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，纯数字</td>
+        </tr>
+        <tr>
+          <td>入职时间</td>
+          <td>
+            <input
+              type="date"
+              id="hireDate"
+              value="2023-04-14"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，格式YYYY-MM-DD</td>
+        </tr>
+        <tr>
+          <td>职位（中文）</td>
+          <td>
+            <input
+              type="text"
+              id="positionCn"
+              value="首席执行官(CEO)"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与实际任职一致</td>
+        </tr>
+        <tr>
+          <td>职位（英文）</td>
+          <td>
+            <input
+              type="text"
+              id="positionEn"
+              value="Chief Executive Officer (CEO)"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与中文职位对应</td>
+        </tr>
+        <tr>
+          <td>公司名称（中文）</td>
+          <td>
+            <input
+              type="text"
+              id="companyNameCn"
+              value="新疆精锐牧业有限公司"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与营业执照一致</td>
+        </tr>
+        <tr>
+          <td>公司名称（英文）</td>
+          <td>
+            <input
+              type="text"
+              id="companyNameEn"
+              value="Xinjiang Jingrui Animal Husbandry Co., Ltd."
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与中文名称对应</td>
+        </tr>
+        <tr>
+          <td>统一社会信用代码</td>
+          <td>
+            <input
+              type="text"
+              id="creditCode"
+              value="91650102MACGCJ393U"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与营业执照一致</td>
+        </tr>
+        <tr>
+          <td>公司地址（中文）</td>
+          <td>
+            <input
+              type="text"
+              id="companyAddressCn"
+              value="新疆乌鲁木齐市天山区富康街173号天和美居住宅小区1栋1层商铺3号"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，详细地址</td>
+        </tr>
+        <tr>
+          <td>公司地址（英文）</td>
+          <td>
+            <input
+              type="text"
+              id="companyAddressEn"
+              value="No.3, 1st Floor Shop, Building 1, Tianhe Meiju Residential Community, No.173 Fukang Street, Tianshan District, Urumqi, Xinjiang"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与中文地址对应</td>
+        </tr>
+        <tr>
+          <td>邮编</td>
+          <td>
+            <input
+              type="text"
+              id="postalCode"
+              value="830001"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，公司所在地邮编</td>
+        </tr>
+        <tr>
+          <td>证明使用目的（中文）</td>
+          <td>
+            <input
+              type="text"
+              id="purposeCn"
+              value="注册苹果开发者账号"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，明确使用场景</td>
+        </tr>
+        <tr>
+          <td>证明使用目的（英文）</td>
+          <td>
+            <input
+              type="text"
+              id="purposeEn"
+              value="registering an Apple Developer account"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，与中文目的对应</td>
+        </tr>
+        <tr>
+          <td>证明开具日期</td>
+          <td>
+            <input
+              type="date"
+              id="issueDate"
+              value="2026-03-10"
+              oninput="updateCertificate()"
+            />
+          </td>
+          <td>必填，格式YYYY-MM-DD</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="export-btn" onclick="window.print()">导出 PDF（A4）</button>
+
+    <div class="certificate" id="certificatePreview">
+      <h2 style="text-align: center; margin-bottom: 30px">在职证明</h2>
+      <p style="text-align: center; font-weight: bold; margin-bottom: 20px">
+        Certificate of Employment
+      </p>
+      <p style="margin: 10px 0">
+        兹证明<span id="previewEmployeeNameCn">古丽·阿不来提</span>自<span
+          id="previewHireDate"
+          >2023-04-14</span
+        >起在<span id="previewCompanyNameCn">新疆精锐牧业有限公司</span
+        >任职，职位为<span id="previewPositionCn">首席执行官(CEO)</span
+        >。其在职期间工作表现良好，遵纪守法。本证明仅用于<span
+          id="previewPurposeCn"
+          >注册苹果开发者账号</span
+        >之目的。
+      </p>
+      <p style="margin: 10px 0">
+        This is to certify that Ms.
+        <span id="previewEmployeeNameEn">Guli Abulaiti</span> has been employed
+        by
+        <span id="previewCompanyNameEn"
+          >Xinjiang Jingrui Animal Husbandry Co., Ltd.</span
+        >
+        since <span id="previewHireDateEn">2023-04-14</span>, holding the
+        position of
+        <span id="previewPositionEn">Chief Executive Officer (CEO)</span>.
+        During her employment, she has performed her duties well and complies
+        with company rules and applicable laws. This certificate is issued
+        solely for the purpose of
+        <span id="previewPurposeEn">registering an Apple Developer account</span
+        >.
+      </p>
+
+      <h3 style="margin: 30px 0 15px 0">员工信息 / Employee Details</h3>
+      <p>• 姓名:<span id="previewEmployeeNameCn2">古丽·阿不来提</span></p>
+      <p>Name: <span id="previewEmployeeNameEn2">Guli Abulaiti</span></p>
+      <p>• 身份证号:<span id="previewIdNumber">654101199207201828</span></p>
+      <p>ID Number: <span id="previewIdNumberEn">654101199207201828</span></p>
+      <p>• 联系电话:<span id="previewPhoneNumber">13999390136</span></p>
+      <p>Contact Number: <span id="previewPhoneNumberEn">13999390136</span></p>
+      <p>• 入职时间:<span id="previewHireDate2">2023-04-14</span></p>
+      <p>
+        Employment Start Date:<span id="previewHireDateEn2">2023-04-14</span>
+      </p>
+      <p>• 职位:<span id="previewPositionCn2">首席执行官(CEO)</span></p>
+      <p>
+        Position:
+        <span id="previewPositionEn2">Chief Executive Officer (CEO)</span>
+      </p>
+
+      <h3 style="margin: 30px 0 15px 0">公司信息 / Company Details</h3>
+      <p>
+        • 公司中文名称:<span id="previewCompanyNameCn2"
+          >新疆精锐牧业有限公司</span
+        >
+      </p>
+      <p>
+        Company Name (EN):
+        <span id="previewCompanyNameEn2"
+          >Xinjiang Jingrui Animal Husbandry Co., Ltd.</span
+        >
+      </p>
+      <p>
+        • 统一社会信用代码:<span id="previewCreditCode"
+          >91650102MACGCJ393U</span
+        >
+      </p>
+      <p>
+        Unified Social Credit Code:<span id="previewCreditCodeEn"
+          >91650102MACGCJ393U</span
+        >
+      </p>
+      <p>
+        • 公司中文地址:<span id="previewCompanyAddressCn"
+          >新疆乌鲁木齐市天山区富康街173号天和美居住宅小区1栋1层商铺3号</span
+        >
+      </p>
+      <p>
+        Company Address (EN):
+        <span id="previewCompanyAddressEn"
+          >No.3, 1st Floor Shop, Building 1, Tianhe Meiju Residential Community,
+          No.173 Fukang Street, Tianshan District, Urumqi, Xinjiang</span
+        >
+      </p>
+      <p>• 邮编:<span id="previewPostalCode">830001</span></p>
+      <p>Postal Code:<span id="previewPostalCodeEn">830001</span></p>
+
+      <h3 style="margin: 30px 0 15px 0">落款 / Signature</h3>
+      <p>• 公司:<span id="previewCompanyNameCn3">新疆精锐牧业有限公司</span></p>
+      <p>
+        Company:
+        <span id="previewCompanyNameEn3"
+          >Xinjiang Jingrui Animal Husbandry Co., Ltd.</span
+        >
+      </p>
+      <p>• 盖章/签字:</p>
+      <p>Authorized Signature/Seal:</p>
+      <p>• 日期:<span id="previewIssueDate">2026-03-10</span></p>
+      <p>Date:<span id="previewIssueDateEn">2026-03-10</span></p>
+    </div>
+
+    <script>
+      const STORAGE_KEY = 'employment_cert_data';
+
+      // 加载本地保存的数据
+      function loadSavedData() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        try {
+          const data = JSON.parse(saved);
+          Object.keys(data).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = data[id];
+          });
+          updateCertificate();
+        } catch (e) {}
+      }
+
+      // 保存数据到本地
+      function saveData() {
+        const fields = [
+          'employeeNameCn', 'employeeNameEn', 'idNumber', 'phoneNumber',
+          'hireDate', 'positionCn', 'positionEn', 'companyNameCn',
+          'companyNameEn', 'creditCode', 'companyAddressCn',
+          'companyAddressEn', 'postalCode', 'purposeCn', 'purposeEn',
+          'issueDate'
+        ];
+        const data = {};
+        fields.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) data[id] = el.value;
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      }
+
+      // 同步更新在职证明内容
+      function updateCertificate() {
+        // 获取所有表单值
+        const employeeNameCn = document.getElementById("employeeNameCn").value;
+        const employeeNameEn = document.getElementById("employeeNameEn").value;
+        const idNumber = document.getElementById("idNumber").value;
+        const phoneNumber = document.getElementById("phoneNumber").value;
+        const hireDate = document.getElementById("hireDate").value;
+        const positionCn = document.getElementById("positionCn").value;
+        const positionEn = document.getElementById("positionEn").value;
+        const companyNameCn = document.getElementById("companyNameCn").value;
+        const companyNameEn = document.getElementById("companyNameEn").value;
+        const creditCode = document.getElementById("creditCode").value;
+        const companyAddressCn =
+          document.getElementById("companyAddressCn").value;
+        const companyAddressEn =
+          document.getElementById("companyAddressEn").value;
+        const postalCode = document.getElementById("postalCode").value;
+        const purposeCn = document.getElementById("purposeCn").value;
+        const purposeEn = document.getElementById("purposeEn").value;
+        const issueDate = document.getElementById("issueDate").value;
+
+        // 更新预览内容
+        document.getElementById("previewEmployeeNameCn").textContent =
+          employeeNameCn;
+        document.getElementById("previewEmployeeNameEn").textContent =
+          employeeNameEn;
+        document.getElementById("previewIdNumber").textContent = idNumber;
+        document.getElementById("previewIdNumberEn").textContent = idNumber;
+        document.getElementById("previewPhoneNumber").textContent = phoneNumber;
+        document.getElementById("previewPhoneNumberEn").textContent =
+          phoneNumber;
+        document.getElementById("previewHireDate").textContent = hireDate;
+        document.getElementById("previewHireDateEn").textContent = hireDate;
+        document.getElementById("previewPositionCn").textContent = positionCn;
+        document.getElementById("previewPositionEn").textContent = positionEn;
+        document.getElementById("previewCompanyNameCn").textContent =
+          companyNameCn;
+        document.getElementById("previewCompanyNameEn").textContent =
+          companyNameEn;
+        document.getElementById("previewCreditCode").textContent = creditCode;
+        document.getElementById("previewCreditCodeEn").textContent = creditCode;
+        document.getElementById("previewCompanyAddressCn").textContent =
+          companyAddressCn;
+        document.getElementById("previewCompanyAddressEn").textContent =
+          companyAddressEn;
+        document.getElementById("previewPostalCode").textContent = postalCode;
+        document.getElementById("previewPostalCodeEn").textContent = postalCode;
+        document.getElementById("previewPurposeCn").textContent = purposeCn;
+        document.getElementById("previewPurposeEn").textContent = purposeEn;
+        document.getElementById("previewIssueDate").textContent = issueDate;
+        document.getElementById("previewIssueDateEn").textContent = issueDate;
+
+        // 同步所有重复变量
+        document.getElementById("previewEmployeeNameCn2").textContent =
+          employeeNameCn;
+        document.getElementById("previewEmployeeNameEn2").textContent =
+          employeeNameEn;
+        document.getElementById("previewHireDate2").textContent = hireDate;
+        document.getElementById("previewHireDateEn2").textContent = hireDate;
+        document.getElementById("previewPositionCn2").textContent = positionCn;
+        document.getElementById("previewPositionEn2").textContent = positionEn;
+        document.getElementById("previewCompanyNameCn2").textContent =
+          companyNameCn;
+        document.getElementById("previewCompanyNameEn2").textContent =
+          companyNameEn;
+        document.getElementById("previewCompanyNameCn3").textContent =
+          companyNameCn;
+        document.getElementById("previewCompanyNameEn3").textContent =
+          companyNameEn;
+        saveData();
+      }
+
+      document.addEventListener('DOMContentLoaded', loadSavedData);
+    </script>
+  </body>
+</html>

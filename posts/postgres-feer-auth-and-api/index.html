@@ -1,0 +1,62 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><title>Postgres数据库的peer认证方式下API进行数据库操作 · orhan.cn 肉扎吉·亚森的博客</title><meta content=跟密码登录方式有些区别，无法直接操作 name=description><meta content="index, follow" name=robots><link href=https://menzil.github.io/posts/postgres-feer-auth-and-api/ rel=canonical><meta content="Postgres数据库的peer认证方式下API进行数据库操作 · orhan.cn 肉扎吉·亚森的博客" property=og:title><meta content=跟密码登录方式有些区别，无法直接操作 property=og:description><meta content=article property=og:type><meta content=https://menzil.github.io/posts/postgres-feer-auth-and-api/ property=og:url><meta content="orhan.cn 肉扎吉·亚森的博客" property=og:site_name><meta content=zh_CN property=og:locale><meta content=肉扎吉·亚森 property=article:author><meta content=2025-09-16 property=article:published_time><meta content=Postgres property=article:tag><meta content=数据库 property=article:tag><meta content=summary name=twitter:card><meta content="Postgres数据库的peer认证方式下API进行数据库操作 · orhan.cn 肉扎吉·亚森的博客" name=twitter:title><meta content=跟密码登录方式有些区别，无法直接操作 name=twitter:description><link title="orhan.cn 肉扎吉·亚森的博客" href=https://menzil.github.io/atom.xml rel=alternate type=application/atom+xml><script type=application/ld+json>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://menzil.github.io/#website",
+      "url": "https://menzil.github.io/",
+      "name": "orhan.cn 肉扎吉·亚森的博客",
+      "description": "跟密码登录方式有些区别，无法直接操作",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://menzil.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://menzil.github.io/#person",
+      "name": "肉扎吉·亚森",
+      "url": "https://menzil.github.io/about/",
+      "description": "全栈开发者肉扎吉·亚森。把中小企业里靠表格和群聊硬撑的流程，收成能上线、能追查的业务系统；本站记录开发、工具与真实项目复盘。",
+      "sameAs": ["https://github.com/menzil", "https://crates.io/users/menzil"]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://menzil.github.io/posts/postgres-feer-auth-and-api/#article",
+      "headline": "Postgres数据库的peer认证方式下API进行数据库操作",
+      "description": "跟密码登录方式有些区别，无法直接操作",
+      "datePublished": "2025-09-16",
+      
+      "inLanguage": "zh-CN",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://menzil.github.io/posts/postgres-feer-auth-and-api/"
+      },
+      "author": { "@id": "https://menzil.github.io/#person" },
+      "publisher": { "@id": "https://menzil.github.io/#person" },
+      "isPartOf": { "@id": "https://menzil.github.io/#website" },
+      "keywords": ["Postgres", "数据库"]
+    }
+  ]
+}
+</script><link href=https://fonts.googleapis.com rel=preconnect><link crossorigin href=https://fonts.gstatic.com rel=preconnect><script>if (localStorage.getItem("zulqer-theme") === "light") document.documentElement.dataset.theme = "light";</script><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel=stylesheet><link href=https://menzil.github.io/zulqer/css/theme.css rel=stylesheet><link href=https://menzil.github.io/favicon.ico rel=icon type=image/x-icon><script data-entity=my-blog src=https://a.orhan.cn/script.js type=module></script><body class=post-page data-close-image-label=关闭图片 data-copied-label=已复制 data-copy-label=复制代码 data-dark-theme-label=切换到夜间主题 data-light-theme-label=切换到白天主题 data-next-image-label=下一张图片 data-previous-image-label=上一张图片><header class=site-header data-site-header><div class="shell nav-shell"><a aria-label="orhan.cn 肉扎吉·亚森的博客" class=brand href=https://menzil.github.io/> <span aria-hidden=true class=brand-mark>Z</span> <span class=brand-name>orhan.cn 肉扎吉·亚森的博客</span> </a><div class=nav-actions><nav aria-label=主导航 class=site-nav id=site-nav><a class=is-active href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav><a aria-label=搜索 class=nav-search href=https://menzil.github.io/search/ title=搜索> <svg viewbox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=6.5></circle><path d="m16 16 4.2 4.2"></path></svg> </a><button aria-label=切换到白天主题 class=theme-toggle data-theme-toggle title=切换到白天主题 type=button><svg class="theme-icon theme-icon-sun" viewbox="0 0 24 24" aria-hidden=true><circle cx=12 cy=12 r=4></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg> <svg class="theme-icon theme-icon-moon" viewbox="0 0 24 24" aria-hidden=true><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><button aria-controls=site-nav aria-expanded=false aria-label=打开菜单 class=menu-toggle type=button><span></span><span></span><span></span></button></div></div></header><main><div class=reading-progress-track><div class=reading-progress data-reading-progress></div></div><article class=post data-article><div class=post-spacer></div><div class=post-shell><header class=post-header><a class=post-back href=https://menzil.github.io/>← 返回</a><div class=post-info><a class="chip chip-gold" href=https://menzil.github.io/tags/postgres/>Postgres</a><time datetime=2025-09-16>2025-09-16</time><span aria-hidden=true>·</span><span>2 分钟</span></div><h1>Postgres数据库的peer认证方式下API进行数据库操作</h1><p class=post-subtitle>跟密码登录方式有些区别，无法直接操作</header><div class=post-divider></div><div class=post-content><p>AI建议<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=plain><span class=giallo-l><span>对于Web API系统，建议使用密码认证（md5或scram-sha-256）而不是peer认证，因为：</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span>配置更简单 - 无需复杂的用户名映射</span></span>
+<span class=giallo-l><span>更灵活 - 支持远程连接和容器化部署</span></span>
+<span class=giallo-l><span>更适合API场景 - Web API通常不需要peer认证提供的操作系统级别的身份验证</span></span>
+<span class=giallo-l><span>peer认证更适合于系统管理员直接访问数据库的场景，而不是Web API应用程序。</span></span></code></pre><p>但是我就想试一下peer认证方式的可行性。结果跟AI聊了半天才解决了这个问题，下面记录一下步骤：<ol><li>首先保证用table plus等数据库管理软件能够登录正常（这个是之前就配置好的，所有没有记录）<li>修个数据库的 pg_hba.conf 文件，在 pg_hba.conf 文件中，对于 local 连接类型（Unix domain socket），您需要在认证方法后面添加 map=your_map_name 选项。 client-auth.sgml:150</ol><p>正确的配置格式<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#cba6f7>local</span><span> database user peer map</span><span style=color:#94e2d5>=</span><span>your_map_name  </span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>这里：</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#cba6f7>local</span><span> 表示使用 Unix domain socket 连接 client-auth.sgml:172-174</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>all</span><span style=color:#a6e3a1> 表示所有数据库</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>all</span><span style=color:#a6e3a1> 表示所有用户</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>peer</span><span style=color:#a6e3a1> 是认证方法</span></span>
+<span class=giallo-l><span>map</span><span style=color:#94e2d5>=</span><span style=color:#a6e3a1>mypeermap</span><span style=color:#89b4fa;font-style:italic> 指定使用名为</span><span style=color:#a6e3a1> mypeermap 的用户名映射</span></span></code></pre><ol start=3><li>用户名映射配置 相应地，您需要在 pg_ident.conf 文件中定义这个映射：</ol><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># MAPNAME  SYSTEM-USERNAME  DATABASE-USERNAME  </span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>mypeermap</span><span style=color:#a6e3a1>  your_system_user  your_db_user</span></span></code></pre><p>当我运行migrate时报错 您遇到的是PostgreSQL schema权限问题。当使用peer认证时，您的API用户缺少对public schema的必要权限来执行migration操作 这个错误表明您的数据库用户（通过peer认证映射的用户）没有在public schema中创建对象的权限。 在PostgreSQL 15及更高版本中，默认情况下已经撤销了public schema的CREATE权限，这是为了提高安全性。<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=plain><span class=giallo-l><span>调试步骤</span></span>
+<span class=giallo-l><span>确认当前连接用户：</span></span>
+<span class=giallo-l><span>SELECT current_user, session_user, system_user;</span></span>
+<span class=giallo-l><span>检查该用户的schema权限：</span></span>
+<span class=giallo-l><span>SELECT has_schema_privilege(current_user, 'public', 'CREATE');  </span></span>
+<span class=giallo-l><span>SELECT has_schema_privilege(current_user, 'public', 'USAGE');</span></span>
+<span class=giallo-l><span>如果权限检查返回false，为实际用户授权：</span></span>
+<span class=giallo-l><span>GRANT CREATE ON SCHEMA public TO &lt;actual_user>;  </span></span>
+<span class=giallo-l><span>GRANT USAGE ON SCHEMA public TO &lt;actual_user>;</span></span></code></pre></div><footer class=post-footer><div class=post-tags><a href=https://menzil.github.io/tags/postgres/>Postgres</a><a href=https://menzil.github.io/tags/shu-ju-ku/>数据库</a></div><nav aria-label=文章导航 class=post-nav><a href=https://menzil.github.io/posts/ios-develop/><span>上一篇</span><strong>IOS正式打包证书创建</strong></a><a class=post-nav-next href=https://menzil.github.io/posts/project-structure/><span>下一篇</span><strong>项目架构</strong></a></nav></footer></div></article></main><footer class=site-footer><div class="shell footer-inner"><span>© 2026 肉扎吉·亚森 · <a class=theme-link href=https://github.com/menzil/zulqer>Zulqer</a></span><nav aria-label=页脚导航 class=footer-links><a href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav></div></footer><script src=https://menzil.github.io/elasticlunr.min.js></script><script defer src=https://menzil.github.io/zulqer/js/theme.js></script><script>(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="h_uFlaQ5PNS1iSk0xi1bd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();</script>

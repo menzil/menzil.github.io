@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - Postgres</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/postgres/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-10-27T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/postgres/atom.xml</id>
+    <entry xml:lang="en">
+        <title>psql: error: connection to server on socket /tmp/.s.PGSQL.5432 原因及修复方法</title>
+        <published>2025-10-27T00:00:00+00:00</published>
+        <updated>2025-10-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/psql-error-connection-to-server-on-socket/"/>
+        <id>https://menzil.github.io/posts/psql-error-connection-to-server-on-socket/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/psql-error-connection-to-server-on-socket/">&lt;p&gt;MacOS 上brew安装的PostgreSQL有时候就报&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;psql:&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; error: connection to server on socket &amp;quot;/tmp/.s.PGSQL.5432&amp;quot; failed: No such file or directory 	Is the server running locally and accepting connections on that socket?&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重启也没能解决，后来找了以后，找到原因了。&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;postmaster.pid&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; already exists&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上一次异常退出，pid 文件没清。
+清理办法：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;rm&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -f /opt/homebrew/var/postgresql@17/postmaster.pid&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;后面启动就行&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;brew&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; services restart postgresql@17&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就是一次问题的记录，希望对你有帮助！&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Postgres数据库的peer认证方式下API进行数据库操作</title>
+        <published>2025-09-16T00:00:00+00:00</published>
+        <updated>2025-09-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/postgres-feer-auth-and-api/"/>
+        <id>https://menzil.github.io/posts/postgres-feer-auth-and-api/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/postgres-feer-auth-and-api/">&lt;p&gt;AI建议&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;对于Web API系统，建议使用密码认证（md5或scram-sha-256）而不是peer认证，因为：&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;配置更简单 - 无需复杂的用户名映射&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;更灵活 - 支持远程连接和容器化部署&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;更适合API场景 - Web API通常不需要peer认证提供的操作系统级别的身份验证&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;peer认证更适合于系统管理员直接访问数据库的场景，而不是Web API应用程序。&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是我就想试一下peer认证方式的可行性。结果跟AI聊了半天才解决了这个问题，下面记录一下步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先保证用table plus等数据库管理软件能够登录正常（这个是之前就配置好的，所有没有记录）&lt;/li&gt;
+&lt;li&gt;修个数据库的 pg_hba.conf 文件，在 pg_hba.conf 文件中，对于 local 连接类型（Unix domain socket），您需要在认证方法后面添加 map=your_map_name 选项。 client-auth.sgml:150&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;正确的配置格式&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;local&lt;/span&gt;&lt;span&gt; database user peer map&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;=&lt;/span&gt;&lt;span&gt;your_map_name  &lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;这里：&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;local&lt;/span&gt;&lt;span&gt; 表示使用 Unix domain socket 连接 client-auth.sgml:172-174&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;all&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; 表示所有数据库&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;all&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; 表示所有用户&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;peer&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; 是认证方法&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;map&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;mypeermap&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; 指定使用名为&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; mypeermap 的用户名映射&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;用户名映射配置
+相应地，您需要在 pg_ident.conf 文件中定义这个映射：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# MAPNAME  SYSTEM-USERNAME  DATABASE-USERNAME  &lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;mypeermap&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;  your_system_user  your_db_user&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当我运行migrate时报错
+您遇到的是PostgreSQL schema权限问题。当使用peer认证时，您的API用户缺少对public schema的必要权限来执行migration操作
+这个错误表明您的数据库用户（通过peer认证映射的用户）没有在public schema中创建对象的权限。
+在PostgreSQL 15及更高版本中，默认情况下已经撤销了public schema的CREATE权限，这是为了提高安全性。&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;调试步骤&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;确认当前连接用户：&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;SELECT current_user, session_user, system_user;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;检查该用户的schema权限：&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;SELECT has_schema_privilege(current_user, &amp;#39;public&amp;#39;, &amp;#39;CREATE&amp;#39;);  &lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;SELECT has_schema_privilege(current_user, &amp;#39;public&amp;#39;, &amp;#39;USAGE&amp;#39;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;如果权限检查返回false，为实际用户授权：&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;GRANT CREATE ON SCHEMA public TO &amp;lt;actual_user&amp;gt;;  &lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;GRANT USAGE ON SCHEMA public TO &amp;lt;actual_user&amp;gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</content>
+        
+    </entry>
+</feed>

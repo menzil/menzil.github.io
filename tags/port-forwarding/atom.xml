@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - port-forwarding</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/port-forwarding/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-06-10T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/port-forwarding/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Zola 开发服务器如何用于端口转发</title>
+        <published>2026-06-10T00:00:00+00:00</published>
+        <updated>2026-06-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/zola-port-forwarding/"/>
+        <id>https://menzil.github.io/posts/zola-port-forwarding/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/zola-port-forwarding/">&lt;p&gt;Zola 默认使用 &lt;code&gt;127.0.0.1:1111&lt;/code&gt; 启动开发服务器：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个默认配置只监听当前机器的本机回环地址。如果要通过端口转发、远程开发环境、局域网设备、容器或云服务器访问，就需要让 Zola 监听所有网络接口。&lt;/p&gt;
+&lt;h2 id=&quot;tui-jian-qi-dong-ming-ling&quot;&gt;推荐启动命令&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#tui-jian-qi-dong-ming-ling&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1111&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果端口转发工具使用的是其他端口，例如 &lt;code&gt;3000&lt;/code&gt;：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 3000&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;核心参数是：&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;参数&lt;/th&gt;&lt;th&gt;作用&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;--interface 0.0.0.0&lt;/code&gt;&lt;/td&gt;&lt;td&gt;监听所有网络接口，允许外部转发访问&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;code&gt;--port 3000&lt;/code&gt;&lt;/td&gt;&lt;td&gt;指定 Zola 开发服务器端口&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;pei-he-gong-kai-zhuan-fa-di-zhi&quot;&gt;配合公开转发地址&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#pei-he-gong-kai-zhuan-fa-di-zhi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;如果端口转发工具给了一个公开 URL，例如：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;https://example-tunnel.example.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以把它传给 Zola：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve&lt;/span&gt;&lt;span style=&quot;color: #F5C2E7;&quot;&gt; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;  --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #F5C2E7;&quot;&gt; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;  --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 3000&lt;/span&gt;&lt;span style=&quot;color: #F5C2E7;&quot;&gt; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;  --base-url https://example-tunnel.example.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样页面里的链接、静态资源路径和刷新地址会更接近实际访问环境。&lt;/p&gt;
+&lt;h2 id=&quot;chang-jian-chang-jing&quot;&gt;常见场景&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chang-jian-chang-jing&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;vs-code-port-forwarding-dev-containers&quot;&gt;VS Code Port Forwarding / Dev Containers&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#vs-code-port-forwarding-dev-containers&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1111&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后在端口面板里转发 &lt;code&gt;1111&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;ngrok-cloudflare-tunnel&quot;&gt;ngrok / Cloudflare Tunnel&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ngrok-cloudflare-tunnel&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;先启动 Zola：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1111&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再把 &lt;code&gt;1111&lt;/code&gt; 转发出去。拿到公开 URL 后，如果页面资源路径不对，再加上 &lt;code&gt;--base-url&lt;/code&gt;：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1111&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --base-url https://your-public-url&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;ju-yu-wang-shou-ji-yu-lan&quot;&gt;局域网手机预览&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ju-yu-wang-shou-ji-yu-lan&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;电脑和手机在同一个网络时，可以这样启动：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1111&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后在手机浏览器打开：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;http://电脑的局域网 IP:1111&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;pai-cha-wen-ti&quot;&gt;排查问题&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#pai-cha-wen-ti&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;如果端口转发后仍然访问不了，按这个顺序检查：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Zola 是否使用了 &lt;code&gt;--interface 0.0.0.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;端口号是否和转发工具里的端口一致&lt;/li&gt;
+&lt;li&gt;防火墙或云服务器安全组是否放行了该端口&lt;/li&gt;
+&lt;li&gt;页面资源路径是否需要设置 &lt;code&gt;--base-url&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;端口是否被其他程序占用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以用下面的命令确认 Zola 参数：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --help&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重点看这两个选项：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;-i, --interface &amp;lt;INTERFACE&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;-p, --port &amp;lt;PORT&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;zui-duan-ke-yong-ban-ben&quot;&gt;最短可用版本&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#zui-duan-ke-yong-ban-ben&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;平时只需要记住这一条：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;zola&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; serve --interface&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0.0.0.0&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; --port&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1111&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;只要不是单纯在本机浏览器里访问 Zola，端口转发场景基本都应该显式加上 &lt;code&gt;--interface 0.0.0.0&lt;/code&gt;。&lt;/p&gt;
+</content>
+        
+    </entry>
+</feed>

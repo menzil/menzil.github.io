@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - terminal</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/terminal/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-06-10T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/terminal/atom.xml</id>
+    <entry xml:lang="en">
+        <title>GNU Screen 使用指南</title>
+        <published>2026-06-10T00:00:00+00:00</published>
+        <updated>2026-06-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/screen-usage-guide/"/>
+        <id>https://menzil.github.io/posts/screen-usage-guide/</id>
+        
+        <summary type="html">&lt;p&gt;GNU Screen 是一个老牌终端复用器，作用和 tmux、zellij 类似：可以在一个终端里管理多个窗口，也可以让程序在后台继续运行。最常见的场景是 SSH 到服务器后启动一个长期任务，断开连接以后任务不受影响，之后再重新连回去查看状态。&lt;/p&gt;
+&lt;p&gt;Screen 没有 tmux 和 zellij 那么现代，但优点是很多服务器默认就装了，命令也很稳定。临时在服务器上跑脚本、编译项目、下载文件、看日志，用它非常方便。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>SQLite 终端常用命令</title>
+        <published>2026-05-18T00:00:00+00:00</published>
+        <updated>2026-05-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/sqlite-cli-common-commands/"/>
+        <id>https://menzil.github.io/posts/sqlite-cli-common-commands/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/sqlite-cli-common-commands/">&lt;p&gt;SQLite 自带的 &lt;code&gt;sqlite3&lt;/code&gt; 命令行工具很适合临时查数据、排查问题、导入导出小文件。下面整理一份常用命令，日常够用了。&lt;/p&gt;
+&lt;h2 id=&quot;qi-dong-he-da-kai-shu-ju-ku&quot;&gt;启动和打开数据库&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#qi-dong-he-da-kai-shu-ju-ku&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 打开已有数据库；文件不存在时会自动创建&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; app.db&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 只读方式打开，适合线上排查&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -readonly app.db&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 直接执行一条 SQL 后退出&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; app.db &amp;quot;select count(*) from users;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 打开内存数据库&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; :memory:&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进入交互终端后，提示符一般是：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;sqlite&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;SQLite 终端里有两类命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL 语句：例如 &lt;code&gt;select * from users;&lt;/code&gt;，末尾需要分号。&lt;/li&gt;
+&lt;li&gt;点命令：例如 &lt;code&gt;.tables&lt;/code&gt;、&lt;code&gt;.schema&lt;/code&gt;，以 &lt;code&gt;.&lt;/code&gt; 开头，不需要分号。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;cha-kan-bang-zhu-he-tui-chu&quot;&gt;查看帮助和退出&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#cha-kan-bang-zhu-he-tui-chu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.help       &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 查看所有点命令&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.quit       &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 退出&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.exit       &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 退出&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果 SQL 写了一半进入了多行模式，可以用 &lt;code&gt;Ctrl+C&lt;/code&gt; 取消当前输入。&lt;/p&gt;
+&lt;h2 id=&quot;cha-kan-shu-ju-ku-jie-gou&quot;&gt;查看数据库结构&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#cha-kan-shu-ju-ku-jie-gou&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.databases              &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 查看当前连接的数据库文件&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.tables                 &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 查看所有表&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.tables user%           &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 按模式过滤表名&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;schema&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;                 -- 查看完整建表语句&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;schema&lt;/span&gt;&lt;span&gt; users           &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 查看某张表的建表语句&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.indexes                &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 查看所有索引&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.indexes users          &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 查看某张表的索引&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以直接查系统表：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select name&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;type&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; sqlite_master&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where type in&lt;/span&gt;&lt;span&gt; (&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;&amp;#39;table&amp;#39;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;&amp;#39;view&amp;#39;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;order by type&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;name&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看表字段：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma table_info(users);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看外键：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma foreign_key_list(users);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;shu-chu-ge-shi-she-zhi&quot;&gt;输出格式设置&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#shu-chu-ge-shi-she-zhi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;默认输出不太适合阅读，建议先打开表头和列模式：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.headers &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode column&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span&gt; id, &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;name&lt;/span&gt;&lt;span&gt;, created_at &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;limit&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 10&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用输出模式：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode column       &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 表格列对齐，适合人看&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;box&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;          -- 边框表格，新版本 sqlite3 更好看&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode list         &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 默认模式&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode csv          &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- CSV&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;json&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;         -- JSON&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;line&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;         -- 每列一行，适合字段很多的记录&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置空值显示：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.nullvalue &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;NULL&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打开 SQL 执行时间：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.timer &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;on&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;chang-yong-cha-xun&quot;&gt;常用查询&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chang-yong-cha-xun&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;查看前几行：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; *&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt; from&lt;/span&gt;&lt;span&gt; users &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;limit&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 10&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;按时间倒序：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; *&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;order by&lt;/span&gt;&lt;span&gt; created_at &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;desc&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;limit&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 20&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;统计行数：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; count&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;*&lt;/span&gt;&lt;span&gt;) &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模糊搜索：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; *&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where name like&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;%tom%&amp;#39;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看重复数据：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span&gt; email, &lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;count&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;*&lt;/span&gt;&lt;span&gt;) &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;as&lt;/span&gt;&lt;span&gt; n&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;group by&lt;/span&gt;&lt;span&gt; email&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;having&lt;/span&gt;&lt;span&gt; n &lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;shan-chu-shu-ju&quot;&gt;删除数据&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#shan-chu-shu-ju&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;删除前先查一遍，确认条件命中了正确的数据：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; *&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where&lt;/span&gt;&lt;span&gt; id &lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 10&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除一条记录：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;delete from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where&lt;/span&gt;&lt;span&gt; id &lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 10&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;按条件删除多条记录：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;delete from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where status&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;disabled&amp;#39;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除前统计影响行数：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; count&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;*&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where status&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;disabled&amp;#39;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更稳妥的做法是放进事务里：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;begin&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;delete from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where status&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;disabled&amp;#39;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;-- 确认删除后的结果&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; count&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;*&lt;/span&gt;&lt;span&gt;) &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;commit&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果发现删错了，在 &lt;code&gt;commit;&lt;/code&gt; 之前可以回滚：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;rollback&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;清空整张表：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;delete from&lt;/span&gt;&lt;span&gt; users;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果表有自增主键，并且想同时重置自增序列：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;delete from&lt;/span&gt;&lt;span&gt; users;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;delete from&lt;/span&gt;&lt;span&gt; sqlite_sequence &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where name&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;users&amp;#39;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;SQLite 没有 MySQL 那种 &lt;code&gt;truncate table users;&lt;/code&gt;，清空表一般就是用 &lt;code&gt;delete from users;&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;删除表结构和数据：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;drop table&lt;/span&gt;&lt;span&gt; users;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;drop table&lt;/code&gt; 会把整张表删掉，表结构也没了，执行前最好先 &lt;code&gt;.schema users&lt;/code&gt; 或 &lt;code&gt;.dump users&lt;/code&gt; 留一份。&lt;/p&gt;
+&lt;h2 id=&quot;dao-ru-he-dao-chu&quot;&gt;导入和导出&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#dao-ru-he-dao-chu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;dao-chu-cha-xun-jie-guo-dao-csv&quot;&gt;导出查询结果到 CSV&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#dao-chu-cha-xun-jie-guo-dao-csv&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.headers &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode csv&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.once users.csv&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span&gt; id, &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;name&lt;/span&gt;&lt;span&gt;, email &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;.once&lt;/code&gt; 只影响下一条 SQL。也可以用 &lt;code&gt;.output&lt;/code&gt; 持续输出到文件：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;output&lt;/span&gt;&lt;span&gt; users.csv&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; *&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt; from&lt;/span&gt;&lt;span&gt; users;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;output&lt;/span&gt;&lt;span&gt; stdout&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;dao-ru-csv-dao-biao&quot;&gt;导入 CSV 到表&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#dao-ru-csv-dao-biao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;先确认表已经存在：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;create table&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; users_import&lt;/span&gt;&lt;span&gt; (&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    id &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;integer&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;    name text&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    email &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;text&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再导入：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode csv&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.import users.csv users_import&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果 CSV 第一行是表头，新版 sqlite3 可以这样跳过：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.import &lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;--skip 1 users.csv users_import&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;dao-chu-zheng-ge-shu-ju-ku&quot;&gt;导出整个数据库&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#dao-chu-zheng-ge-shu-ju-ku&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; app.db &amp;quot;.dump&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;gt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; app.sql&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;只导出某张表：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; app.db &amp;quot;.dump users&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;gt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; users.sql&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从 SQL 文件恢复：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new.db&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; app.sql&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;bei-fen-he-fu-zhi-shu-ju-ku&quot;&gt;备份和复制数据库&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#bei-fen-he-fu-zhi-shu-ju-ku&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;在 sqlite3 交互终端中备份：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;backup&lt;/span&gt;&lt;span&gt; backup.db&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;把当前数据库保存为新文件：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;save&lt;/span&gt;&lt;span&gt; copy.db&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果数据库正在被应用使用，优先用 &lt;code&gt;.backup&lt;/code&gt;，不要直接复制 &lt;code&gt;app.db&lt;/code&gt; 文件。&lt;/p&gt;
+&lt;h2 id=&quot;zhi-xing-sql-wen-jian&quot;&gt;执行 SQL 文件&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#zhi-xing-sql-wen-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; app.db&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; migration.sql&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或在交互终端里执行：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;read&lt;/span&gt;&lt;span&gt; migration.sql&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;shi-wu-cao-zuo&quot;&gt;事务操作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#shi-wu-cao-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;手动开启事务：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;begin&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;update&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;set status&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;disabled&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where&lt;/span&gt;&lt;span&gt; last_login_at &lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;2025-01-01&amp;#39;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;commit&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;发现不对就回滚：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;rollback&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;线上手动改数据时，建议先 &lt;code&gt;begin;&lt;/code&gt;，查清影响范围后再 &lt;code&gt;commit;&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;cha-kan-zhi-xing-ji-hua&quot;&gt;查看执行计划&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#cha-kan-zhi-xing-ji-hua&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;explain query plan&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; *&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;where&lt;/span&gt;&lt;span&gt; email &lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;a@example.com&amp;#39;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果结果里看到全表扫描，并且这条查询很频繁，可以考虑加索引：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;create index&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; idx_users_email&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt; on&lt;/span&gt;&lt;span&gt; users(email);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;chang-yong-pragma&quot;&gt;常用 PRAGMA&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chang-yong-pragma&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;查看 SQLite 版本：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span&gt; sqlite_version&lt;/span&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;()&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看数据库页大小和大小信息：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma page_size;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma page_count;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma freelist_count;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开启外键约束：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma foreign_keys &lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt; on&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看外键是否开启：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma foreign_keys;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;检查数据库完整性：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma integrity_check;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;清理空间：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;vacuum;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更新统计信息，帮助查询优化器：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;analyze;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;attach-duo-ge-shu-ju-ku&quot;&gt;Attach 多个数据库&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#attach-duo-ge-shu-ju-ku&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;有时需要在两个 SQLite 数据库之间复制数据：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;attach database&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;#39;old.db&amp;#39;&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt; as&lt;/span&gt;&lt;span&gt; old;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;insert into&lt;/span&gt;&lt;span&gt; users (id, &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;name&lt;/span&gt;&lt;span&gt;, email)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;select&lt;/span&gt;&lt;span&gt; id, &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;name&lt;/span&gt;&lt;span&gt;, email&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;from&lt;/span&gt;&lt;span&gt; old.users;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;detach &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;database&lt;/span&gt;&lt;span&gt; old;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看当前连接：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.databases&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;pai-cha-suo-wen-ti&quot;&gt;排查锁问题&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#pai-cha-suo-wen-ti&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;如果遇到：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;database is locked&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以先设置等待时间：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;timeout&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 5000&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;表示最多等待 5000 毫秒。&lt;/p&gt;
+&lt;p&gt;也可以检查当前 journal 模式：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma journal_mode;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开发环境可以考虑启用 WAL：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;pragma journal_mode &lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;=&lt;/span&gt;&lt;span&gt; wal;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WAL 通常能改善读写并发，但是否适合线上环境要结合部署方式判断，尤其是网络文件系统上要谨慎。&lt;/p&gt;
+&lt;h2 id=&quot;yi-ge-chang-yong-qi-dong-mo-ban&quot;&gt;一个常用启动模板&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#yi-ge-chang-yong-qi-dong-mo-ban&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;平时查库可以这样开：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;sqlite3&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -readonly app.db&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进入后先执行：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.headers &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;box&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.timer &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.nullvalue &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;NULL&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.tables&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果 sqlite3 版本不支持 &lt;code&gt;.mode box&lt;/code&gt;，就换成：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode column&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;xiao-jie&quot;&gt;小结&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#xiao-jie&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;最常用的一组命令：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.help&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.databases&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.tables&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;schema&lt;/span&gt;&lt;span&gt; users&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.headers &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.mode &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;box&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.timer &lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.once result.csv&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.import data.csv table_name&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;backup&lt;/span&gt;&lt;span&gt; backup.db&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.&lt;/span&gt;&lt;span style=&quot;color: #CBA6F7;&quot;&gt;read&lt;/span&gt;&lt;span&gt; file.sql&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;.quit&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;记住点命令不加分号、SQL 语句要加分号，基本就能顺畅使用 sqlite3 终端了。&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Tmux 使用指南</title>
+        <published>2026-03-06T00:00:00+00:00</published>
+        <updated>2026-03-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/tmux-guide/"/>
+        <id>https://menzil.github.io/posts/tmux-guide/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/tmux-guide/">&lt;h2 id=&quot;shen-me-shi-tmux&quot;&gt;什么是 Tmux&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#shen-me-shi-tmux&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tmux (Terminal Multiplexer) 是一个终端复用器，允许你在一个终端窗口中运行多个会话，并且可以在后台保持运行。即使关闭 SSH 连接或终端窗口，tmux 会话也会继续运行。&lt;/p&gt;
+&lt;h2 id=&quot;ji-ben-cao-zuo&quot;&gt;基本操作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ji-ben-cao-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;hui-hua-guan-li&quot;&gt;会话管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#hui-hua-guan-li&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建新会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建命名会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s myproject&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 列出所有会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; ls&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 连接到最近的会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 连接到指定会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach -t myproject&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 杀死指定会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; kill-session -t myproject&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 杀死所有会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; kill-server&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;fen-chi-he-zhong-lian&quot;&gt;分离和重连&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fen-chi-he-zhong-lian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在 tmux 会话中按快捷键分离&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; d&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 或使用命令&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; detach&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;chang-yong-kuai-jie-jian&quot;&gt;常用快捷键&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chang-yong-kuai-jie-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;所有 tmux 快捷键都以 &lt;code&gt;Ctrl+b&lt;/code&gt; 作为前缀（按下后松开，再按功能键）。&lt;/p&gt;
+&lt;h3 id=&quot;qian-zhui-jian&quot;&gt;前缀键&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#qian-zhui-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;主前缀键&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;次前缀键&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;GNU-Screen 兼容&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;hui-hua-guan-li-1&quot;&gt;会话管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#hui-hua-guan-li-1&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;分离会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix d&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix d&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;列出会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix s&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix s&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;重命名会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix $&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix $&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;新建会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix :new&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+c&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更快捷&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;查找会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix s&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+f&lt;/code&gt;&lt;/td&gt;&lt;td&gt;命令提示查找&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;切换上一会话&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix L&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Shift+Tab&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;chuang-kou-guan-li&quot;&gt;窗口管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chuang-kou-guan-li&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;创建窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix c&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix c&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;重命名窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ,&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ,&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;列出窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix w&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix w&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;关闭窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;amp;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;amp;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;切换窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix 0-9&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix 0-9&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;下一个窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix n&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;上一个窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix p&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+h&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;最后活动窗口&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Tab&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更快捷&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;mian-ban-cao-zuo&quot;&gt;面板操作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#mian-ban-cao-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;垂直分割&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix %&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix _&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;水平分割&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &quot;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix -&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;关闭面板&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix x&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix x&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;切换面板&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix o&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix o&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;最大化面板&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix z&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix +&lt;/code&gt;&lt;/td&gt;&lt;td&gt;自定义脚本&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向左移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ←&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix h&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向下移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ↓&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix j&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向上移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ↑&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix k&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向右移动&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix →&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 风格&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向左调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+←&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix H&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向下调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+↓&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix J&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向上调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+↑&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix K&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;向右调整&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Ctrl+→&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix L&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vim 大写&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;交换面板(下)&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix {&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;gt;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;交换面板(上)&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix }&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix &amp;lt;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;fu-zhi-mo-shi&quot;&gt;复制模式&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fu-zhi-mo-shi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;进入复制模式&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix [&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix Enter&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更快捷&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;开始选择&lt;/td&gt;&lt;td&gt;&lt;code&gt;Space&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;v&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;矩形选择&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+v&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;复制选择&lt;/td&gt;&lt;td&gt;&lt;code&gt;Enter&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;y&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;取消&lt;/td&gt;&lt;td&gt;&lt;code&gt;q&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;Escape&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;行首&lt;/td&gt;&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;H&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;行尾&lt;/td&gt;&lt;td&gt;&lt;code&gt;$&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;L&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Vi 模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;粘贴&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix p&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;huan-chong-qu-guan-li&quot;&gt;缓冲区管理&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#huan-chong-qu-guan-li&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;列出缓冲区&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix #&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix b&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;粘贴缓冲区&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix p&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;选择缓冲区&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix =&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix P&lt;/code&gt;&lt;/td&gt;&lt;td&gt;更直观&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;qi-ta-cao-zuo&quot;&gt;其他操作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#qi-ta-cao-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;默认快捷键&lt;/th&gt;&lt;th&gt;优化配置&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;显示快捷键&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ?&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix ?&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;显示时钟&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix t&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix t&lt;/code&gt;&lt;/td&gt;&lt;td&gt;保持默认&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;重载配置&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix :source-file&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix r&lt;/code&gt;&lt;/td&gt;&lt;td&gt;快速重载&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;编辑配置&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix e&lt;/code&gt;&lt;/td&gt;&lt;td&gt;打开编辑器&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;清屏+历史&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;Ctrl+l&lt;/code&gt;&lt;/td&gt;&lt;td&gt;增强清屏&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;鼠标切换&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix m&lt;/code&gt;&lt;/td&gt;&lt;td&gt;切换鼠标模式&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;URL 查看&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix U&lt;/code&gt;&lt;/td&gt;&lt;td&gt;urlview 集成&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;文件选择器&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;&lt;code&gt;prefix F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;fpp 集成&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;配置说明&lt;/strong&gt;：优化配置基于 &lt;a rel=&quot;external&quot; href=&quot;https://github.com/gpakosz/.tmux&quot;&gt;gpakosz/.tmux&lt;/a&gt;，采用 Vim 风格导航，提供更直观的快捷键和增强功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;chang-yong-chang-jing&quot;&gt;常用场景&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#chang-yong-chang-jing&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;1-yun-xing-chang-qi-fu-wu&quot;&gt;1. 运行长期服务&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-yun-xing-chang-qi-fu-wu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建会话并启动开发服务器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s dev&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;npm&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; run dev&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 按 Ctrl+b d 分离会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 关闭终端窗口，服务继续运行&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 稍后重连&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach -t dev&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-ssh-yuan-cheng-gong-zuo&quot;&gt;2. SSH 远程工作&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#2-ssh-yuan-cheng-gong-zuo&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# SSH 连接到服务器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;ssh&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; user@server&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建或连接到 tmux 会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; attach&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; ||&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s work&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 即使 SSH 断开，工作也不会丢失&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-duo-ren-wu-bing-xing&quot;&gt;3. 多任务并行&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#3-duo-ren-wu-bing-xing&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建会话&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; new -s multi&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建多个窗口&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; c&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 窗口1: 编辑器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; c&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 窗口2: 服务器&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; c&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 窗口3: 日志监控&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在窗口间快速切换&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 0&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 切换到窗口0&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 切换到窗口1&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;pei-zhi-wen-jian&quot;&gt;配置文件&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#pei-zhi-wen-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;创建 &lt;code&gt;~/.tmux.conf&lt;/code&gt; 自定义配置：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 修改前缀键为 Ctrl+a（可选）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# set -g prefix C-a&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# unbind C-b&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# bind C-a send-prefix&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 启用鼠标支持&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g mouse on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 设置窗口和面板索引从 1 开始&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g base-index&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;setw&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g pane-base-index&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 增加历史记录行数&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g history-limit&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; 10000&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 快速重载配置&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;bind&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; r source-file ~/.tmux.conf&lt;/span&gt;&lt;span style=&quot;color: #F5C2E7;&quot;&gt; \;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; display &amp;quot;Config reloaded!&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 更直观的分割快捷键&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;bind&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; split-window&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -h&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;bind&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; - split-window -v&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重载配置：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;tmux&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; source-file ~/.tmux.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;jin-jie-ji-qiao&quot;&gt;进阶技巧&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#jin-jie-ji-qiao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;fu-zhi-mo-shi-1&quot;&gt;复制模式&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fu-zhi-mo-shi-1&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 进入复制模式&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span&gt; [&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 使用 vi 风格导航&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;h,&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; j, k, l&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;  # 移动光标&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Space&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;       # 开始选择&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Enter&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;       # 复制选中内容&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;q&lt;/span&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;           # 退出复制模式&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 粘贴&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; ]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;tong-bu-mian-ban-shu-ru&quot;&gt;同步面板输入&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#tong-bu-mian-ban-shu-ru&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在命令模式中启用&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;Ctrl+b&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; :&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;setw&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; synchronize-panes on&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 关闭&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;setw&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; synchronize-panes off&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;bao-cun-hui-hua-bu-ju&quot;&gt;保存会话布局&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#bao-cun-hui-hua-bu-ju&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;使用 tmux-resurrect 插件可以保存和恢复会话：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 安装 TPM (Tmux Plugin Manager)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 在 ~/.tmux.conf 中添加&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g @plugin &amp;#39;tmux-plugins/tpm&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #F38BA8;font-style: italic;&quot;&gt;set&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -g @plugin &amp;#39;tmux-plugins/tmux-resurrect&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 重载配置并安装插件&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# Ctrl+b I (大写 I)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#zong-jie&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tmux 的核心优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;会话持久化：关闭终端不影响运行&lt;/li&gt;
+&lt;li&gt;多窗口管理：一个终端运行多个任务&lt;/li&gt;
+&lt;li&gt;面板分割：同时查看多个输出&lt;/li&gt;
+&lt;li&gt;远程工作：SSH 断开后可恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;记住最重要的三个命令：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;tmux new -s name&lt;/code&gt; - 创建会话&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+b d&lt;/code&gt; - 分离会话&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tmux attach -t name&lt;/code&gt; - 重连会话&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        
+    </entry>
+</feed>

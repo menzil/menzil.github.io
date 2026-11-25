@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - cargo</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/cargo/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-03-06T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/cargo/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Git 分支重置到之前的提交</title>
+        <published>2026-03-06T00:00:00+00:00</published>
+        <updated>2026-03-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/git-reset-branch-to-previous-commit/"/>
+        <id>https://menzil.github.io/posts/git-reset-branch-to-previous-commit/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/git-reset-branch-to-previous-commit/">&lt;h2 id=&quot;wen-ti-miao-shu&quot;&gt;问题描述&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#wen-ti-miao-shu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;在运行 &lt;code&gt;cargo watch -x &#39;run -p gateway&#39;&lt;/code&gt; 时遇到错误：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;error: failed to load manifest for workspace member&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;referenced by workspace at `/path/to/Cargo.toml`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Caused by:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  failed to load manifest for dependency `module-store`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Caused by:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  failed to read `/path/to/modules/store/Cargo.toml`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Caused by:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  No such file or directory (os error 2)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原因是 &lt;code&gt;Cargo.toml&lt;/code&gt; 中的 workspace members 列表包含了 &lt;code&gt;modules/store&lt;/code&gt; 和 &lt;code&gt;modules/merchant&lt;/code&gt;，但这些目录实际上不存在。这是由于之前的错误提交导致的。&lt;/p&gt;
+&lt;h2 id=&quot;jie-jue-fang-an&quot;&gt;解决方案&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#jie-jue-fang-an&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;1-que-ren-zheng-que-de-ti-jiao&quot;&gt;1. 确认正确的提交&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-que-ren-zheng-que-de-ti-jiao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;首先查看提交历史，找到最后一个正常工作的提交：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; log --oneline&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;确认目标提交是 &lt;code&gt;14b6cf9&lt;/code&gt; (use orm fixed n+1)。&lt;/p&gt;
+&lt;h3 id=&quot;2-zhong-zhi-fen-zhi&quot;&gt;2. 重置分支&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#2-zhong-zhi-fen-zhi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;如果当前在 detached HEAD 状态，可以使用以下方法：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 方法一：强制将 main 分支指向当前 HEAD，然后切换到 main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; branch -f main HEAD&lt;/span&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt; &amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; checkout main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 方法二：切换回 main 分支，然后重置到目标提交&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; checkout main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; reset --hard 14b6cf9&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果已经在 main 分支上：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 直接重置&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; reset --hard 14b6cf9&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-tui-song-dao-yuan-cheng-ke-xuan&quot;&gt;3. 推送到远程（可选）&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#3-tui-song-dao-yuan-cheng-ke-xuan&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;如果需要更新远程仓库，使用 force push：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; push origin main --force&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ 注意&lt;/strong&gt;：&lt;code&gt;--force&lt;/code&gt; 会覆盖远程历史记录，如果团队中有其他人在使用该分支，请先沟通确认。&lt;/p&gt;
+&lt;h3 id=&quot;4-yan-zheng&quot;&gt;4. 验证&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-yan-zheng&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 查看当前分支和状态&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; branch --show-current&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; status&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 查看最近的提交&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; log --oneline -5&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;xiang-guan-zhi-shi&quot;&gt;相关知识&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#xiang-guan-zhi-shi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;git-reset-hard-de-zuo-yong&quot;&gt;git reset --hard 的作用&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#git-reset-hard-de-zuo-yong&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;移动 HEAD 指针到指定提交&lt;/li&gt;
+&lt;li&gt;重置暂存区（staging area）&lt;/li&gt;
+&lt;li&gt;重置工作目录（working directory）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;会丢失所有未提交的更改&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;detached-head-zhuang-tai&quot;&gt;Detached HEAD 状态&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#detached-head-zhuang-tai&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;当你直接 checkout 到某个提交（而不是分支）时，会进入 detached HEAD 状态。此时的修改不属于任何分支，需要创建新分支或切换回已有分支。&lt;/p&gt;
+&lt;h3 id=&quot;geng-an-quan-de-ti-dai-fang-an&quot;&gt;更安全的替代方案&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#geng-an-quan-de-ti-dai-fang-an&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;如果不想使用 &lt;code&gt;--hard&lt;/code&gt;，可以考虑：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建备份分支&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; branch backup-branch&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 使用 revert 撤销提交（保留历史）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; revert&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;commit-has&lt;/span&gt;&lt;span&gt;h&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 或使用 reset --soft（保留更改在暂存区）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; reset --soft&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;commit-has&lt;/span&gt;&lt;span&gt;h&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#zong-jie&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;遇到 Cargo workspace 成员缺失的问题时，首先检查 &lt;code&gt;Cargo.toml&lt;/code&gt; 中的 members 列表是否与实际目录结构匹配。如果是由错误提交导致的，可以使用 &lt;code&gt;git reset --hard&lt;/code&gt; 快速回退到正确的状态。&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rust Best Crates</title>
+        <published>2025-09-23T00:00:00+00:00</published>
+        <updated>2025-09-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/best-crates/"/>
+        <id>https://menzil.github.io/posts/best-crates/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/best-crates/">&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/pgrx&quot;&gt;Build Postgres Extensions with Rust!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/mry&quot;&gt;Mry A simple but powerful mocking library for structs, traits, and function.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/rumqttc&quot;&gt;rumqttc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/postgrest&quot;&gt;postgrest&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        
+    </entry>
+</feed>

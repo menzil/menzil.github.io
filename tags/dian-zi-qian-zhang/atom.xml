@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 电子签章</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/dian-zi-qian-zhang/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-08-26T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/dian-zi-qian-zhang/atom.xml</id>
+    <entry xml:lang="en">
+        <title>法商签章上线：把审批、用章和留痕放进一个微信小程序</title>
+        <published>2026-08-26T00:00:00+00:00</published>
+        <updated>2026-08-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/fashang-qianzhang-project-review/"/>
+        <id>https://menzil.github.io/posts/fashang-qianzhang-project-review/</id>
+        
+        <summary type="html">&lt;p&gt;“法商签章”小程序已经上线，在微信搜索“法商签章”就可以体验。&lt;/p&gt;
+&lt;p&gt;这个项目处理的是一件很具体的事：公司里的一份 PDF，从申请、审批到最后盖章，怎样少靠口头确认，怎样让每个经手人都知道文件走到了哪里。&lt;/p&gt;
+&lt;p&gt;上传 PDF 和放一张印章图片都不难。真正麻烦的是围绕文件发生的那些动作：谁可以发起，应该由哪个部门审批，财务要不要复核，谁有权使用某枚印章，驳回后去哪里看原因，盖完章的文件还能不能和原始申请对应起来。只要其中一环没有记录，后面就很难说清楚。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.orhan.cn/images/fashang-qianzhang-home.png&quot; alt=&quot;法商签章小程序首页&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

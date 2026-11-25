@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - Rust</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/rust/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-11-18T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/rust/atom.xml</id>
+    <entry xml:lang="en">
+        <title>PDFmi：用 Rust 做一个离线 PDF 解密桌面工具</title>
+        <published>2026-11-18T00:00:00+00:00</published>
+        <updated>2026-11-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/pdfmi-offline-pdf-decryption/"/>
+        <id>https://menzil.github.io/posts/pdfmi-offline-pdf-decryption/</id>
+        
+        <summary type="html">&lt;p&gt;我用 Rust 做了一个小工具，叫 PDFmi。用途很具体：已经知道 PDF 的密码，想保存一份以后可以直接打开的副本，就把文件拖进去，输入密码，再点“解密并保存”。文件和密码都留在本机，处理过程完全离线。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pdfmi-desktop.png&quot; alt=&quot;PDFmi 的 macOS 界面，包含 PDF 文件选择、密码显隐、三种保存位置和本机离线处理提示&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>我给 AI 做了个看板：helix-kanban</title>
+        <published>2026-09-23T00:00:00+00:00</published>
+        <updated>2026-09-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/helix-kanban/"/>
+        <id>https://menzil.github.io/posts/helix-kanban/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/helix-kanban&quot;&gt;helix-kanban&lt;/a&gt; 是我用 Rust 写的终端看板，命令名是 &lt;code&gt;hxk&lt;/code&gt;。想法很简单：AI 负责执行任务，我来安排任务；接入 MCP 后，AI 也可以直接读取待办、创建任务和更新状态。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.orhan.cn/images/helix-kanban-board.png&quot; alt=&quot;helix-kanban 任务看板，按 Todo、Doing、Done 和 Assets 分列&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>把知识库做成可接入业务的底座：Knowledge Worker 当前进度与目标</title>
+        <published>2026-09-17T00:00:00+00:00</published>
+        <updated>2026-09-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/knowledge-worker-progress-and-goals/"/>
+        <id>https://menzil.github.io/posts/knowledge-worker-progress-and-goals/</id>
+        
+        <summary type="html">&lt;p&gt;最近在做一套叫 Knowledge Worker 的知识库系统。目前它正在律师行业内部试运行，可以完成文档上传、索引、检索和带引用的问答，但离可以直接交给不同团队长期使用，还有不少细节要继续验证。&lt;/p&gt;
+&lt;p&gt;我没有把它限定成某个行业的问答产品。现在更关心的是另一件事：能不能把知识处理做成一块独立能力，通过 API 或 MCP 接进已有业务，同时保留清楚的数据边界、来源和运维手段。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>aynur-deploy：把每次发布缩成一次 Tag Push</title>
+        <published>2026-09-02T00:00:00+00:00</published>
+        <updated>2026-09-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/aynur-deploy/"/>
+        <id>https://menzil.github.io/posts/aynur-deploy/</id>
+        
+        <summary type="html">&lt;p&gt;以前发布这个博客，我需要登录服务器，拉取生成站点的代码，确认分支和提交，再把新目录放到线上，最后打开网页检查。每一步都不复杂，但它们必须按顺序完成。中间任何一步出错，都要重新判断服务器当前到底是哪一版。&lt;/p&gt;
+&lt;p&gt;现在博客源码和生成站点分别放在两个仓库里。源码构建完成后，我只需要把生成站点推送到 Gitee，再创建一个符合规则的 Tag。&lt;code&gt;aynur-deploy&lt;/code&gt; 接收 Tag Push WebHook，取得这次 Tag 对应的精确提交，准备新的 release，切换 &lt;code&gt;currentPath&lt;/code&gt;，然后执行健康检查。正常发布不需要再登录服务器。&lt;/p&gt;
+&lt;p&gt;它解决的不是“有没有办法执行部署命令”，而是把一次发布中容易重复、容易遗漏的动作固定下来。真正省下来的时间，来自少做几次确认、少开几个终端、少处理几次半完成状态。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>法商签章上线：把审批、用章和留痕放进一个微信小程序</title>
+        <published>2026-08-26T00:00:00+00:00</published>
+        <updated>2026-08-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/fashang-qianzhang-project-review/"/>
+        <id>https://menzil.github.io/posts/fashang-qianzhang-project-review/</id>
+        
+        <summary type="html">&lt;p&gt;“法商签章”小程序已经上线，在微信搜索“法商签章”就可以体验。&lt;/p&gt;
+&lt;p&gt;这个项目处理的是一件很具体的事：公司里的一份 PDF，从申请、审批到最后盖章，怎样少靠口头确认，怎样让每个经手人都知道文件走到了哪里。&lt;/p&gt;
+&lt;p&gt;上传 PDF 和放一张印章图片都不难。真正麻烦的是围绕文件发生的那些动作：谁可以发起，应该由哪个部门审批，财务要不要复核，谁有权使用某枚印章，驳回后去哪里看原因，盖完章的文件还能不能和原始申请对应起来。只要其中一环没有记录，后面就很难说清楚。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.orhan.cn/images/fashang-qianzhang-home.png&quot; alt=&quot;法商签章小程序首页&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>把 1178 个摊位装进一个微信小程序：农贸市场租赁管理系统落地记录</title>
+        <published>2026-08-20T00:00:00+00:00</published>
+        <updated>2026-08-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/bozor-market-lease-management/"/>
+        <id>https://menzil.github.io/posts/bozor-market-lease-management/</id>
+        
+        <summary type="html">&lt;p&gt;这个项目管理的是一个共有 1178 个摊位的农贸市场。摊位分布在不同区域，既有室内铺位，也有室外摊位。管理员每天要确认哪些位置空着、哪些租约快到期、某个租户租了哪些位置，以及一笔钱到底对应哪份租约。&lt;/p&gt;
+&lt;p&gt;这些事情单看都不复杂，放在一起就很容易变成一堆互相打架的表格。项目最后落成了一套由 API、管理后台和微信小程序组成的系统，管理员可以在手机上完成大多数日常操作，复杂配置和集中处理则放在后台完成。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>英吉沙小刀项目复盘：先把故事、溯源和内容体系搭起来</title>
+        <published>2026-08-20T00:00:00+00:00</published>
+        <updated>2026-08-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/yjsxd-project-review/"/>
+        <id>https://menzil.github.io/posts/yjsxd-project-review/</id>
+        
+        <summary type="html">&lt;p&gt;这个项目做的是英吉沙小刀。官网是 &lt;a rel=&quot;external&quot; href=&quot;https://yjsxd.com.cn/&quot;&gt;https://yjsxd.com.cn/&lt;/a&gt;，整体目标不是单纯做一个展示页，而是把“看得见、查得到、讲得清”这三件事先跑通。&lt;/p&gt;
+&lt;p&gt;现在的状态也要先说清楚：官网已经在做对外展示，小程序还没有正式上线。所以这篇复盘不讲虚的结果，只讲我们实际搭了什么、为什么这么搭，以及中间最费劲的地方在哪。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://yjsxd.com.cn/_next/image?url=https%3A%2F%2Fyingjishaxiaodao.oss-cn-hangzhou.aliyuncs.com%2Fuploads%2F2026%2F06%2F11%2F1781187780503-r2u9oyu2-11.png&amp;amp;w=3840&amp;amp;q=75&quot; alt=&quot;英吉沙小刀官网页面&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>humar：把 AI 翻译沉淀为可复习词库的 Rust CLI</title>
+        <published>2026-07-30T00:00:00+00:00</published>
+        <updated>2026-07-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/humar-cli-translation-memory/"/>
+        <id>https://menzil.github.io/posts/humar-cli-translation-memory/</id>
+        
+        <summary type="html">&lt;p&gt;日常写 UI 文案、需求说明、Issue 或技术文档时，真正麻烦的往往不是查到一个单词，而是确认一句话在当前场景里应该怎么说。例如“箭头方向需要切换”可能是图标方向要反转，也可能是展开和收起时箭头要随状态改变。直译不一定错，但很容易不自然。&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/humar&quot;&gt;humar&lt;/a&gt; 是一个用 Rust 写的命令行翻译记忆工具。它面向中英短语工作流：调用兼容 Responses API 的模型生成场景化翻译卡片，把成功结果保存到本地词库，之后可以检索、回看和复习，而不是每次都从零开始问模型。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rust 部分更新的三态语义：Option&lt;Option&lt;T&gt;&gt;、Serde 与 SeaORM</title>
+        <published>2026-07-30T00:00:00+00:00</published>
+        <updated>2026-07-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/rust-partial-update-tristate-seaorm/"/>
+        <id>https://menzil.github.io/posts/rust-partial-update-tristate-seaorm/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;code&gt;PATCH /users/{id}&lt;/code&gt; 这类部分更新接口里，一个字段通常不只有“有值”和“没值”两种状态。以 &lt;code&gt;name&lt;/code&gt; 为例，客户端可能发送：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;json&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;{}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;json&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;{&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;&quot;&gt;name&lt;/span&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;&amp;quot;:&lt;/span&gt;&lt;span style=&quot;color: #FAB387;&quot;&gt; null&lt;/span&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;json&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;{&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;&quot;&gt;name&lt;/span&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;&amp;quot;:&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; &amp;quot;Alice&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;它们的业务含义分别是：不修改 &lt;code&gt;name&lt;/code&gt;、将 &lt;code&gt;name&lt;/code&gt; 清空为数据库 &lt;code&gt;NULL&lt;/code&gt;、将 &lt;code&gt;name&lt;/code&gt; 更新为 &lt;code&gt;Alice&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;问题的核心不是 Rust 有没有 &lt;code&gt;nil&lt;/code&gt;，而是 API 输入确实有三种独立语义。把它们明确建模，才能避免把“字段没传”误当成“清空字段”。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rust derive_builder crate：用宏生成 Builder 模式</title>
+        <published>2026-06-10T00:00:00+00:00</published>
+        <updated>2026-06-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/rust-derive-builder-crate/"/>
+        <id>https://menzil.github.io/posts/rust-derive-builder-crate/</id>
+        
+        <summary type="html">&lt;p&gt;如果你在找 &lt;code&gt;drive_builder&lt;/code&gt;，crates.io 上目前没有这个 Rust crate。更常见、也更符合这个名字含义的 crate 是 &lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/derive_builder&quot;&gt;&lt;code&gt;derive_builder&lt;/code&gt;&lt;/a&gt;：它通过 &lt;code&gt;#[derive(Builder)]&lt;/code&gt; 为结构体自动生成 Builder 模式代码，减少大量重复 setter、默认值和校验逻辑。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>AIRE：面向交互式应用的实时音频引擎</title>
+        <published>2026-05-26T00:00:00+00:00</published>
+        <updated>2026-05-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/aire-realtime-audio-engine/"/>
+        <id>https://menzil.github.io/posts/aire-realtime-audio-engine/</id>
+        
+        <summary type="html">&lt;p&gt;最近看到一个很适合游戏开发者关注的小项目：&lt;a rel=&quot;external&quot; href=&quot;https://github.com/Breijen/aire&quot;&gt;AIRE&lt;/a&gt;。它不是通用播放器，也不是 DAW 级音频工作站，而是一个更贴近游戏和交互式应用需求的实时音频引擎。&lt;/p&gt;
+&lt;p&gt;项目作者是在业余时间开发 2D 游戏时遇到问题：现有音频库要么太底层，要么只解决“把声音播出来”，但游戏里真正麻烦的是运行时控制、声音状态切换、低延迟混音、合成音效，以及后续的空间音频和环境声学。于是作者干脆自己做了 AIRE。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Scena 1.5.1：Rust 原生 3D 渲染器的新进展</title>
+        <published>2026-05-26T00:00:00+00:00</published>
+        <updated>2026-05-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/scena-1-5-1/"/>
+        <id>https://menzil.github.io/posts/scena-1-5-1/</id>
+        
+        <summary type="html">&lt;p&gt;最近 &lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/scena&quot;&gt;Scena&lt;/a&gt; 发布了 1.5.1。它是一个 Rust 原生的 3D 渲染器，目标不是做一个完整游戏引擎，而是提供一层更聚焦的 3D 可视化能力：场景图、glTF/GLB 加载、PBR 材质、相机、灯光、交互、浏览器渲染、本地渲染，以及无头图像生成。&lt;/p&gt;
+&lt;p&gt;如果你做的是 3D 模型查看器、产品展示、工业可视化、数字孪生前端或自动生成渲染图，Scena 这种定位会比较有意思。它把常见 3D 查看器流程封装成 Rust API：加载模型，实例化到场景，添加灯光和相机，准备渲染资源，然后输出画面。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Bolt FFI：让 Rust 成为跨平台业务逻辑的核心</title>
+        <published>2026-05-12T00:00:00+00:00</published>
+        <updated>2026-05-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/boltffi-intro/"/>
+        <id>https://menzil.github.io/posts/boltffi-intro/</id>
+        
+        <summary type="html">&lt;p&gt;最近关注到 &lt;a rel=&quot;external&quot; href=&quot;https://www.boltffi.dev/&quot;&gt;Bolt FFI&lt;/a&gt;，这是一个能把 Rust 库自动导出为多语言绑定的工具。它的定位很清晰：把业务逻辑集中在 Rust 中，一次编写，多端复用。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rust 跨平台 UI 框架新动向：WaterUI、Blinc 与 Ply</title>
+        <published>2026-05-12T00:00:00+00:00</published>
+        <updated>2026-05-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/rust-ui-frameworks-2025/"/>
+        <id>https://menzil.github.io/posts/rust-ui-frameworks-2025/</id>
+        
+        <summary type="html">&lt;p&gt;Rust 的 GUI 生态一直是个热闹的话题。从早期的 egui、iced，到 Dioxus、Slint，各家在自绘、原生渲染、Web 技术栈之间走不同的路线。最近注意到三个较新的框架——&lt;a rel=&quot;external&quot; href=&quot;https://waterui.dev/&quot;&gt;WaterUI&lt;/a&gt;、&lt;a rel=&quot;external&quot; href=&quot;https://project-blinc.github.io/Blinc/introduction.html&quot;&gt;Blinc&lt;/a&gt; 和 &lt;a rel=&quot;external&quot; href=&quot;https://plyx.iz.rs/&quot;&gt;Ply&lt;/a&gt;——它们都在尝试用 Rust 写一套代码，跑在移动端、桌面端甚至 Web 上。本文简单梳理它们的特点和差异。&lt;/p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Git 分支重置到之前的提交</title>
+        <published>2026-03-06T00:00:00+00:00</published>
+        <updated>2026-03-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/git-reset-branch-to-previous-commit/"/>
+        <id>https://menzil.github.io/posts/git-reset-branch-to-previous-commit/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/git-reset-branch-to-previous-commit/">&lt;h2 id=&quot;wen-ti-miao-shu&quot;&gt;问题描述&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#wen-ti-miao-shu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;在运行 &lt;code&gt;cargo watch -x &#39;run -p gateway&#39;&lt;/code&gt; 时遇到错误：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;error: failed to load manifest for workspace member&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;referenced by workspace at `/path/to/Cargo.toml`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Caused by:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  failed to load manifest for dependency `module-store`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Caused by:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  failed to read `/path/to/modules/store/Cargo.toml`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Caused by:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  No such file or directory (os error 2)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原因是 &lt;code&gt;Cargo.toml&lt;/code&gt; 中的 workspace members 列表包含了 &lt;code&gt;modules/store&lt;/code&gt; 和 &lt;code&gt;modules/merchant&lt;/code&gt;，但这些目录实际上不存在。这是由于之前的错误提交导致的。&lt;/p&gt;
+&lt;h2 id=&quot;jie-jue-fang-an&quot;&gt;解决方案&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#jie-jue-fang-an&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;1-que-ren-zheng-que-de-ti-jiao&quot;&gt;1. 确认正确的提交&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-que-ren-zheng-que-de-ti-jiao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;首先查看提交历史，找到最后一个正常工作的提交：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; log --oneline&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;确认目标提交是 &lt;code&gt;14b6cf9&lt;/code&gt; (use orm fixed n+1)。&lt;/p&gt;
+&lt;h3 id=&quot;2-zhong-zhi-fen-zhi&quot;&gt;2. 重置分支&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#2-zhong-zhi-fen-zhi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;如果当前在 detached HEAD 状态，可以使用以下方法：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 方法一：强制将 main 分支指向当前 HEAD，然后切换到 main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; branch -f main HEAD&lt;/span&gt;&lt;span style=&quot;color: #9399B2;&quot;&gt; &amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt; git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; checkout main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 方法二：切换回 main 分支，然后重置到目标提交&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; checkout main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; reset --hard 14b6cf9&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果已经在 main 分支上：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 直接重置&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; reset --hard 14b6cf9&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-tui-song-dao-yuan-cheng-ke-xuan&quot;&gt;3. 推送到远程（可选）&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#3-tui-song-dao-yuan-cheng-ke-xuan&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;如果需要更新远程仓库，使用 force push：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; push origin main --force&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ 注意&lt;/strong&gt;：&lt;code&gt;--force&lt;/code&gt; 会覆盖远程历史记录，如果团队中有其他人在使用该分支，请先沟通确认。&lt;/p&gt;
+&lt;h3 id=&quot;4-yan-zheng&quot;&gt;4. 验证&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-yan-zheng&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 查看当前分支和状态&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; branch --show-current&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; status&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 查看最近的提交&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; log --oneline -5&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;xiang-guan-zhi-shi&quot;&gt;相关知识&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#xiang-guan-zhi-shi&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;git-reset-hard-de-zuo-yong&quot;&gt;git reset --hard 的作用&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#git-reset-hard-de-zuo-yong&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;移动 HEAD 指针到指定提交&lt;/li&gt;
+&lt;li&gt;重置暂存区（staging area）&lt;/li&gt;
+&lt;li&gt;重置工作目录（working directory）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;会丢失所有未提交的更改&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;detached-head-zhuang-tai&quot;&gt;Detached HEAD 状态&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#detached-head-zhuang-tai&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;当你直接 checkout 到某个提交（而不是分支）时，会进入 detached HEAD 状态。此时的修改不属于任何分支，需要创建新分支或切换回已有分支。&lt;/p&gt;
+&lt;h3 id=&quot;geng-an-quan-de-ti-dai-fang-an&quot;&gt;更安全的替代方案&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#geng-an-quan-de-ti-dai-fang-an&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;如果不想使用 &lt;code&gt;--hard&lt;/code&gt;，可以考虑：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 创建备份分支&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; branch backup-branch&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 使用 revert 撤销提交（保留历史）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; revert&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;commit-has&lt;/span&gt;&lt;span&gt;h&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #9399B2;font-style: italic;&quot;&gt;# 或使用 reset --soft（保留更改在暂存区）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; reset --soft&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt;commit-has&lt;/span&gt;&lt;span&gt;h&lt;/span&gt;&lt;span style=&quot;color: #94E2D5;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#zong-jie&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;遇到 Cargo workspace 成员缺失的问题时，首先检查 &lt;code&gt;Cargo.toml&lt;/code&gt; 中的 members 列表是否与实际目录结构匹配。如果是由错误提交导致的，可以使用 &lt;code&gt;git reset --hard&lt;/code&gt; 快速回退到正确的状态。&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>psql: error: connection to server on socket /tmp/.s.PGSQL.5432 原因及修复方法</title>
+        <published>2025-10-27T00:00:00+00:00</published>
+        <updated>2025-10-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/psql-error-connection-to-server-on-socket/"/>
+        <id>https://menzil.github.io/posts/psql-error-connection-to-server-on-socket/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/psql-error-connection-to-server-on-socket/">&lt;p&gt;MacOS 上brew安装的PostgreSQL有时候就报&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;psql:&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; error: connection to server on socket &amp;quot;/tmp/.s.PGSQL.5432&amp;quot; failed: No such file or directory 	Is the server running locally and accepting connections on that socket?&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重启也没能解决，后来找了以后，找到原因了。&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;postmaster.pid&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; already exists&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上一次异常退出，pid 文件没清。
+清理办法：&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;rm&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; -f /opt/homebrew/var/postgresql@17/postmaster.pid&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;后面启动就行&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #89B4FA;font-style: italic;&quot;&gt;brew&lt;/span&gt;&lt;span style=&quot;color: #A6E3A1;&quot;&gt; services restart postgresql@17&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就是一次问题的记录，希望对你有帮助！&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rust Best Crates</title>
+        <published>2025-09-23T00:00:00+00:00</published>
+        <updated>2025-09-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/best-crates/"/>
+        <id>https://menzil.github.io/posts/best-crates/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/best-crates/">&lt;ol&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/pgrx&quot;&gt;Build Postgres Extensions with Rust!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/mry&quot;&gt;Mry A simple but powerful mocking library for structs, traits, and function.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/rumqttc&quot;&gt;rumqttc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/postgrest&quot;&gt;postgrest&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>IOS正式打包证书创建</title>
+        <published>2025-09-16T00:00:00+00:00</published>
+        <updated>2025-09-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/ios-develop/"/>
+        <id>https://menzil.github.io/posts/ios-develop/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/ios-develop/">&lt;h2 id=&quot;ru-he-jiang-ios-sheng-chan-zheng-shu-cer-zhuan-huan-wei-p12-wen-jian-bing-chuang-jian-miao-shu-wen-jian&quot;&gt;如何将 iOS 生产证书（.cer）转换为 .p12 文件并创建描述文件&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ru-he-jiang-ios-sheng-chan-zheng-shu-cer-zhuan-huan-wei-p12-wen-jian-bing-chuang-jian-miao-shu-wen-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;1-zhuan-huan-cer-wen-jian-wei-p12-wen-jian&quot;&gt;1. 转换 &lt;code&gt;.cer&lt;/code&gt; 文件为 &lt;code&gt;.p12&lt;/code&gt; 文件&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-zhuan-huan-cer-wen-jian-wei-p12-wen-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;打开钥匙串访问&lt;/strong&gt;
+在 Mac 电脑上，通过 “聚焦搜索”（通常是按下 &lt;code&gt;Command + 空格&lt;/code&gt;）输入 “钥匙串访问”，然后打开该应用程序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;导入 &lt;code&gt;.cer&lt;/code&gt; 证书&lt;/strong&gt;
+双击下载好的 &lt;code&gt;ios_distribution.cer&lt;/code&gt; 文件，系统会自动将其导入到钥匙串访问中。
+你可以在钥匙串访问的 &lt;strong&gt;证书&lt;/strong&gt; 类别中找到它，证书名称通常类似于 &lt;code&gt;iPhone Distribution&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;导出为 &lt;code&gt;.p12&lt;/code&gt; 文件&lt;/strong&gt;
+在钥匙串访问中，找到刚才导入的 &lt;code&gt;iPhone Distribution&lt;/code&gt; 证书。
+右键点击该证书，选择 &lt;strong&gt;“导出”&lt;/strong&gt; 选项。
+在弹出的保存对话框中，选择 &lt;strong&gt;个人信息交换（.p12）&lt;/strong&gt; 作为文件格式。
+选择一个合适的保存位置，并设置一个密码来保护这个 &lt;code&gt;.p12&lt;/code&gt; 文件。
+请务必记住这个密码，因为在后续打包过程中会用到。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;2-chuang-jian-miao-shu-wen-jian-provisioning-profile&quot;&gt;2. 创建描述文件（Provisioning Profile）&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#2-chuang-jian-miao-shu-wen-jian-provisioning-profile&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;登录苹果开发者官网&lt;/strong&gt;
+进入 &lt;a rel=&quot;external&quot; href=&quot;https://developer.apple.com&quot;&gt;Apple Developer&lt;/a&gt; 官网。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建新的描述文件&lt;/strong&gt;
+进入 &lt;strong&gt;Certificates, Identifiers &amp;amp; Profiles&lt;/strong&gt; 页面。
+在左侧导航栏中选择 &lt;strong&gt;Profiles&lt;/strong&gt;，然后点击右上角的 &lt;strong&gt;+&lt;/strong&gt; 号创建一个新的描述文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择 Distribution 类型&lt;/strong&gt;
+在新建描述文件页面，选择 &lt;strong&gt;Distribution&lt;/strong&gt; 类型，例如 &lt;strong&gt;App Store Connect&lt;/strong&gt;，然后点击 &lt;strong&gt;继续&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择 App ID&lt;/strong&gt;
+选择之前创建好的 &lt;strong&gt;App ID&lt;/strong&gt;，然后点击 &lt;strong&gt;下一步&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;完成描述文件创建&lt;/strong&gt;
+根据提示完成描述文件的创建，并下载该描述文件（文件扩展名为 &lt;code&gt;.mobileprovision&lt;/code&gt;）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;3-pei-zhi-hbuilder-jin-xing-da-bao&quot;&gt;3. 配置 HBuilder 进行打包&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#3-pei-zhi-hbuilder-jin-xing-da-bao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打开 &lt;strong&gt;HBuilderX&lt;/strong&gt; 项目，进入 &lt;strong&gt;发行 → 原生 App - 云打包&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 &lt;strong&gt;iOS 打包设置&lt;/strong&gt; 中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;证书类型选择 &lt;strong&gt;生产证书&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;上传刚申请的 &lt;code&gt;.p12&lt;/code&gt; 证书文件以及密码。&lt;/li&gt;
+&lt;li&gt;选择对应的 &lt;strong&gt;生产环境描述文件（.mobileprovision）&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确认其他配置（如 App ID、版本号等）正确后，开始打包。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;4-zhu-yi-shi-xiang&quot;&gt;4. 注意事项&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-zhu-yi-shi-xiang&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;开发证书&lt;/strong&gt;（iPhone Developer）仅用于测试，只能安装到添加了 UDID 的测试设备。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生产证书&lt;/strong&gt;（iPhone Distribution）用于 App Store 上架，打包后生成的 ipa 文件可通过 Transporter 提交审核。&lt;/li&gt;
+&lt;li&gt;确保证书和描述文件未过期，且与你的 App ID 匹配。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;完成以上步骤后，你就可以生成并提交 ipa 文件到 App Store 进行审核。&lt;/p&gt;
+&lt;p&gt;https://www.bilibili.com/video/BV1jk4y1S7HZ/?spm_id_from=333.1387.favlist.content.click&amp;amp;vd_source=0308c0d7b24cc0f488bdf0157f88f36a
+苹果开发者证书如何导出的？后面还需要导出描述文件，证书和描述文件是对应的。选择可靠的证书签名可以实现很多功能。&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>项目架构</title>
+        <published>2025-08-25T00:00:00+00:00</published>
+        <updated>2025-08-25T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/project-structure/"/>
+        <id>https://menzil.github.io/posts/project-structure/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/project-structure/">&lt;ol&gt;
+&lt;li&gt;代码规范（命名规范, 代码风格，命名风格规定好。驼峰，snake等）&lt;/li&gt;
+&lt;li&gt;框架规范 （使用那些技术，那些框架，crate 或者node module）&lt;/li&gt;
+&lt;li&gt;先实现基础框架，然后叠加扩展&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;ji-chu-kuang-jia-da-jian&quot;&gt;基础框架搭建：&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ji-chu-kuang-jia-da-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;我们首先把基础框架搭好，然后横向扩展，健壮稳步前进，再大的项目也先拆分好小的模块，然后一步步实现就行&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;公共模块实现：&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    1. 分类&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    2. 标签&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    3. 文章&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    4. 消息通知（短信，小程序，公众号，邮件，app内等）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    5. 付款：微信支付，公众号，app支付，支付宝支付。退款，分账，提现&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    6. 物流查询&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    7. 订单管理&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    8. 海报生成&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    9. 推广方案&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    10. 客服&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    11. 用户行为&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    12. 统计&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;api-xiang-mu&quot;&gt;api 项目：&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#api-xiang-mu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;资源访问类型：管理员，公开，自己，带token公开查看&lt;/li&gt;
+&lt;li&gt;返回类型，请求类型统一化&lt;/li&gt;
+&lt;li&gt;先计划，再实现&lt;/li&gt;
+&lt;li&gt;即使提交代码到git仓库，完整留痕&lt;/li&gt;
+&lt;li&gt;每加一个模块即使写API文档+代码测试&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>巩固rust</title>
+        <published>2024-11-25T00:00:00+00:00</published>
+        <updated>2024-11-25T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/rust-01/"/>
+        <id>https://menzil.github.io/posts/rust-01/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/rust-01/">&lt;p&gt;rust&lt;/p&gt;
+</content>
+        
+    </entry>
+</feed>

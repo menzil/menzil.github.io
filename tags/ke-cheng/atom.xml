@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 课程</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/ke-cheng/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-09-16T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/ke-cheng/atom.xml</id>
+    <entry xml:lang="en">
+        <title>IOS正式打包证书创建</title>
+        <published>2025-09-16T00:00:00+00:00</published>
+        <updated>2025-09-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/ios-develop/"/>
+        <id>https://menzil.github.io/posts/ios-develop/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/ios-develop/">&lt;h2 id=&quot;ru-he-jiang-ios-sheng-chan-zheng-shu-cer-zhuan-huan-wei-p12-wen-jian-bing-chuang-jian-miao-shu-wen-jian&quot;&gt;如何将 iOS 生产证书（.cer）转换为 .p12 文件并创建描述文件&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ru-he-jiang-ios-sheng-chan-zheng-shu-cer-zhuan-huan-wei-p12-wen-jian-bing-chuang-jian-miao-shu-wen-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;1-zhuan-huan-cer-wen-jian-wei-p12-wen-jian&quot;&gt;1. 转换 &lt;code&gt;.cer&lt;/code&gt; 文件为 &lt;code&gt;.p12&lt;/code&gt; 文件&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#1-zhuan-huan-cer-wen-jian-wei-p12-wen-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;打开钥匙串访问&lt;/strong&gt;
+在 Mac 电脑上，通过 “聚焦搜索”（通常是按下 &lt;code&gt;Command + 空格&lt;/code&gt;）输入 “钥匙串访问”，然后打开该应用程序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;导入 &lt;code&gt;.cer&lt;/code&gt; 证书&lt;/strong&gt;
+双击下载好的 &lt;code&gt;ios_distribution.cer&lt;/code&gt; 文件，系统会自动将其导入到钥匙串访问中。
+你可以在钥匙串访问的 &lt;strong&gt;证书&lt;/strong&gt; 类别中找到它，证书名称通常类似于 &lt;code&gt;iPhone Distribution&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;导出为 &lt;code&gt;.p12&lt;/code&gt; 文件&lt;/strong&gt;
+在钥匙串访问中，找到刚才导入的 &lt;code&gt;iPhone Distribution&lt;/code&gt; 证书。
+右键点击该证书，选择 &lt;strong&gt;“导出”&lt;/strong&gt; 选项。
+在弹出的保存对话框中，选择 &lt;strong&gt;个人信息交换（.p12）&lt;/strong&gt; 作为文件格式。
+选择一个合适的保存位置，并设置一个密码来保护这个 &lt;code&gt;.p12&lt;/code&gt; 文件。
+请务必记住这个密码，因为在后续打包过程中会用到。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;2-chuang-jian-miao-shu-wen-jian-provisioning-profile&quot;&gt;2. 创建描述文件（Provisioning Profile）&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#2-chuang-jian-miao-shu-wen-jian-provisioning-profile&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;登录苹果开发者官网&lt;/strong&gt;
+进入 &lt;a rel=&quot;external&quot; href=&quot;https://developer.apple.com&quot;&gt;Apple Developer&lt;/a&gt; 官网。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建新的描述文件&lt;/strong&gt;
+进入 &lt;strong&gt;Certificates, Identifiers &amp;amp; Profiles&lt;/strong&gt; 页面。
+在左侧导航栏中选择 &lt;strong&gt;Profiles&lt;/strong&gt;，然后点击右上角的 &lt;strong&gt;+&lt;/strong&gt; 号创建一个新的描述文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择 Distribution 类型&lt;/strong&gt;
+在新建描述文件页面，选择 &lt;strong&gt;Distribution&lt;/strong&gt; 类型，例如 &lt;strong&gt;App Store Connect&lt;/strong&gt;，然后点击 &lt;strong&gt;继续&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择 App ID&lt;/strong&gt;
+选择之前创建好的 &lt;strong&gt;App ID&lt;/strong&gt;，然后点击 &lt;strong&gt;下一步&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;完成描述文件创建&lt;/strong&gt;
+根据提示完成描述文件的创建，并下载该描述文件（文件扩展名为 &lt;code&gt;.mobileprovision&lt;/code&gt;）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;3-pei-zhi-hbuilder-jin-xing-da-bao&quot;&gt;3. 配置 HBuilder 进行打包&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#3-pei-zhi-hbuilder-jin-xing-da-bao&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打开 &lt;strong&gt;HBuilderX&lt;/strong&gt; 项目，进入 &lt;strong&gt;发行 → 原生 App - 云打包&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 &lt;strong&gt;iOS 打包设置&lt;/strong&gt; 中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;证书类型选择 &lt;strong&gt;生产证书&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;上传刚申请的 &lt;code&gt;.p12&lt;/code&gt; 证书文件以及密码。&lt;/li&gt;
+&lt;li&gt;选择对应的 &lt;strong&gt;生产环境描述文件（.mobileprovision）&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确认其他配置（如 App ID、版本号等）正确后，开始打包。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;4-zhu-yi-shi-xiang&quot;&gt;4. 注意事项&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#4-zhu-yi-shi-xiang&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;开发证书&lt;/strong&gt;（iPhone Developer）仅用于测试，只能安装到添加了 UDID 的测试设备。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生产证书&lt;/strong&gt;（iPhone Distribution）用于 App Store 上架，打包后生成的 ipa 文件可通过 Transporter 提交审核。&lt;/li&gt;
+&lt;li&gt;确保证书和描述文件未过期，且与你的 App ID 匹配。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;完成以上步骤后，你就可以生成并提交 ipa 文件到 App Store 进行审核。&lt;/p&gt;
+&lt;p&gt;https://www.bilibili.com/video/BV1jk4y1S7HZ/?spm_id_from=333.1387.favlist.content.click&amp;amp;vd_source=0308c0d7b24cc0f488bdf0157f88f36a
+苹果开发者证书如何导出的？后面还需要导出描述文件，证书和描述文件是对应的。选择可靠的证书签名可以实现很多功能。&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>项目架构</title>
+        <published>2025-08-25T00:00:00+00:00</published>
+        <updated>2025-08-25T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/project-structure/"/>
+        <id>https://menzil.github.io/posts/project-structure/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/project-structure/">&lt;ol&gt;
+&lt;li&gt;代码规范（命名规范, 代码风格，命名风格规定好。驼峰，snake等）&lt;/li&gt;
+&lt;li&gt;框架规范 （使用那些技术，那些框架，crate 或者node module）&lt;/li&gt;
+&lt;li&gt;先实现基础框架，然后叠加扩展&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;ji-chu-kuang-jia-da-jian&quot;&gt;基础框架搭建：&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#ji-chu-kuang-jia-da-jian&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #CDD6F4; background-color: #1E1E2E;&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;我们首先把基础框架搭好，然后横向扩展，健壮稳步前进，再大的项目也先拆分好小的模块，然后一步步实现就行&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;公共模块实现：&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    1. 分类&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    2. 标签&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    3. 文章&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    4. 消息通知（短信，小程序，公众号，邮件，app内等）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    5. 付款：微信支付，公众号，app支付，支付宝支付。退款，分账，提现&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    6. 物流查询&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    7. 订单管理&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    8. 海报生成&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    9. 推广方案&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    10. 客服&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    11. 用户行为&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    12. 统计&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;api-xiang-mu&quot;&gt;api 项目：&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#api-xiang-mu&quot; hidden=&quot;&quot;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;资源访问类型：管理员，公开，自己，带token公开查看&lt;/li&gt;
+&lt;li&gt;返回类型，请求类型统一化&lt;/li&gt;
+&lt;li&gt;先计划，再实现&lt;/li&gt;
+&lt;li&gt;即使提交代码到git仓库，完整留痕&lt;/li&gt;
+&lt;li&gt;每加一个模块即使写API文档+代码测试&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>巩固rust</title>
+        <published>2024-11-25T00:00:00+00:00</published>
+        <updated>2024-11-25T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/rust-01/"/>
+        <id>https://menzil.github.io/posts/rust-01/</id>
+        
+        <content type="html" xml:base="https://menzil.github.io/posts/rust-01/">&lt;p&gt;rust&lt;/p&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,40 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><title>Velopack: 桌面应用打包分发框架 · orhan.cn 肉扎吉·亚森的博客</title><meta content=开发、工具与真实项目的长期记录 name=description><meta content="index, follow" name=robots><link href=https://menzil.github.io/posts/velopack/ rel=canonical><meta content="Velopack: 桌面应用打包分发框架 · orhan.cn 肉扎吉·亚森的博客" property=og:title><meta content=开发、工具与真实项目的长期记录 property=og:description><meta content=article property=og:type><meta content=https://menzil.github.io/posts/velopack/ property=og:url><meta content="orhan.cn 肉扎吉·亚森的博客" property=og:site_name><meta content=zh_CN property=og:locale><meta content=肉扎吉·亚森 property=article:author><meta content=2025-05-13 property=article:published_time><meta content=summary name=twitter:card><meta content="Velopack: 桌面应用打包分发框架 · orhan.cn 肉扎吉·亚森的博客" name=twitter:title><meta content=开发、工具与真实项目的长期记录 name=twitter:description><link title="orhan.cn 肉扎吉·亚森的博客" href=https://menzil.github.io/atom.xml rel=alternate type=application/atom+xml><script type=application/ld+json>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://menzil.github.io/#website",
+      "url": "https://menzil.github.io/",
+      "name": "orhan.cn 肉扎吉·亚森的博客",
+      "description": "开发、工具与真实项目的长期记录",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://menzil.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://menzil.github.io/#person",
+      "name": "肉扎吉·亚森",
+      "url": "https://menzil.github.io/about/",
+      "description": "全栈开发者肉扎吉·亚森。把中小企业里靠表格和群聊硬撑的流程，收成能上线、能追查的业务系统；本站记录开发、工具与真实项目复盘。",
+      "sameAs": ["https://github.com/menzil", "https://crates.io/users/menzil"]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://menzil.github.io/posts/velopack/#article",
+      "headline": "Velopack: 桌面应用打包分发框架",
+      "description": "开发、工具与真实项目的长期记录",
+      "datePublished": "2025-05-13",
+      
+      "inLanguage": "zh-CN",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://menzil.github.io/posts/velopack/"
+      },
+      "author": { "@id": "https://menzil.github.io/#person" },
+      "publisher": { "@id": "https://menzil.github.io/#person" },
+      "isPartOf": { "@id": "https://menzil.github.io/#website" }
+    }
+  ]
+}
+</script><link href=https://fonts.googleapis.com rel=preconnect><link crossorigin href=https://fonts.gstatic.com rel=preconnect><script>if (localStorage.getItem("zulqer-theme") === "light") document.documentElement.dataset.theme = "light";</script><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel=stylesheet><link href=https://menzil.github.io/zulqer/css/theme.css rel=stylesheet><link href=https://menzil.github.io/favicon.ico rel=icon type=image/x-icon><script data-entity=my-blog src=https://a.orhan.cn/script.js type=module></script><body class=post-page data-close-image-label=关闭图片 data-copied-label=已复制 data-copy-label=复制代码 data-dark-theme-label=切换到夜间主题 data-light-theme-label=切换到白天主题 data-next-image-label=下一张图片 data-previous-image-label=上一张图片><header class=site-header data-site-header><div class="shell nav-shell"><a aria-label="orhan.cn 肉扎吉·亚森的博客" class=brand href=https://menzil.github.io/> <span aria-hidden=true class=brand-mark>Z</span> <span class=brand-name>orhan.cn 肉扎吉·亚森的博客</span> </a><div class=nav-actions><nav aria-label=主导航 class=site-nav id=site-nav><a class=is-active href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav><a aria-label=搜索 class=nav-search href=https://menzil.github.io/search/ title=搜索> <svg viewbox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=6.5></circle><path d="m16 16 4.2 4.2"></path></svg> </a><button aria-label=切换到白天主题 class=theme-toggle data-theme-toggle title=切换到白天主题 type=button><svg class="theme-icon theme-icon-sun" viewbox="0 0 24 24" aria-hidden=true><circle cx=12 cy=12 r=4></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg> <svg class="theme-icon theme-icon-moon" viewbox="0 0 24 24" aria-hidden=true><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><button aria-controls=site-nav aria-expanded=false aria-label=打开菜单 class=menu-toggle type=button><span></span><span></span><span></span></button></div></div></header><main><div class=reading-progress-track><div class=reading-progress data-reading-progress></div></div><article class=post data-article><div class=post-spacer></div><div class=post-shell><header class=post-header><a class=post-back href=https://menzil.github.io/>← 返回</a><div class=post-info><time datetime=2025-05-13>2025-05-13</time><span aria-hidden=true>·</span><span>1 分钟</span></div><h1>Velopack: 桌面应用打包分发框架</h1></header><div class=post-divider></div><div class=post-content><p>做桌面应用的，还在和打包工具较劲？试试 <a href=https://velopack.io rel=external>Velopack</a>。<p>用 Rust 写的，性能比 Squirrel 快很多。支持 Windows/macOS/Linux，一条命令生成安装包+增量更新包+便携版：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#89b4fa;font-style:italic>vpk</span><span style=color:#a6e3a1> pack --packId MyApp --packVersion</span><span style=color:#fab387> 1.0.0</span><span style=color:#a6e3a1> --packDir publish --mainExe MyApp.exe</span></span></code></pre><p>增量更新是亮点——500MB 的应用改几行代码，更新包可能只有几百 KB。用户不需要每次下载完整包。<p>10 行代码接入自动更新 SDK（C#、C++、JS、Rust、Python 都支持），自动处理更新检查+下载+安装+重启。<p>从 Squirrel 迁移过来很顺滑，自动检测旧安装结构，已有用户无感知切换。<p>GitHub: https://github.com/velopack/velopack</div><footer class=post-footer><nav aria-label=文章导航 class=post-nav><a href=https://menzil.github.io/posts/project-structure/><span>上一篇</span><strong>项目架构</strong></a><a class=post-nav-next href=https://menzil.github.io/posts/rust-01/><span>下一篇</span><strong>巩固rust</strong></a></nav></footer></div></article></main><footer class=site-footer><div class="shell footer-inner"><span>© 2026 肉扎吉·亚森 · <a class=theme-link href=https://github.com/menzil/zulqer>Zulqer</a></span><nav aria-label=页脚导航 class=footer-links><a href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav></div></footer><script src=https://menzil.github.io/elasticlunr.min.js></script><script defer src=https://menzil.github.io/zulqer/js/theme.js></script><script>(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="h_uFlaQ5PNS1iSk0xi1bd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();</script>

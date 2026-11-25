@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - builder</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/builder/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-06-10T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/builder/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Rust derive_builder crate：用宏生成 Builder 模式</title>
+        <published>2026-06-10T00:00:00+00:00</published>
+        <updated>2026-06-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/rust-derive-builder-crate/"/>
+        <id>https://menzil.github.io/posts/rust-derive-builder-crate/</id>
+        
+        <summary type="html">&lt;p&gt;如果你在找 &lt;code&gt;drive_builder&lt;/code&gt;，crates.io 上目前没有这个 Rust crate。更常见、也更符合这个名字含义的 crate 是 &lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/derive_builder&quot;&gt;&lt;code&gt;derive_builder&lt;/code&gt;&lt;/a&gt;：它通过 &lt;code&gt;#[derive(Builder)]&lt;/code&gt; 为结构体自动生成 Builder 模式代码，减少大量重复 setter、默认值和校验逻辑。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

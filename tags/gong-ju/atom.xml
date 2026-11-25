@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 工具</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/gong-ju/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-07-30T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/gong-ju/atom.xml</id>
+    <entry xml:lang="en">
+        <title>humar：把 AI 翻译沉淀为可复习词库的 Rust CLI</title>
+        <published>2026-07-30T00:00:00+00:00</published>
+        <updated>2026-07-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/humar-cli-translation-memory/"/>
+        <id>https://menzil.github.io/posts/humar-cli-translation-memory/</id>
+        
+        <summary type="html">&lt;p&gt;日常写 UI 文案、需求说明、Issue 或技术文档时，真正麻烦的往往不是查到一个单词，而是确认一句话在当前场景里应该怎么说。例如“箭头方向需要切换”可能是图标方向要反转，也可能是展开和收起时箭头要随状态改变。直译不一定错，但很容易不自然。&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https://crates.io/crates/humar&quot;&gt;humar&lt;/a&gt; 是一个用 Rust 写的命令行翻译记忆工具。它面向中英短语工作流：调用兼容 Responses API 的模型生成场景化翻译卡片，把成功结果保存到本地词库，之后可以检索、回看和复习，而不是每次都从零开始问模型。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

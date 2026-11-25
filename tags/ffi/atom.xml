@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - FFI</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/ffi/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-05-12T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/ffi/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Bolt FFI：让 Rust 成为跨平台业务逻辑的核心</title>
+        <published>2026-05-12T00:00:00+00:00</published>
+        <updated>2026-05-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/boltffi-intro/"/>
+        <id>https://menzil.github.io/posts/boltffi-intro/</id>
+        
+        <summary type="html">&lt;p&gt;最近关注到 &lt;a rel=&quot;external&quot; href=&quot;https://www.boltffi.dev/&quot;&gt;Bolt FFI&lt;/a&gt;，这是一个能把 Rust 库自动导出为多语言绑定的工具。它的定位很清晰：把业务逻辑集中在 Rust 中，一次编写，多端复用。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

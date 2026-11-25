@@ -1,0 +1,131 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><title>Tmux 使用指南 · orhan.cn 肉扎吉·亚森的博客</title><meta content="tmux 终端复用器完整使用指南" name=description><meta content="index, follow" name=robots><link href=https://menzil.github.io/posts/tmux-guide/ rel=canonical><meta content="Tmux 使用指南 · orhan.cn 肉扎吉·亚森的博客" property=og:title><meta content="tmux 终端复用器完整使用指南" property=og:description><meta content=article property=og:type><meta content=https://menzil.github.io/posts/tmux-guide/ property=og:url><meta content="orhan.cn 肉扎吉·亚森的博客" property=og:site_name><meta content=zh_CN property=og:locale><meta content=肉扎吉·亚森 property=article:author><meta content=2026-03-06 property=article:published_time><meta content=tmux property=article:tag><meta content=terminal property=article:tag><meta content=linux property=article:tag><meta content=summary name=twitter:card><meta content="Tmux 使用指南 · orhan.cn 肉扎吉·亚森的博客" name=twitter:title><meta content="tmux 终端复用器完整使用指南" name=twitter:description><link title="orhan.cn 肉扎吉·亚森的博客" href=https://menzil.github.io/atom.xml rel=alternate type=application/atom+xml><script type=application/ld+json>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://menzil.github.io/#website",
+      "url": "https://menzil.github.io/",
+      "name": "orhan.cn 肉扎吉·亚森的博客",
+      "description": "tmux 终端复用器完整使用指南",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://menzil.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://menzil.github.io/#person",
+      "name": "肉扎吉·亚森",
+      "url": "https://menzil.github.io/about/",
+      "description": "全栈开发者肉扎吉·亚森。把中小企业里靠表格和群聊硬撑的流程，收成能上线、能追查的业务系统；本站记录开发、工具与真实项目复盘。",
+      "sameAs": ["https://github.com/menzil", "https://crates.io/users/menzil"]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://menzil.github.io/posts/tmux-guide/#article",
+      "headline": "Tmux 使用指南",
+      "description": "tmux 终端复用器完整使用指南",
+      "datePublished": "2026-03-06",
+      
+      "inLanguage": "zh-CN",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://menzil.github.io/posts/tmux-guide/"
+      },
+      "author": { "@id": "https://menzil.github.io/#person" },
+      "publisher": { "@id": "https://menzil.github.io/#person" },
+      "isPartOf": { "@id": "https://menzil.github.io/#website" },
+      "keywords": ["tmux", "terminal", "linux"]
+    }
+  ]
+}
+</script><link href=https://fonts.googleapis.com rel=preconnect><link crossorigin href=https://fonts.gstatic.com rel=preconnect><script>if (localStorage.getItem("zulqer-theme") === "light") document.documentElement.dataset.theme = "light";</script><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel=stylesheet><link href=https://menzil.github.io/zulqer/css/theme.css rel=stylesheet><link href=https://menzil.github.io/favicon.ico rel=icon type=image/x-icon><script data-entity=my-blog src=https://a.orhan.cn/script.js type=module></script><body class=post-page data-close-image-label=关闭图片 data-copied-label=已复制 data-copy-label=复制代码 data-dark-theme-label=切换到夜间主题 data-light-theme-label=切换到白天主题 data-next-image-label=下一张图片 data-previous-image-label=上一张图片><header class=site-header data-site-header><div class="shell nav-shell"><a aria-label="orhan.cn 肉扎吉·亚森的博客" class=brand href=https://menzil.github.io/> <span aria-hidden=true class=brand-mark>Z</span> <span class=brand-name>orhan.cn 肉扎吉·亚森的博客</span> </a><div class=nav-actions><nav aria-label=主导航 class=site-nav id=site-nav><a class=is-active href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav><a aria-label=搜索 class=nav-search href=https://menzil.github.io/search/ title=搜索> <svg viewbox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=6.5></circle><path d="m16 16 4.2 4.2"></path></svg> </a><button aria-label=切换到白天主题 class=theme-toggle data-theme-toggle title=切换到白天主题 type=button><svg class="theme-icon theme-icon-sun" viewbox="0 0 24 24" aria-hidden=true><circle cx=12 cy=12 r=4></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg> <svg class="theme-icon theme-icon-moon" viewbox="0 0 24 24" aria-hidden=true><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><button aria-controls=site-nav aria-expanded=false aria-label=打开菜单 class=menu-toggle type=button><span></span><span></span><span></span></button></div></div></header><main><div class=reading-progress-track><div class=reading-progress data-reading-progress></div></div><article class=post data-article><div class=post-spacer></div><div class=post-shell><header class=post-header><a class=post-back href=https://menzil.github.io/>← 返回</a><div class=post-info><a class="chip chip-gold" href=https://menzil.github.io/tags/tmux/>tmux</a><time datetime=2026-03-06>2026-03-06</time><span aria-hidden=true>·</span><span>5 分钟</span></div><h1>Tmux 使用指南</h1><p class=post-subtitle>tmux 终端复用器完整使用指南</header><div class=post-divider></div><div class=post-content><h2 id=shen-me-shi-tmux>什么是 Tmux<a aria-hidden=true class=anchor hidden href=#shen-me-shi-tmux>#</a></h2><p>Tmux (Terminal Multiplexer) 是一个终端复用器，允许你在一个终端窗口中运行多个会话，并且可以在后台保持运行。即使关闭 SSH 连接或终端窗口，tmux 会话也会继续运行。<h2 id=ji-ben-cao-zuo>基本操作<a aria-hidden=true class=anchor hidden href=#ji-ben-cao-zuo>#</a></h2><h3 id=hui-hua-guan-li>会话管理<a aria-hidden=true class=anchor hidden href=#hui-hua-guan-li>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 创建新会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 创建命名会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> new -s myproject</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 列出所有会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> ls</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 连接到最近的会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> attach</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 连接到指定会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> attach -t myproject</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 杀死指定会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> kill-session -t myproject</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 杀死所有会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> kill-server</span></span></code></pre><h3 id=fen-chi-he-zhong-lian>分离和重连<a aria-hidden=true class=anchor hidden href=#fen-chi-he-zhong-lian>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 在 tmux 会话中按快捷键分离</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#a6e3a1> d</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 或使用命令</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> detach</span></span></code></pre><h2 id=chang-yong-kuai-jie-jian>常用快捷键<a aria-hidden=true class=anchor hidden href=#chang-yong-kuai-jie-jian>#</a></h2><p>所有 tmux 快捷键都以 <code>Ctrl+b</code> 作为前缀（按下后松开，再按功能键）。<h3 id=qian-zhui-jian>前缀键<a aria-hidden=true class=anchor hidden href=#qian-zhui-jian>#</a></h3><table><thead><tr><th>功能<th>默认快捷键<th>优化配置<th>说明<tbody><tr><td>主前缀键<td><code>Ctrl+b</code><td><code>Ctrl+b</code><td>保持默认<tr><td>次前缀键<td>无<td><code>Ctrl+b</code><td>GNU-Screen 兼容</table><h3 id=hui-hua-guan-li-1>会话管理<a aria-hidden=true class=anchor hidden href=#hui-hua-guan-li-1>#</a></h3><table><thead><tr><th>功能<th>默认快捷键<th>优化配置<th>说明<tbody><tr><td>分离会话<td><code>prefix d</code><td><code>prefix d</code><td>保持默认<tr><td>列出会话<td><code>prefix s</code><td><code>prefix s</code><td>保持默认<tr><td>重命名会话<td><code>prefix $</code><td><code>prefix $</code><td>保持默认<tr><td>新建会话<td><code>prefix :new</code><td><code>prefix Ctrl+c</code><td>更快捷<tr><td>查找会话<td><code>prefix s</code><td><code>prefix Ctrl+f</code><td>命令提示查找<tr><td>切换上一会话<td><code>prefix L</code><td><code>prefix Shift+Tab</code><td>更直观</table><h3 id=chuang-kou-guan-li>窗口管理<a aria-hidden=true class=anchor hidden href=#chuang-kou-guan-li>#</a></h3><table><thead><tr><th>功能<th>默认快捷键<th>优化配置<th>说明<tbody><tr><td>创建窗口<td><code>prefix c</code><td><code>prefix c</code><td>保持默认<tr><td>重命名窗口<td><code>prefix ,</code><td><code>prefix ,</code><td>保持默认<tr><td>列出窗口<td><code>prefix w</code><td><code>prefix w</code><td>保持默认<tr><td>关闭窗口<td><code>prefix &</code><td><code>prefix &</code><td>保持默认<tr><td>切换窗口<td><code>prefix 0-9</code><td><code>prefix 0-9</code><td>保持默认<tr><td>下一个窗口<td><code>prefix n</code><td><code>prefix Ctrl+l</code><td>Vim 风格<tr><td>上一个窗口<td><code>prefix p</code><td><code>prefix Ctrl+h</code><td>Vim 风格<tr><td>最后活动窗口<td><code>prefix l</code><td><code>prefix Tab</code><td>更快捷</table><h3 id=mian-ban-cao-zuo>面板操作<a aria-hidden=true class=anchor hidden href=#mian-ban-cao-zuo>#</a></h3><table><thead><tr><th>功能<th>默认快捷键<th>优化配置<th>说明<tbody><tr><td>垂直分割<td><code>prefix %</code><td><code>prefix _</code><td>更直观<tr><td>水平分割<td><code>prefix "</code><td><code>prefix -</code><td>更直观<tr><td>关闭面板<td><code>prefix x</code><td><code>prefix x</code><td>保持默认<tr><td>切换面板<td><code>prefix o</code><td><code>prefix o</code><td>保持默认<tr><td>最大化面板<td><code>prefix z</code><td><code>prefix +</code><td>自定义脚本<tr><td>向左移动<td><code>prefix ←</code><td><code>prefix h</code><td>Vim 风格<tr><td>向下移动<td><code>prefix ↓</code><td><code>prefix j</code><td>Vim 风格<tr><td>向上移动<td><code>prefix ↑</code><td><code>prefix k</code><td>Vim 风格<tr><td>向右移动<td><code>prefix →</code><td><code>prefix l</code><td>Vim 风格<tr><td>向左调整<td><code>prefix Ctrl+←</code><td><code>prefix H</code><td>Vim 大写<tr><td>向下调整<td><code>prefix Ctrl+↓</code><td><code>prefix J</code><td>Vim 大写<tr><td>向上调整<td><code>prefix Ctrl+↑</code><td><code>prefix K</code><td>Vim 大写<tr><td>向右调整<td><code>prefix Ctrl+→</code><td><code>prefix L</code><td>Vim 大写<tr><td>交换面板(下)<td><code>prefix {</code><td><code>prefix ></code><td>更直观<tr><td>交换面板(上)<td><code>prefix }</code><td><code>prefix &lt;</code><td>更直观</table><h3 id=fu-zhi-mo-shi>复制模式<a aria-hidden=true class=anchor hidden href=#fu-zhi-mo-shi>#</a></h3><table><thead><tr><th>功能<th>默认快捷键<th>优化配置<th>说明<tbody><tr><td>进入复制模式<td><code>prefix [</code><td><code>prefix Enter</code><td>更快捷<tr><td>开始选择<td><code>Space</code><td><code>v</code><td>Vi 模式<tr><td>矩形选择<td>无<td><code>Ctrl+v</code><td>Vi 模式<tr><td>复制选择<td><code>Enter</code><td><code>y</code><td>Vi 模式<tr><td>取消<td><code>q</code><td><code>Escape</code><td>Vi 模式<tr><td>行首<td><code>0</code><td><code>H</code><td>Vi 模式<tr><td>行尾<td><code>$</code><td><code>L</code><td>Vi 模式<tr><td>粘贴<td><code>prefix ]</code><td><code>prefix p</code><td>更直观</table><h3 id=huan-chong-qu-guan-li>缓冲区管理<a aria-hidden=true class=anchor hidden href=#huan-chong-qu-guan-li>#</a></h3><table><thead><tr><th>功能<th>默认快捷键<th>优化配置<th>说明<tbody><tr><td>列出缓冲区<td><code>prefix #</code><td><code>prefix b</code><td>更直观<tr><td>粘贴缓冲区<td><code>prefix ]</code><td><code>prefix p</code><td>更直观<tr><td>选择缓冲区<td><code>prefix =</code><td><code>prefix P</code><td>更直观</table><h3 id=qi-ta-cao-zuo>其他操作<a aria-hidden=true class=anchor hidden href=#qi-ta-cao-zuo>#</a></h3><table><thead><tr><th>功能<th>默认快捷键<th>优化配置<th>说明<tbody><tr><td>显示快捷键<td><code>prefix ?</code><td><code>prefix ?</code><td>保持默认<tr><td>显示时钟<td><code>prefix t</code><td><code>prefix t</code><td>保持默认<tr><td>重载配置<td><code>prefix :source-file</code><td><code>prefix r</code><td>快速重载<tr><td>编辑配置<td>无<td><code>prefix e</code><td>打开编辑器<tr><td>清屏+历史<td><code>Ctrl+l</code><td><code>Ctrl+l</code><td>增强清屏<tr><td>鼠标切换<td>无<td><code>prefix m</code><td>切换鼠标模式<tr><td>URL 查看<td>无<td><code>prefix U</code><td>urlview 集成<tr><td>文件选择器<td>无<td><code>prefix F</code><td>fpp 集成</table><blockquote><p><strong>配置说明</strong>：优化配置基于 <a href=https://github.com/gpakosz/.tmux rel=external>gpakosz/.tmux</a>，采用 Vim 风格导航，提供更直观的快捷键和增强功能。</blockquote><h2 id=chang-yong-chang-jing>常用场景<a aria-hidden=true class=anchor hidden href=#chang-yong-chang-jing>#</a></h2><h3 id=1-yun-xing-chang-qi-fu-wu>1. 运行长期服务<a aria-hidden=true class=anchor hidden href=#1-yun-xing-chang-qi-fu-wu>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 创建会话并启动开发服务器</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> new -s dev</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>npm</span><span style=color:#a6e3a1> run dev</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 按 Ctrl+b d 分离会话</span></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 关闭终端窗口，服务继续运行</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 稍后重连</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> attach -t dev</span></span></code></pre><h3 id=2-ssh-yuan-cheng-gong-zuo>2. SSH 远程工作<a aria-hidden=true class=anchor hidden href=#2-ssh-yuan-cheng-gong-zuo>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># SSH 连接到服务器</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>ssh</span><span style=color:#a6e3a1> user@server</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 创建或连接到 tmux 会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> attach</span><span style=color:#94e2d5> ||</span><span style=color:#89b4fa;font-style:italic> tmux</span><span style=color:#a6e3a1> new -s work</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 即使 SSH 断开，工作也不会丢失</span></span></code></pre><h3 id=3-duo-ren-wu-bing-xing>3. 多任务并行<a aria-hidden=true class=anchor hidden href=#3-duo-ren-wu-bing-xing>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 创建会话</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> new -s multi</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 创建多个窗口</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#a6e3a1> c</span><span style=color:#9399b2;font-style:italic>  # 窗口1: 编辑器</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#a6e3a1> c</span><span style=color:#9399b2;font-style:italic>  # 窗口2: 服务器</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#a6e3a1> c</span><span style=color:#9399b2;font-style:italic>  # 窗口3: 日志监控</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 在窗口间快速切换</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#fab387> 0</span><span style=color:#9399b2;font-style:italic>  # 切换到窗口0</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#fab387> 1</span><span style=color:#9399b2;font-style:italic>  # 切换到窗口1</span></span></code></pre><h2 id=pei-zhi-wen-jian>配置文件<a aria-hidden=true class=anchor hidden href=#pei-zhi-wen-jian>#</a></h2><p>创建 <code>~/.tmux.conf</code> 自定义配置：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 修改前缀键为 Ctrl+a（可选）</span></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># set -g prefix C-a</span></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># unbind C-b</span></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># bind C-a send-prefix</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 启用鼠标支持</span></span>
+<span class=giallo-l><span style=color:#f38ba8;font-style:italic>set</span><span style=color:#a6e3a1> -g mouse on</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 设置窗口和面板索引从 1 开始</span></span>
+<span class=giallo-l><span style=color:#f38ba8;font-style:italic>set</span><span style=color:#a6e3a1> -g base-index</span><span style=color:#fab387> 1</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>setw</span><span style=color:#a6e3a1> -g pane-base-index</span><span style=color:#fab387> 1</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 增加历史记录行数</span></span>
+<span class=giallo-l><span style=color:#f38ba8;font-style:italic>set</span><span style=color:#a6e3a1> -g history-limit</span><span style=color:#fab387> 10000</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 快速重载配置</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>bind</span><span style=color:#a6e3a1> r source-file ~/.tmux.conf</span><span style=color:#f5c2e7> \;</span><span style=color:#a6e3a1> display "Config reloaded!"</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 更直观的分割快捷键</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>bind</span><span style=color:#94e2d5> |</span><span style=color:#89b4fa;font-style:italic> split-window</span><span style=color:#a6e3a1> -h</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>bind</span><span style=color:#a6e3a1> - split-window -v</span></span></code></pre><p>重载配置：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#89b4fa;font-style:italic>tmux</span><span style=color:#a6e3a1> source-file ~/.tmux.conf</span></span></code></pre><h2 id=jin-jie-ji-qiao>进阶技巧<a aria-hidden=true class=anchor hidden href=#jin-jie-ji-qiao>#</a></h2><h3 id=fu-zhi-mo-shi-1>复制模式<a aria-hidden=true class=anchor hidden href=#fu-zhi-mo-shi-1>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 进入复制模式</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span> [</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 使用 vi 风格导航</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>h,</span><span style=color:#a6e3a1> j, k, l</span><span style=color:#9399b2;font-style:italic>  # 移动光标</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Space</span><span style=color:#9399b2;font-style:italic>       # 开始选择</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Enter</span><span style=color:#9399b2;font-style:italic>       # 复制选中内容</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>q</span><span style=color:#9399b2;font-style:italic>           # 退出复制模式</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 粘贴</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#a6e3a1> ]</span></span></code></pre><h3 id=tong-bu-mian-ban-shu-ru>同步面板输入<a aria-hidden=true class=anchor hidden href=#tong-bu-mian-ban-shu-ru>#</a></h3><pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 在命令模式中启用</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>Ctrl+b</span><span style=color:#a6e3a1> :</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>setw</span><span style=color:#a6e3a1> synchronize-panes on</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 关闭</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>setw</span><span style=color:#a6e3a1> synchronize-panes off</span></span></code></pre><h3 id=bao-cun-hui-hua-bu-ju>保存会话布局<a aria-hidden=true class=anchor hidden href=#bao-cun-hui-hua-bu-ju>#</a></h3><p>使用 tmux-resurrect 插件可以保存和恢复会话：<pre class=giallo style=color:#cdd6f4;background-color:#1e1e2e><code data-lang=shellscript><span class=giallo-l><span style=color:#9399b2;font-style:italic># 安装 TPM (Tmux Plugin Manager)</span></span>
+<span class=giallo-l><span style=color:#89b4fa;font-style:italic>git</span><span style=color:#a6e3a1> clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 在 ~/.tmux.conf 中添加</span></span>
+<span class=giallo-l><span style=color:#f38ba8;font-style:italic>set</span><span style=color:#a6e3a1> -g @plugin 'tmux-plugins/tpm'</span></span>
+<span class=giallo-l><span style=color:#f38ba8;font-style:italic>set</span><span style=color:#a6e3a1> -g @plugin 'tmux-plugins/tmux-resurrect'</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># 重载配置并安装插件</span></span>
+<span class=giallo-l><span style=color:#9399b2;font-style:italic># Ctrl+b I (大写 I)</span></span></code></pre><h2 id=zong-jie>总结<a aria-hidden=true class=anchor hidden href=#zong-jie>#</a></h2><p>Tmux 的核心优势：<ul><li>会话持久化：关闭终端不影响运行<li>多窗口管理：一个终端运行多个任务<li>面板分割：同时查看多个输出<li>远程工作：SSH 断开后可恢复</ul><p>记住最重要的三个命令：<ol><li><code>tmux new -s name</code> - 创建会话<li><code>Ctrl+b d</code> - 分离会话<li><code>tmux attach -t name</code> - 重连会话</ol></div><footer class=post-footer><div class=post-tags><a href=https://menzil.github.io/tags/tmux/>tmux</a><a href=https://menzil.github.io/tags/terminal/>terminal</a><a href=https://menzil.github.io/tags/linux/>linux</a></div><nav aria-label=文章导航 class=post-nav><a href=https://menzil.github.io/posts/git-reset-branch-to-previous-commit/><span>上一篇</span><strong>Git 分支重置到之前的提交</strong></a><a class=post-nav-next href=https://menzil.github.io/posts/free-time/><span>下一篇</span><strong>自由时间</strong></a></nav></footer></div></article></main><footer class=site-footer><div class="shell footer-inner"><span>© 2026 肉扎吉·亚森 · <a class=theme-link href=https://github.com/menzil/zulqer>Zulqer</a></span><nav aria-label=页脚导航 class=footer-links><a href=https://menzil.github.io/>文章</a><a href=https://menzil.github.io/archive/>归档</a><a href=https://menzil.github.io/about/>关于</a></nav></div></footer><script src=https://menzil.github.io/elasticlunr.min.js></script><script defer src=https://menzil.github.io/zulqer/js/theme.js></script><script>(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="h_uFlaQ5PNS1iSk0xi1bd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();</script>

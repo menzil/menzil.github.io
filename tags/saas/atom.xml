@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - SaaS</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/saas/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-05-20T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/saas/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Smplrspace 与 Archilogic 对比：从数字平面图到空间数据系统</title>
+        <published>2026-05-20T00:00:00+00:00</published>
+        <updated>2026-05-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/smplrspace-vs-archilogic/"/>
+        <id>https://menzil.github.io/posts/smplrspace-vs-archilogic/</id>
+        
+        <summary type="html">&lt;p&gt;最近在看空间数据、楼宇数字孪生和室内地图相关产品时，两个名字经常会出现：&lt;a rel=&quot;external&quot; href=&quot;https://www.smplrspace.com/&quot;&gt;Smplrspace&lt;/a&gt; 和 &lt;a rel=&quot;external&quot; href=&quot;https://www.archilogic.com/&quot;&gt;Archilogic&lt;/a&gt;。它们都能把静态平面图变成可交互的数字空间，也都提供 SDK/API 给软件系统集成使用，但两者的重心并不一样。&lt;/p&gt;
+&lt;p&gt;一句话概括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Smplrspace&lt;/strong&gt; 更像一个面向产品集成的数字平面图与 2D/3D 可视化平台。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Archilogic&lt;/strong&gt; 更像一个面向企业资产组合的空间数据系统，也就是把建筑空间变成可查询、可版本化、可集成的系统记录。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果你的目标只是“把楼层图放进应用里，并在上面展示传感器、工单、房间、设备等数据”，Smplrspace 会更轻、更直接。如果你的目标是“把整个办公室、楼宇、园区、资产组合变成一套长期维护的空间数据底座”，Archilogic 的体系会更完整。&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

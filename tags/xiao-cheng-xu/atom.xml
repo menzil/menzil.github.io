@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>orhan.cn 肉扎吉·亚森的博客 - 小程序</title>
+    <link rel="self" type="application/atom+xml" href="https://menzil.github.io/tags/xiao-cheng-xu/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://menzil.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-08-20T00:00:00+00:00</updated>
+    <id>https://menzil.github.io/tags/xiao-cheng-xu/atom.xml</id>
+    <entry xml:lang="en">
+        <title>英吉沙小刀项目复盘：先把故事、溯源和内容体系搭起来</title>
+        <published>2026-08-20T00:00:00+00:00</published>
+        <updated>2026-08-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>肉扎吉·亚森</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://menzil.github.io/posts/yjsxd-project-review/"/>
+        <id>https://menzil.github.io/posts/yjsxd-project-review/</id>
+        
+        <summary type="html">&lt;p&gt;这个项目做的是英吉沙小刀。官网是 &lt;a rel=&quot;external&quot; href=&quot;https://yjsxd.com.cn/&quot;&gt;https://yjsxd.com.cn/&lt;/a&gt;，整体目标不是单纯做一个展示页，而是把“看得见、查得到、讲得清”这三件事先跑通。&lt;/p&gt;
+&lt;p&gt;现在的状态也要先说清楚：官网已经在做对外展示，小程序还没有正式上线。所以这篇复盘不讲虚的结果，只讲我们实际搭了什么、为什么这么搭，以及中间最费劲的地方在哪。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://yjsxd.com.cn/_next/image?url=https%3A%2F%2Fyingjishaxiaodao.oss-cn-hangzhou.aliyuncs.com%2Fuploads%2F2026%2F06%2F11%2F1781187780503-r2u9oyu2-11.png&amp;amp;w=3840&amp;amp;q=75&quot; alt=&quot;英吉沙小刀官网页面&quot; /&gt;&lt;/p&gt;</summary>
+        
+    </entry>
+</feed>

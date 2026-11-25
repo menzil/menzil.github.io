@@ -1,0 +1,27 @@
+# orhan.cn
+
+> 肉扎吉·亚森的技术博客：开发、工具与真实项目复盘。侧重微信小程序业务系统、Rust 后端、部署与内容站点落地。
+
+作者：肉扎吉·亚森（https://orhan.cn/about/）
+站点：https://orhan.cn/
+Feed：https://orhan.cn/atom.xml
+Sitemap：https://orhan.cn/sitemap.xml
+
+## 优先阅读
+
+- [把知识库做成可接入业务的底座：Knowledge Worker 当前进度与目标](https://orhan.cn/posts/knowledge-worker-progress-and-goals/)：律师行业内部试运行中的文档摄取、混合检索、流式问答与 MCP 接入
+- [aynur-deploy：把每次发布缩成一次 Tag Push](https://orhan.cn/posts/aynur-deploy/)：Gitee Tag WebHook、原子发布、健康检查与失败回滚
+- [法商签章上线：把审批、用章和留痕放进一个微信小程序](https://orhan.cn/posts/fashang-qianzhang-project-review/)：企业用章流程、权限、签章与追溯
+- [把 1178 个摊位装进一个微信小程序：农贸市场租赁管理系统落地记录](https://orhan.cn/posts/bozor-market-lease-management/)：平面图、租户、租约与收款
+- [英吉沙小刀项目复盘：先把故事、溯源和内容体系搭起来](https://orhan.cn/posts/yjsxd-project-review/)：非遗相关官网、小程序与内容体系
+- [数字化怎么帮到企业：从 1178 个摊位和一枚印章说起](https://orhan.cn/posts/enterprise-digitalization-in-practice/)：何时值得数字化，以及软件真正解决什么
+- [2026 年了，律所还需要官网吗？](https://orhan.cn/posts/law-firm-website-in-2026/)：短视频与 AI 时代下官网仍有的作用
+- [让 Herdr、Codex 和 helix-kanban 接上：把会话、执行和待办放在一条链路里](https://orhan.cn/posts/herdr-codex-helix-kanban-workflow/)：持久会话、MCP 看板与任务跟踪
+- [Zulqer：为 Zola 适配一套暗色编辑主题](https://orhan.cn/posts/zulqer-zola-theme/)：Zola 主题适配与中文界面
+- [humar：把 AI 翻译沉淀为可复习词库的 Rust CLI](https://orhan.cn/posts/humar-cli-translation-memory/)：中英翻译记忆命令行工具
+
+## 可选入口
+
+- [关于](https://orhan.cn/about/)：背景、近期项目、合作方向与联系方式
+- [归档](https://orhan.cn/archive/)：全部文章按时间浏览
+- [标签](https://orhan.cn/tags/)：按主题浏览
